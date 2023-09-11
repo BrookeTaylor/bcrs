@@ -1,5 +1,5 @@
 Title: bcrs    
-Author: Group 2 - Brooke Taylor, Janis Gonzales, & Brett Grashorn  
+Author: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn  
 Date: 09/10/2023  
 Description: Bob's Computer Repair Shop the App.  
 
