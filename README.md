@@ -5,11 +5,6 @@ Description: Bob's Computer Repair Shop the App.
 
 ---
 
-* Please enter a MongoDB connection string: 
-
-      mongodb+srv://bcrs_user:s3cret@bellevueuniversity.kqpr8ra.mongodb.net/bcrsDB?retryWrites=true&w=majority
-
-
 # Draft NoSQL Data Structure 
 
     {
