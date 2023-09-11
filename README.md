@@ -1,27 +1,77 @@
-# Nodebucket
+Title: bcrs    
+Author: Group 2 - Brooke Taylor, Janis Gonzales, & Brett Grashorn  
+Date: 09/10/2023  
+Description: Bob's Computer Repair Shop the App.  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+---
 
-## Development server
+* Please enter a MongoDB connection string: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+      mongodb+srv://bcrs_user:s3cret@bellevueuniversity.kqpr8ra.mongodb.net/bcrsDB?retryWrites=true&w=majority
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Draft NoSQL Data Structure 
 
-## Build
+    {
+      "users": [
+        {
+          "firstName": "Wolfgang Amadeus",
+          "lastName": "Mozart",
+          "phoneNumber": 8001234567,
+          "address": "1000 Galvin Rd S, Bellevue, NE 68005",
+          "email": "mozart@nodebucket.com",
+          "password": "Password01",
+          "questionOne": "answerOne",
+          "questionTwo": "answerTwo",
+          "questionThree": "answerThree",
+          "role": "admin",
+          "timeStamp": "timestamp",
+          "isDisabled": false
+        },
+        {
+          "firstName": "Johann Sebastian",
+          "lastName": "Bach",
+          "phoneNumber": 8001234567,
+          "address": "1000 Galvin Rd S, Bellevue, NE 68005",
+          "email": "bach@nodebucket.com",
+          "password": "Password01",
+          "questionOne": "answerOne",
+          "questionTwo": "answerTwo",
+          "questionThree": "answerThree",
+          "role": "standard",
+          "timeStamp": "timestamp",
+          "isDisabled": false
+        }
+      ]
+    }
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+    {
+      "invoices": [
+        {
+          "email": "bach@nodebucket.com",
+          "fullName": "Johann Sebastian Bach",
+          "lineItems": [
+            {
+              "Password Reset": 39.99
+            },
+            {
+              "Spyware Removal": 99.99
+            },
+            {
+              "RAM Upgrade": 129.99
+            }
+          ],
+          "partsAmount": 100,
+          "laborAmount": 250,
+          "lineItemTotal": 269.97,
+          "invoiceTotal": 619.97,
+          "orderDate": "date"
+        }
+      ]
+    }
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
