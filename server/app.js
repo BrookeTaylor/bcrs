@@ -2,6 +2,7 @@
  * Title: app.js
  * Author: Professor Krasso
  * Date: 8/5/2023
+ * Description: server setup
  */
 'use strict'
 
