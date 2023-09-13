@@ -1,108 +1,97 @@
-<div class="container-fluid">
+<!--
+     Title: home.component.html
+     Author: Professor Krasso
+     Co-Author: Janis Gonzalez
+     Date: 9/12/2023
+     Description: HTML for home page
+-->
+
+
+<div class="container mt-5 mb-3">
   <div class="row">
-    <div class="col">
-      <h1>Home Component Works! <span class="material-icons">thumb_up</span></h1>
+    <!-- about us image column-->
+    <div class="col-md-9">
+      <img src="./assets/img/home-empower.png"
+      alt="two people cheering in front of empower text"
+      class="img-fluid d-none d-md-block">
     </div>
+    <!-- task column-->
+    <div class="col-md-3">
+      <img class="banner img-fluid" src="./assets/img/home-byte.png" alt="banner with text" />
+      <h2 class="display-6 text-center"></h2>
+      <div class="col-sm-11">
+        <!-- sign in img-->
+        <a routerLink="/about">
+          <img class="quick img-fluid" src="./assets/img/home-register.png" alt="register image" />
+        </a>
+        <!-- my profile img-->
+        <a routerLink="/about">
+          <img class="quick img-fluid" src="./assets/img/home-profile.png" alt="profile image" />
+        </a><br />
+        <!-- employee directory img-->
+        <a routerLink="/about">
+          <img class="quick img-fluid" src="./assets/img/home-directory.png" alt="directory image" />
+        </a>
+        <!-- help desk img-->
+        <a routerLink="/about">
+          <img class="quick img-fluid" src="./assets/img/home-faq.png" alt="faq image" />
+        </a><br />
+        <h2 class="banner-text display-6 text-center">We are here to help you.</h2>
+      </div>
+    </div>
+    <!-- end of task column-->
   </div>
-
-  <a routerLink="/security">Test Security Module</a>
-
-
-
-  <div class="row">
-
-    <div class="col-3">
-      <div class="p-3" style="background-color: #eeba35;">home about contact</div>
-      <div style="min-height: 400px; background-color: #7d6b5d;">
-
-        <div class="p-3">
-          <div class="card p-3">
-            <h1>Hocus Pocus</h1>
-
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque iste tempore, architecto ut consequatur sint blanditiis fugiat vitae tempora deleniti, exercitationem suscipit est neque corrupti voluptates porro natus repellendus fuga?</p>
-
-            <input type="text" placeholder="text">
-
-            <button type="button" class="btn mt-3" style="background-color: #372e29;color: white;">Submit</button>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
-
-
-    <div class="col-3">
-      <div class="p-3" style="background-color: #eeba35;">home about contact</div>
-      <div style="min-height: 400px; background-color: #372e29;">
-
-        <div class="p-3">
-          <div class="card p-3">
-            <h1>Hocus Pocus</h1>
-
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque iste tempore, architecto ut consequatur sint blanditiis fugiat vitae tempora deleniti, exercitationem suscipit est neque corrupti voluptates porro natus repellendus fuga?</p>
-
-            <input type="text" placeholder="text">
-
-            <button type="button" class="btn mt-3" style="background-color: #7d6b5d;color: white;">Submit</button>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="col-3">
-      <div class="p-3" style="background-color: #372e29; color: white">home about contact</div>
-      <div style="min-height: 400px; background-color: #ffd25f;">
-
-        <div class="p-3">
-          <div class="card p-3">
-            <h1>Hocus Pocus</h1>
-
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque iste tempore, architecto ut consequatur sint blanditiis fugiat vitae tempora deleniti, exercitationem suscipit est neque corrupti voluptates porro natus repellendus fuga?</p>
-
-            <input type="text" placeholder="text">
-
-            <button type="button" class="btn mt-3" style="background-color: #372e29; color: white;">Submit</button>
-
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-
-
-    <div class="col-3">
-      <div class="p-3" style="background-color: #372e29; color: white">home about contact</div>
-      <div style="min-height: 400px; background-color: #eeba35;">
-
-        <div class="p-3">
-          <div class="card p-3">
-            <h1>Hocus Pocus</h1>
-
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque iste tempore, architecto ut consequatur sint blanditiis fugiat vitae tempora deleniti, exercitationem suscipit est neque corrupti voluptates porro natus repellendus fuga?</p>
-
-            <input type="text" placeholder="text">
-
-            <button type="button" class="btn mt-3" style="background-color: #372e29; color: white;">Submit</button>
-
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-
-
-
-
-  </div>
-
-
 </div>
+<!-- end of empower container-->
 
-
+<!-- start of newsfeed container -->
+<div class="container mt-2 mb-5">
+  <div class="row">
+    <!-- text on left -->
+    <div class="col-md-4 d-none d-md-block">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="table-active"></th>
+            <th scope="col" class="table-active">Reminders</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">-</th>
+            <td>Thank you for your dedication to our shop.</td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>We appreciate your active participation in staying connected.</td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>We value your input!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- end text on left -->
+     <!-- newsfeed carousel -->
+     <div class="col-md-4"><iframe
+      src="https://api.wo-cloud.com/content/widget/?geoObjectKey=6420209&language=en&region=US&timeFormat=HH:mm&windUnit=mph&systemOfMeasurement=imperial&temperatureUnit=fahrenheit"
+      name="CW2"
+      scrolling="no"
+      width="355"
+      height="200"
+      frameborder="0"
+      class="weather">
+      </iframe></div>
+<!-- calendar -->
+    <div class="col-md-4"><iframe
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23eeba35&ctz=America%2FLos_Angeles&title=Bob's%20Computer%20Repair%20Shop&showTz=1&showTabs=1&showNav=1&src=Nzc4NzE5ZDdjNjcxYzY3MTcwNDY0MjBhYTVhM2RiMmVlMzA1MjUxZGQ1NzhiYTU5ZDUwMWJmNmYyNjYzNDExZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23F6BF26"
+      width="300"
+      height="200"
+      frameborder="0"
+      scrolling="no"
+      class="calendar">
+    </iframe></div>
+    <!-- end calendar-->
+  </div>
+</div>
