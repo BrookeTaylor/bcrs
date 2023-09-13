@@ -1,3 +1,14 @@
+/*
+============================================
+; Title: BCRS
+; File Name: home.component.css
+; Author: Janis Gonzalez
+; Date: 9/12/2023
+; Description: This is styling for home
+; HTML file for the BCRS application
+;===========================================
+*/
+
 .quick {
   width: 44%;
   height: auto;
@@ -18,9 +29,6 @@
   padding: 12px 0px 0px 0px;
 }
 
-.bg-info {
-  color: #7D6B5D !important;
-}
 .weather {
   padding: 0px 0px 0px 0px;
 }
