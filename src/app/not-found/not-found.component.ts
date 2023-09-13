@@ -1,3 +1,11 @@
+/**
+ * Title: not-found.components.ts
+ * Author: Professor Krasso
+ * Co-Author: Janis Gonzalez
+ * Date: 9/12/23
+ * Description: not-found component for nodebucket application
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

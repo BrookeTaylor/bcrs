@@ -1,0 +1,30 @@
+.quick {
+  width: 44%;
+  height: auto;
+  padding: 4px 12px 2px 2px;
+  margin-right: 10px;
+}
+
+
+.banner {
+  width: 80%;
+  height: auto;
+  padding: 0px;
+}
+
+.banner-text {
+  width: 85%;
+  height: auto;
+  padding: 12px 0px 0px 0px;
+}
+
+.bg-info {
+  color: #7D6B5D !important;
+}
+.weather {
+  padding: 0px 0px 0px 0px;
+}
+
+.calendar {
+  padding: 0px;
+}

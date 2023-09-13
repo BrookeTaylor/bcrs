@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+/* Color palette */
+.dark-brown {
+  color: #372e29;
+}
+
+.light-brown {
+  color: #7D6B5D;
+}
+
+.dark-yellow {
+  color: #eeba35;
+}
+
+.light-yellow {
+  color: #ffd25f;
+}
