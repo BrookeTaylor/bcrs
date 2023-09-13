@@ -1,1 +1,60 @@
-<nav></nav>
+<!--
+  Title: Bob's Computer Repair Shop
+  Arthur: Brooke Taylor
+  Date: 09/13/2023
+  Description: nav component
+
+   style="margin-top: 5rem !important;"
+
+-->
+
+<nav class="ps-3 navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #372e29;">
+
+  <a routerLink="/" class="navbar-brand">Bob's Computer Repair Shop</a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- navbar links -->
+
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav me-auto p-2">
+
+      <li class="nav-item">
+        <a routerLink="/home" class="nav-link">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">About</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">Service</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">Directory</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">FAQ</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="#" class="nav-link">Sign-in</a>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>
