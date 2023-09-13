@@ -1,7 +1,7 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Brooke Taylor
- *  Date: 09/12/2023
+ *  Date: 09/13/2023
  *  Description: user routes
  */
 
@@ -14,7 +14,7 @@ const { mongo } = require('../utilis/mongo')
 /**
  * findAll
  */
-router.get('/users', (req, res, next) => {
+router.get('/', (req, res, next) => {
   try {
     mongo(async (db) => {
       const users = await db.collection('users').find().toArray();
@@ -27,7 +27,7 @@ router.get('/users', (req, res, next) => {
         return;
       }
 
-      res.send(users);
+      res.json(users);
     }, next);
   } catch (err) {
     console.log('err', err);
