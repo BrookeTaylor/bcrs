@@ -16,11 +16,21 @@ Description: Bob's Computer Repair Shop the App.
           "address": "1000 Galvin Rd S, Bellevue, NE 68005",
           "email": "mozart@nodebucket.com",
           "password": "Password01",
-          "questionOne": "answerOne",
-          "questionTwo": "answerTwo",
-          "questionThree": "answerThree",
+          "securityQuestions": [
+            {
+              "question": "questionOne",
+              "answer": "answerOne"
+            },
+            {
+              "question": "questionTwo",
+              "answer": "answerTwo"
+            },
+            {
+              "question": "questionThree",
+              "answer": "answerThree"
+            }
+          ],
           "role": "admin",
-          "timeStamp": "timestamp",
           "isDisabled": false
         },
         {
@@ -30,15 +40,26 @@ Description: Bob's Computer Repair Shop the App.
           "address": "1000 Galvin Rd S, Bellevue, NE 68005",
           "email": "bach@nodebucket.com",
           "password": "Password01",
-          "questionOne": "answerOne",
-          "questionTwo": "answerTwo",
-          "questionThree": "answerThree",
+          "securityQuestions": [
+            {
+              "question": "questionOne",
+              "answer": "answerOne"
+            },
+            {
+              "question": "questionTwo",
+              "answer": "answerTwo"
+            },
+            {
+              "question": "questionThree",
+              "answer": "answerThree"
+            }
+          ],
           "role": "standard",
-          "timeStamp": "timestamp",
           "isDisabled": false
         }
       ]
     }
+
 
 
 

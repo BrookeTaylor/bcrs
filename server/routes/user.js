@@ -17,7 +17,7 @@ const { mongo } = require('../utilis/mongo')
 router.get('/', (req, res, next) => {
   try {
     mongo(async (db) => {
-      const users = await db.collection('users').find().toArray();
+      const users = await db.collection('users').find({ isDisabled: false }).toArray();
 
       if (!users) {
         const err = new Error('No users found');
