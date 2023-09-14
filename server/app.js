@@ -14,6 +14,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
 const userRoute = require('./routes/user')
+const securityRoute = require('./routes/security')
 
 // Create the Express app
 const app = express()
@@ -37,6 +38,7 @@ const options = {
 };
 
 app.use('/api/users', userRoute)
+app.use('api/security', securityRoute)
 
 
 // Create a new variable name openapiSpecification

@@ -1,7 +1,7 @@
 <!--
   Title: Bob's Computer Repair Shop
-  Arthur: Brooke Taylor
-  Date: 09/13/2023
+  Arthur: Brooke Taylor, Brett Grashorn
+  Date: 09/14/2023
   Description: nav component
 
    style="margin-top: 5rem !important;"
@@ -51,9 +51,34 @@
       </li>
 
       <li class="nav-item">
-        <a routerLink="#" class="nav-link">Sign-in</a>
+        <a routerLink="/security/signin" class="nav-link">Sign-in</a>
       </li>
+    <!-- User account -->
 
+    <li *ngIf="isSignedIn" class="nav-item dropdown">
+      <a
+      href="#"
+      class="nav-link pe-3"
+      id="navbarDropdown"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <span class="material-icons text-black">person</span>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      <li class="dropdown-item">
+        Signed in as {{ sessionUser.fullName }}
+      </li>
+      <hr>
+      <li *ngIf="sessionUser.role === 'admin'">
+        <a routerLink="/admin/users" class="dropdown-item">Users</a>
+      </li>
+      <li>
+        <a (click)="signout()" class="dropdown-item link">Sign Out</a>
+      </li>
+    </ul>
+    </li>
     </ul>
   </div>
 

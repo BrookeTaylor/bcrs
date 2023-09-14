@@ -1,0 +1,15 @@
+/**
+  Title: signin.component.css
+  Author: Brett Grashorn
+  Date: 9/13/23
+  Description: Styling for signin.component.html file
+*/
+
+/* changes background colors */
+.sign-in-bg {
+    background-color: #EEBA35;
+  }
+
+  .huff-input {
+    background-color: #FFD25F;
+  }
