@@ -8,18 +8,18 @@
 
 
 <div class="container mt-5 mb-3">
-  <div class="row">
+  <div class="row align-content-center">
     <!-- about us image column-->
-    <div class="col-md-9">
-      <img src="./assets/img/home-empower.png"
+    <div class="col-md-10">
+      <img src="./assets/img/home-empower-mobile.png"
       alt="two people cheering in front of empower text"
-      class="img-fluid d-none d-md-block">
+      class="img-fluid">
     </div>
     <!-- task column-->
-    <div class="col-md-3">
-      <img class="banner img-fluid" src="./assets/img/home-byte.png" alt="banner with text" />
+    <div class="col-md-2">
+      <img class="banner img-fluid d-none d-md-block" src="./assets/img/home-byte.png" alt="banner with text" />
       <h2 class="display-6 text-center"></h2>
-      <div class="col-sm-11">
+      <div class="col-sm-12">
         <!-- sign in img-->
         <a routerLink="/about">
           <img class="quick img-fluid" src="./assets/img/home-register.png" alt="register image" />
@@ -27,7 +27,13 @@
         <!-- my profile img-->
         <a routerLink="/about">
           <img class="quick img-fluid" src="./assets/img/home-profile.png" alt="profile image" />
-        </a><br />
+        </a>
+      </div>
+
+
+
+
+        <div class="col-sm-12">
         <!-- employee directory img-->
         <a routerLink="/about">
           <img class="quick img-fluid" src="./assets/img/home-directory.png" alt="directory image" />
@@ -35,8 +41,8 @@
         <!-- help desk img-->
         <a routerLink="/about">
           <img class="quick img-fluid" src="./assets/img/home-faq.png" alt="faq image" />
-        </a><br />
-        <h2 class="banner-text display-6 text-center">We are here to help you.</h2>
+        </a>
+        <img class="helpbanner img-fluid" src="./assets/img/home-foundation.png" alt="banner with text" />
       </div>
     </div>
     <!-- end of task column-->
@@ -46,9 +52,9 @@
 
 <!-- start of newsfeed container -->
 <div class="container mt-2 mb-5">
-  <div class="row">
+  <div class="cnewsfeed row">
     <!-- text on left -->
-    <div class="col-md-4 d-none d-md-block">
+    <div class="col-md-4">
       <table class="table">
         <thead>
           <tr>
@@ -69,6 +75,10 @@
             <th scope="row">-</th>
             <td>We value your input!</td>
           </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Check out our partner foundation this month.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -78,20 +88,22 @@
       src="https://api.wo-cloud.com/content/widget/?geoObjectKey=6420209&language=en&region=US&timeFormat=HH:mm&windUnit=mph&systemOfMeasurement=imperial&temperatureUnit=fahrenheit"
       name="CW2"
       scrolling="no"
-      width="355"
-      height="200"
+      width="600"
+      height="300"
       frameborder="0"
       class="weather">
       </iframe></div>
 <!-- calendar -->
     <div class="col-md-4"><iframe
       src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23eeba35&ctz=America%2FLos_Angeles&title=Bob's%20Computer%20Repair%20Shop&showTz=1&showTabs=1&showNav=1&src=Nzc4NzE5ZDdjNjcxYzY3MTcwNDY0MjBhYTVhM2RiMmVlMzA1MjUxZGQ1NzhiYTU5ZDUwMWJmNmYyNjYzNDExZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23F6BF26"
-      width="300"
-      height="200"
+      width="600"
+      height="300"
       frameborder="0"
       scrolling="no"
       class="calendar">
     </iframe></div>
     <!-- end calendar-->
+
+
   </div>
 </div>

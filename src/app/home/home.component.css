@@ -10,29 +10,63 @@
 */
 
 .quick {
-  width: 44%;
+  width: 50%;
   height: auto;
-  padding: 4px 12px 2px 2px;
-  margin-right: 10px;
+  padding: 12px 2px 0px 0px;
+  margin-right: 0px;
+
+}
+
+.quicker {
+  display: flex;
+  justify-content: middle;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 
 .banner {
-  width: 80%;
   height: auto;
   padding: 0px;
+
+  display: flex;
+  justify-content: middle;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.helpbanner {
+  height: auto;
+  padding: 22px;
+
+  display: flex;
+  justify-content: middle;
+  align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .banner-text {
-  width: 85%;
+  width: 100%;
   height: auto;
-  padding: 12px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  justify-content: middle;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.cnewsfeed {
+  display: flex;
+  align-items: center;
 }
 
 .weather {
   padding: 0px 0px 0px 0px;
+  width: 100%;
+
 }
 
 .calendar {
   padding: 0px;
+  width: 100%;
 }
