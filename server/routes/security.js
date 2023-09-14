@@ -49,7 +49,8 @@ router.post('/signin', (req, res, next) => {
         return
       }
 
-      let passwordIsValid = bcrypt.compareSync(singin.password, user.password)
+      // fix typo
+      let passwordIsValid = bcrypt.compareSync(signin.password, user.password)
 
       if (!passwordIsValid) {
         const err = new Error('Unauthorized')
@@ -66,3 +67,6 @@ router.post('/signin', (req, res, next) => {
     next(err)
   }
 })
+
+// added export
+module.exports = router

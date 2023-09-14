@@ -31,6 +31,7 @@ async function dbInit() {
         $jsonSchema: {
           bsonType: 'object',
           properties: {
+            empId: { bsonType: 'number' },
             firstName: { bsonType: 'string' },
             lastName: { bsonType: 'string' },
             phoneNumber: { bsonType: 'number' },
@@ -59,6 +60,7 @@ async function dbInit() {
 
     const users = [
       {
+        empId: 1007,
         firstName: 'Wolfgang Amadeus',
         lastName: 'Mozart',
         phoneNumber: 8001234567,
@@ -83,6 +85,7 @@ async function dbInit() {
         isDisabled: false,
       },
       {
+        empId: 1008,
         firstName: 'Johann Sebastian',
         lastName: 'Bach',
         phoneNumber: 8001234567,

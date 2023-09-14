@@ -38,7 +38,8 @@ const options = {
 };
 
 app.use('/api/users', userRoute)
-app.use('api/security', securityRoute)
+// fixed typo
+app.use('/api/security', securityRoute)
 
 
 // Create a new variable name openapiSpecification
