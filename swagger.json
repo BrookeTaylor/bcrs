@@ -117,7 +117,10 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-
+                    "empId": {
+                      "type": "number",
+                      "example": "1008"
+                    },
                     "firstName": {
                       "type": "string",
                       "example": "Johann"

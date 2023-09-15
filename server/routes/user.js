@@ -43,24 +43,33 @@ router.get('/', (req, res, next) => {
 });
 
 /**
- * findById
+ * findByempId
  */
-router.get('/:email', (req, res, next) => {
+
+router.get('/:empId', (req, res, next) => {
   try {
 
-    console.log('email', req.params.email)
+    console.log('empId', req.params.empId)
 
-    let { email } = req.params; // get the email from the req.params object
+    let { empId } = req.params // get the empId from the req.params object
+    empId = parseInt(empId, 10) // determines if the empId is a numerical value
 
-    mongo(async (db) => {
+    if (isNaN(empId)) {
+      const err = new Error('input must be a number')
+      err.status = 400
+      console.log('err', err)
+      next(err)
+      return
+    }
+
+    mongo(async db => {
       const user = await db.collection('users').findOne(
-        { email },
-        { projection: { firstName: 1, lastName: 1, email: 1, password: 1, phoneNumber: 1, role: 1, securityQuestions: 1, address: 1, isDisabled: 1 } }
-      ) // find user by email
+        { empId },
+        { projection: { empId: 1, firstName: 1, lastName: 1, email: 1, password: 1, phoneNumber: 1, address: 1, securityQuestions: 1, role: 1, isDisabled: 1 } }
+      ) // find user by empID
 
-      // if user does not exist
       if (!user) {
-        const err = new Error('Unable to find user with email ' + email)
+        const err = new Error('Unable to find employee with empId ' + empId)
         err.status = 404
         console.log('err', err)
         next(err)
