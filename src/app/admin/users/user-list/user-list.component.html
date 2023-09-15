@@ -2,11 +2,11 @@
      Title: Bob's Computer Repair Shop
      Author: Professor Krasso
      Co-Author: Brooke Taylor
-     Date: 9/14/2023
+     Date: 9/15/2023
      Description: user list
 -->
 
-<div class="container-fluid pt-2" style="min-height: 600px">
+<div class="container-fluid pt-2" style="min-height: 600px;">
   <h1 class="text-center">Welcome to the User List Page!</h1>
 
   <div class="row pt-4 justify-content-center">
@@ -25,7 +25,9 @@
         </div>
       </div>
 
-      <a routerLink="/admin/users/new" class="text-dark text-underline-hover">New User</a>
+      <div class="text-center m-3">
+      <a routerLink="/admin/users/new" class="text-light text-underline-hover p-2 btn new">New User <span class="material-icons">person_add</span></a>
+      </div>
 
       <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
         <div class="spinner-border spinner-lg" style="width: 3rem; height: 3rem;" role="status" aria-hidden="true">
@@ -48,7 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
+            <tr *ngFor="let user of users">
               <td>{{ user.empId }}</td>
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>
