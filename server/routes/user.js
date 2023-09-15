@@ -45,7 +45,36 @@ router.get('/', (req, res, next) => {
 /**
  * findById
  */
+router.get('/:email', (req, res, next) => {
+  try {
 
+    console.log('email', req.params.email)
+
+    let { email } = req.params; // get the email from the req.params object
+
+    mongo(async (db) => {
+      const user = await db.collection('users').findOne(
+        { email },
+        { projection: { firstName: 1, lastName: 1, email: 1, phoneNumber: 1, role: 1, address: 1 } }
+      ) // find user by email
+
+      // if user does not exist
+      if (!user) {
+        const err = new Error('Unable to find user with email ' + email)
+        err.status = 404
+        console.log('err', err)
+        next(err)
+        return
+      }
+
+      res.send(user)
+    }, next)
+
+  } catch (err) {
+    console.log('err', err)
+    next(err)
+  }
+})
 
 /**
  * createUser

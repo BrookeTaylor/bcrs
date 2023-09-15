@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "5.3.0",
+    "title": "Hufflepuff Bob's Computer Repair Shop API for Group 2",
+    "description": "BCRS API Documentation for managing users and invoices.\n\n\n\nGroup Github Repo:\n\n*[BCRS repository](https://github.com/BrookeTaylor/bcrs)"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users on the company website"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "findAll",
+        "description": "Get a list of users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+
+                    "firstName": {
+                      "type": "string",
+                      "example": "Johann"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "Bach"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "bach@nodebucket.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2a$10$aGgheH576jZzwGwwLc2WLuSWPrSU2Lt03jDL9hTZg7iBfubOmULEq"
+                    },
+                    "phoneNumber": {
+                      "type": "number",
+                      "example": "8001234567"
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "1000 Galvin Rd S, Bellevue, NE 68005"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "standard"
+                    },
+                    "isDisabled": {
+                      "type": "string",
+                      "example": "false"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{email}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "findUserById",
+        "description": "Get a user by their email address.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "A valid email address.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+
+                    "firstName": {
+                      "type": "string",
+                      "example": "Johann"
+                    },
+                    "lastName": {
+                      "type": "string",
+                      "example": "Bach"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "bach@nodebucket.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "$2a$10$aGgheH576jZzwGwwLc2WLuSWPrSU2Lt03jDL9hTZg7iBfubOmULEq"
+                    },
+                    "phoneNumber": {
+                      "type": "number",
+                      "example": "8001234567"
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "1000 Galvin Rd S, Bellevue, NE 68005"
+                    },
+                    "role": {
+                      "type": "string",
+                      "example": "standard"
+                    },
+                    "isDisabled": {
+                      "type": "boolean",
+                      "example": "false"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

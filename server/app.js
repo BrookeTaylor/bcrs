@@ -34,7 +34,7 @@ const options = {
           version: "1.0.0",
       },
   },
-  apis: ["./swagger.js"], // files containing annotations for the OpenAPI Specification
+  apis: ["./swagger.json"], // files containing annotations for the OpenAPI Specification
 };
 
 app.use('/api/users', userRoute)
