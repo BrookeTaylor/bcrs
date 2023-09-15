@@ -93,16 +93,16 @@
         }
       }
     },
-    "/users/{email}": {
+    "/users/{empId}": {
       "get": {
         "tags": ["Users"],
-        "summary": "findUserById",
-        "description": "Get a user by their email address.",
+        "summary": "findByUserId",
+        "description": "Get a user by their valid empId.",
         "parameters": [
           {
-            "name": "email",
+            "name": "empId",
             "in": "path",
-            "description": "A valid email address.",
+            "description": "A valid empId.",
             "required": true,
             "schema": {
               "type": "string"
