@@ -48,7 +48,7 @@
                     },
                     "password": {
                       "type": "string",
-                      "example": "$2a$10$aGgheH576jZzwGwwLc2WLuSWPrSU2Lt03jDL9hTZg7iBfubOmULEq"
+                      "example": "Password01"
                     },
                     "phoneNumber": {
                       "type": "number",
@@ -132,7 +132,7 @@
                     },
                     "password": {
                       "type": "string",
-                      "example": "$2a$10$aGgheH576jZzwGwwLc2WLuSWPrSU2Lt03jDL9hTZg7iBfubOmULEq"
+                      "example": "Password01"
                     },
                     "phoneNumber": {
                       "type": "number",
