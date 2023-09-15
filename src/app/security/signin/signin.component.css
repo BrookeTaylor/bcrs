@@ -6,10 +6,20 @@
 */
 
 /* changes background colors */
-.sign-in-bg {
-    background-color: #EEBA35;
+
+  .container {
+    margin-top: 150px;
   }
 
-  .huff-input {
-    background-color: #FFD25F;
+  .button-brown {
+    background-color: #7D6B5D;
+  }
+
+  .dark-yellow {
+    background-color: #eeba35;
+  }
+
+  .input {
+    width: 95%;
+    margin: auto;
   }
