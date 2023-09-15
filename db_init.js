@@ -90,7 +90,7 @@ async function dbInit() {
         lastName: 'Mozart',
         phoneNumber: 8001234567,
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'mozart@bcrs.com',
+        email: 'mozart@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
         securityQuestions: [
           {
@@ -115,7 +115,7 @@ async function dbInit() {
         lastName: 'Bach',
         phoneNumber: 8001234567,
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'bach@bcrs.com',
+        email: 'bach@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
         securityQuestions: [
           {
