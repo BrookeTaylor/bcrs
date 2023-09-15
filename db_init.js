@@ -134,6 +134,56 @@ async function dbInit() {
         role: 'standard',
         isDisabled: false,
       },
+      {
+        empId: 1009,
+        firstName: 'Jane',
+        lastName: 'Smith',
+        phoneNumber: 8001234567,
+        address: '1000 Galvin Rd S, Bellevue, NE 68005',
+        email: 'smith1@bcrs.com',
+        password: bcrypt.hashSync('Password01', saltRounds),
+        securityQuestions: [
+          {
+            question: 'questionOne',
+            answer: 'answerOne',
+          },
+          {
+            question: 'questionTwo',
+            answer: 'answerTwo',
+          },
+          {
+            question: 'questionThree',
+            answer: 'answerThree',
+          },
+        ],
+        role: 'admin',
+        isDisabled: false,
+      },
+      {
+        empId: 1010,
+        firstName: 'John',
+        lastName: 'Smith',
+        phoneNumber: 8001234567,
+        address: '1000 Galvin Rd S, Bellevue, NE 68005',
+        email: 'smith2@bcrs.com',
+        password: bcrypt.hashSync('Password01', saltRounds),
+        securityQuestions: [
+          {
+            question: 'questionOne',
+            answer: 'answerOne',
+          },
+          {
+            question: 'questionTwo',
+            answer: 'answerTwo',
+          },
+          {
+            question: 'questionThree',
+            answer: 'answerThree',
+          },
+        ],
+        role: 'standard',
+        isDisabled: false,
+      }
     ]
 
     // Insert the records into MongoDB Atlas

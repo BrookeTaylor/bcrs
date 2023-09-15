@@ -7,7 +7,7 @@
 -->
 
 <div class="container-fluid pt-2" style="min-height: 600px;">
-  <h1 class="text-center">Welcome to the User List Page!</h1>
+  <h1 class="text-center">Admin: User Config</h1>
 
   <div class="row pt-4 justify-content-center">
 
@@ -45,6 +45,7 @@
               <th>EmpId</th>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Email</th>
               <th>Role</th>
               <th>Functions</th>
             </tr>
@@ -54,6 +55,7 @@
               <td>{{ user.empId }}</td>
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>
+              <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
               <td>{{ user.role }}</td>
               <td>
                 <a routerLink="/admin/users/{{ user.empId}}/view">
@@ -72,14 +74,31 @@
 
       <!-- mobile viewports-->
       <div class="d-md-none d-lg-none d-xl-none">
-        <div class="card" style="margin: 10px;" *ngFor="let user of users">
+        <div class="card" style="margin: 10px;" *ngFor="let user of users;let even = even;" [ngClass]="{ even: even }">
+
           <div class="card-body">
-            <h5 class="card-title">{{ user.firstName }} {{ user.lastName}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ user.role }}</h6>
-            <p class="card-text">User ID: {{ user.empId }}</p>
-            <a routerLink="/admin/users/{{ user.empId}}/view" class="card-link">Edit</a>
-            <a (click)="deleteUser(user.empId)" class="card-link">Delete</a>
+
+            <div class="m-3">
+              <div class="row">
+
+              <div class="col">
+                <p class="card-text">User ID: {{ user.empId }}</p>
+                <h5 class="card-title">{{ user.firstName }} {{ user.lastName}}</h5>
+
+                <h6 class="card-subtitle mb-2 text-muted">{{ user.role }}</h6>
+                <p class="card-link"><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+              </div>
+
+              <div class="col m-auto d-flex justify-content-end">
+                <a routerLink="/admin/users/{{ user.empId}}/view" class="card-link"><span class="material-icons text-secondary">edit</span></a>
+                <a (click)="deleteUser(user.empId)" class="card-link link"><span class="material-icons text-secondary">delete</span></a>
+              </div>
+
+              </div>
+            </div>
+
           </div>
+
         </div>
       </div>
     </div>

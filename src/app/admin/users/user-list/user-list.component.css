@@ -19,3 +19,19 @@ th {
 .new {
   background-color: #372e29;
 }
+
+.even {
+  background-color: #ffd25f;
+ }
+
+ .link {
+  cursor: pointer;
+ }
+
+ tr:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+ }
+
+ .card:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+ }
