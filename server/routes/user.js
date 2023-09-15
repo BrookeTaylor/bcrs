@@ -1,6 +1,6 @@
 /**
  *  Title: Bob's Computer Repair Shop
- *  Arthur: Brooke Taylor
+ *  Arthur: Brooke Taylor, Janis Gonzalez
  *  Date: 09/13/2023
  *  Description: user routes
  */
@@ -55,7 +55,7 @@ router.get('/:email', (req, res, next) => {
     mongo(async (db) => {
       const user = await db.collection('users').findOne(
         { email },
-        { projection: { firstName: 1, lastName: 1, email: 1, phoneNumber: 1, role: 1, address: 1 } }
+        { projection: { firstName: 1, lastName: 1, email: 1, password: 1, phoneNumber: 1, role: 1, securityQuestions: 1, address: 1, isDisabled: 1 } }
       ) // find user by email
 
       // if user does not exist

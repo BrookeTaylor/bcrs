@@ -142,6 +142,16 @@
                       "type": "string",
                       "example": "1000 Galvin Rd S, Bellevue, NE 68005"
                     },
+                    "securityQuestions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "question": "string",
+                          "answer": "string"
+                        }
+                      }
+                    },
                     "role": {
                       "type": "string",
                       "example": "standard"
