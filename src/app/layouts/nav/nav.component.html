@@ -3,9 +3,6 @@
   Arthur: Brooke Taylor, Brett Grashorn
   Date: 09/14/2023
   Description: nav component
-
-   style="margin-top: 5rem !important;"
-
 -->
 
 <nav class="ps-3 navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #372e29;">
@@ -50,7 +47,7 @@
         <a routerLink="#" class="nav-link">FAQ</a>
       </li>
 
-      <li class="nav-item">
+      <li *ngIf="!isSignedIn">
         <a routerLink="/security/signin" class="nav-link">Sign-in</a>
       </li>
     <!-- User account -->
@@ -84,4 +81,4 @@
 
 </nav>
 
-<br /><br />
+<br /><br /><br />

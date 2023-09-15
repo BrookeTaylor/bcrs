@@ -17,7 +17,13 @@ export class SecurityService {
   constructor(private http: HttpClient) { }
 
   // findById
+  findUserById(empId: number) {
+    return this.http.get('api/users/' + empId)
+  }
 
+  /**
+   * signin
+   */
   signin(email: string, password: string) {
     return this.http.post('/api/security/signin', {
       email,

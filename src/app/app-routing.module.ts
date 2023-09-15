@@ -34,6 +34,11 @@ const routes: Routes = [
         component: NotFoundComponent,
         title: 'Page 404'
       },
+      {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+        canActivate: [authGuard]
+      }
     ]
   },
   {

@@ -60,12 +60,37 @@ async function dbInit() {
 
     const users = [
       {
+        empId: 1006,
+        firstName: 'Bob',
+        lastName: 'Smith',
+        phoneNumber: 8001234567,
+        address: '1000 Galvin Rd S, Bellevue, NE 68005',
+        email: 'smith@bcrs.com',
+        password: bcrypt.hashSync('Password01', saltRounds),
+        securityQuestions: [
+          {
+            question: 'questionOne',
+            answer: 'answerOne',
+          },
+          {
+            question: 'questionTwo',
+            answer: 'answerTwo',
+          },
+          {
+            question: 'questionThree',
+            answer: 'answerThree',
+          },
+        ],
+        role: 'admin',
+        isDisabled: false,
+      },
+      {
         empId: 1007,
-        firstName: 'Wolfgang Amadeus',
+        firstName: 'Wolfgang',
         lastName: 'Mozart',
         phoneNumber: 8001234567,
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'mozart@nodebucket.com',
+        email: 'mozart@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
         securityQuestions: [
           {
@@ -86,11 +111,11 @@ async function dbInit() {
       },
       {
         empId: 1008,
-        firstName: 'Johann Sebastian',
+        firstName: 'Johann',
         lastName: 'Bach',
         phoneNumber: 8001234567,
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'bach@nodebucket.com',
+        email: 'bach@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
         securityQuestions: [
           {

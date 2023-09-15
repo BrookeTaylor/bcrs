@@ -1,0 +1,85 @@
+<!--
+     Title: Bob's Computer Repair Shop
+     Author: Professor Krasso
+     Co-Author: Brooke Taylor
+     Date: 9/14/2023
+     Description: user list
+-->
+
+<div class="container-fluid pt-2" style="min-height: 600px">
+  <h1 class="text-center">Welcome to the User List Page!</h1>
+
+  <div class="row pt-4 justify-content-center">
+
+    <div class="col-sm-12 col-md-10 col-lg-6">
+
+      <div *ngIf="errorMessage">
+        <div class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <div *ngIf="successMessage">
+        <div class="alert alert-success" role="alert">
+          {{ successMessage }}
+        </div>
+      </div>
+
+      <a routerLink="/admin/users/new" class="text-dark text-underline-hover">New User</a>
+
+      <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
+        <div class="spinner-border spinner-lg" style="width: 3rem; height: 3rem;" role="status" aria-hidden="true">
+          <span class="sr-only visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <!-- style="background-color: #372e29;-->
+
+      <!-- tablet and desktop view ports -->
+      <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block">
+        <table *ngIf="!isLoading" class="table table-striped">
+          <thead class="table">
+            <tr>
+              <th>EmpId</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Role</th>
+              <th>Functions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; let even = even; let odd = odd" [ngClass]="{ odd: odd, even: even }">
+              <td>{{ user.empId }}</td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <a routerLink="/admin/users/{{ user.empId}}/view">
+                  <span class="material-icons text-secondary">edit</span>
+                </a>
+
+                <a class="link" (click)="deleteUser(user.empId)">
+                  <span class="material-icons text-secondary">delete</span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end of tablet viewport -->
+
+      <!-- mobile viewports-->
+      <div class="d-md-none d-lg-none d-xl-none">
+        <div class="card" style="margin: 10px;" *ngFor="let user of users">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ user.role }}</h6>
+            <p class="card-text">User ID: {{ user.empId }}</p>
+            <a routerLink="/admin/users/{{ user.empId}}/view" class="card-link">Edit</a>
+            <a (click)="deleteUser(user.empId)" class="card-link">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

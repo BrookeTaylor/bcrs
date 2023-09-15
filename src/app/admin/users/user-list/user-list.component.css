@@ -1,0 +1,22 @@
+/**
+    Title: Bob's Computer Service
+    Arthur: Professor Krasso
+    Date: 09/14/2023
+    Modified By: Brooke Taylor
+    Description: user list styles
+*/
+
+th {
+  background-color: #372e29;
+  color: white;
+}
+
+
+.even {
+  background-color: white !important;
+}
+
+/* to be continued */
+.odd {
+  background-color: #ffd25f !important;
+}
