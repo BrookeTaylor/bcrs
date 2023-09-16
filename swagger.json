@@ -180,7 +180,7 @@
         }
       }
     },
-    "/users/{empId}": {
+    "/users/delete/{empId}": {
       "delete": {
         "tags": ["Users"],
         "summary": "deleteUser",

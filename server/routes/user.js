@@ -208,7 +208,7 @@ router.put('/:empId'), (req, res, next) => {
 /**
  * deleteUser
  */
-router.delete('/:empId', async (req, res, next) => {
+router.delete('/delete/:empId', async (req, res, next) => {
   try {
     const { empId } = req.params;
 
