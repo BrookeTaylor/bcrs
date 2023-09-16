@@ -11,7 +11,7 @@ const express = require('express')
 const createServer = require('http-errors')
 const path = require('path')
 const swaggerUi = require("swagger-ui-express");
-const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerDoc = require('../swagger.json');
 
 const userRoute = require('./routes/user')
 const securityRoute = require('./routes/security')
@@ -25,30 +25,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '../dist/bcrs')))
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')))
 
-// Define an object literal named options with the following properties/values
-const options = {
-  definition: {
-      openapi: "3.0.0",
-      info: {
-          title: "BCRS APIs",
-          version: "1.0.0",
-      },
-  },
-  apis: ["./swagger.json"], // files containing annotations for the OpenAPI Specification
-};
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 
 app.use('/api/users', userRoute)
 // fixed typo
 app.use('/api/security', securityRoute)
-
-
-// Create a new variable name openapiSpecification
-// and call the swaggerJsdoc library using the options object literal.
-const openapiSpecification = swaggerJsdoc(options);
-
-// Wire the openapiSpecification variable to the app variable
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
-
 
 
 // error handler for 404 errors
