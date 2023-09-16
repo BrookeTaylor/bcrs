@@ -237,7 +237,9 @@ router.delete('/:empId', async (req, res, next) => {
             { $set: { isDisabled: true } }
           );
 
-          res.status(204).send();
+          res.status(200).json({
+            message: `${user.firstName} ${user.lastName} was successfully deleted!`});
+            return;
         }
       }
     }, (err) => {

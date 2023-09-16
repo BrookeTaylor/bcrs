@@ -1,7 +1,7 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Brooke Taylor
- *  Date: 09/13/2023
+ *  Date: 09/16/2023
  *  Description: swagger ui
  */
 
@@ -59,6 +59,39 @@
  *         description: Internal Server Error
  */
 
+
+/**
+ * @openapi
+ * /api/security/signin:
+ *   post:
+ *     tags:
+ *       - Users
+ *     summary: User Sign In
+ *     description: Sign in a user with email and password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - email
+ *               - password
+ *     responses:
+ *       204:
+ *         description: Sign In Successful
+ *       400:
+ *         description: Bad Request
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Internal Server Error
+ */
 
 /**
  * @openapi

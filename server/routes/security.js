@@ -39,9 +39,7 @@ router.post('/signin', (req, res, next) => {
     }
 
     mongo(async db => {
-      const user = await db.collection('users').findOne(
-        { email: signin.email}
-      )
+      const user = await db.collection('users').findOne({ email: signin.email })
 
       if (!user) {
         const err = new Error('Unauthorized')
@@ -63,7 +61,13 @@ router.post('/signin', (req, res, next) => {
         return
       }
 
-      res.status(204).send(user)
+      if (passwordIsValid) {
+        res.status(200).json({
+          message: `User ${user.firstName} ${user.lastName} is logged in`
+        });
+        return;
+      }
+
 
     }, (err) => {
       console.error(err);
