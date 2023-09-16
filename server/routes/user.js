@@ -179,7 +179,7 @@ router.put('/:empId'), (req, res, next) => {
       const err = new Error('Bad request')
       err.status = 400
       err.errors = validator.errors
-      console.log('updateEmployeeSchema validation failed', err)
+      console.log('updateUserSchema validation failed', err)
       next(err)
       return
     }
