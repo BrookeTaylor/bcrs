@@ -11,7 +11,8 @@ const express = require('express')
 const createServer = require('http-errors')
 const path = require('path')
 const swaggerUi = require("swagger-ui-express");
-const swaggerDoc = require('../swagger.json');
+const swaggerJSDoc = require('swagger-jsdoc');
+// const swaggerDoc = require('../swagger.json');
 
 const userRoute = require('./routes/user')
 const securityRoute = require('./routes/security')
@@ -19,13 +20,33 @@ const securityRoute = require('./routes/security')
 // Create the Express app
 const app = express()
 
+
+
+// Swagger setup
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'BCRS API',
+      version: '1.0.0',
+      description: 'BCRS API Documentation for managing users and invoices.\n\nGroup Github Repo:\n\n[BCRS repository](https://github.com/BrookeTaylor/bcrs)',
+    },
+  },
+  apis: ['./swagger.js'],
+};
+const openapiSpecification  = swaggerJSDoc(options);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+
+
+
 // Configure the app
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, '../dist/bcrs')))
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')))
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 
 app.use('/api/users', userRoute)
 // fixed typo

@@ -52,18 +52,24 @@ router.post('/signin', (req, res, next) => {
         return
       }
 
-      // fix typo
       let passwordIsValid = bcrypt.compareSync(signin.password, user.password)
 
       if (!passwordIsValid) {
         const err = new Error('Unauthorized')
+        err.status = 401
         err.message = 'Unauthorized: The email or password is invalid'
         console.log("Unauthorized: The email or password is invalid", err)
         next(err)
         return
-
       }
-      res.send(user)
+
+      res.status(204).send(user)
+
+    }, (err) => {
+      console.error(err);
+      err.status = 500;
+      next(err);
+
     }, next)
   } catch (err) {
     console.log('err')
