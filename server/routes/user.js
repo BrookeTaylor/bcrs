@@ -10,6 +10,36 @@
 const express = require('express')
 const router = express.Router()
 const { mongo } = require('../utilis/mongo')
+const Ajv = require('ajv')
+const bcrypt = require('bcryptjs')
+
+const saltRounds = 10
+const ajv = new Ajv() // create a new instance of the Ajv class
+
+const userSchema = {
+  type: 'object',
+  properties: {
+    empId: { type: 'number'},
+    firstName: { type: 'string'},
+    lastName: { type: 'string'},
+    email: { type: 'string'},
+    role: { type: 'string'},
+    password: { type: 'string'}
+  },
+  require: ['empId', 'firstName', 'lastName', 'email', 'role', 'password'],
+  additionalProperties: false
+}
+
+const updateUserSchema = {
+  type: 'object',
+  properties: {
+    firstName: { type: 'string'},
+    lastName: { type: 'string'},
+    role: { type: 'string'},
+  },
+  require: ['firstName', 'lastName', 'role'],
+  additionalProperties: false
+}
 
 /**
  * findAll
@@ -88,12 +118,92 @@ router.get('/:empId', (req, res, next) => {
 /**
  * createUser
  */
+router.post('/', (req, res, next) => {
+  try {
+    const { user } = req.body
+    console.log('user', user)
 
+    const validator = ajv.compile(userSchema)
+    const valid = validator(user)
+
+    if (!valid) {
+      const err = new Error('Bad Request')
+      err.status = 400
+      err.errors = validators.errors
+      console.log('req.body validation failed', err)
+      next(err)
+      return
+    }
+
+    user.password = bcrypt.hashSync(user.password, saltRounds)
+
+    mongo (async db => {
+      const result = await db.collection('users').insertOne(user)
+
+      console.log('result', result)
+
+      res.json({ id: result.insertedId})
+    }, next)
+
+  } catch (err) {
+
+      console.log('err', err)
+      next(err)
+
+  }
+})
 
 /**
  * updateUser
  */
+router.put('/:empId'), (req, res, next) => {
+  try {
+    let { empId } = req.params
+    empId = parseInt(empId, 10)
 
+
+    if (isNaN(empId)) {
+      const err = new Error('input must be a number')
+      err.status = 400
+      console.log('err', err)
+      next(err)
+      return
+    }
+
+    const { user } = req.body
+
+    const validator = ajv.compile(updateUserSchema)
+    const valid = validator(user)
+
+    if (!valid) {
+      const err = new Error('Bad request')
+      err.status = 400
+      err.errors = validator.errors
+      console.log('updateUserSchema validation failed', err)
+      next(err)
+      return
+    }
+
+    mongo(async db => {
+      const result = await db.collection('users').updateOne(
+        { empId },
+        { $set: {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          role: user.role
+        }}
+      )
+
+      console.log('update user result ', result)
+
+      res.status(204).send()
+
+      })
+  } catch (err) {
+    console.log('err', err)
+    next(err)
+  }
+}
 
 /**
  * deleteUser
