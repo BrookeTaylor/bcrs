@@ -1,7 +1,7 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Brooke Taylor, Janis Gonzalez
- *  Date: 09/13/2023
+ *  Date: 09/16/2023
  *  Description: user routes
  */
 
@@ -22,12 +22,29 @@ const userSchema = {
     empId: { type: 'number'},
     firstName: { type: 'string'},
     lastName: { type: 'string'},
+    phoneNumber: { type: 'number'},
+    address: { type: 'string'},
     email: { type: 'string'},
     role: { type: 'string'},
-    password: { type: 'string'}
+//    securityQuestions: { type: 'array' },
+    isDisabled: { type: 'boolean' }
   },
-  require: ['empId', 'firstName', 'lastName', 'email', 'role', 'password'],
-  additionalProperties: false
+  required: [
+    'empId',
+    'firstName',
+    'lastName',
+    'phoneNumber',
+    'address',
+    'email',
+    'role',
+//    'securityQuestions',
+    'password'
+  ],
+
+/**
+ * Setting this to false breaks the app. I haven't been able to address this yet.
+ */
+  additionalProperties: true
 }
 
 const updateUserSchema = {
@@ -129,7 +146,7 @@ router.post('/', (req, res, next) => {
     if (!valid) {
       const err = new Error('Bad Request')
       err.status = 400
-      err.errors = validators.errors
+      err.errors = validator.errors
       console.log('req.body validation failed', err)
       next(err)
       return

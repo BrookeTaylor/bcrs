@@ -29,7 +29,7 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post('/api/employees/', {
+    return this.http.post('/api/users/', {
       user
     })
   }

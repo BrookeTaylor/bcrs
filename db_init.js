@@ -38,6 +38,9 @@ async function dbInit() {
             address: { bsonType: 'string' },
             email: { bsonType: 'string' },
             password: { bsonType: 'string' },
+
+/**
+
             securityQuestions: {
               bsonType: 'array',
               items: {
@@ -48,6 +51,9 @@ async function dbInit() {
                 },
               },
             },
+
+ */
+
             role: { bsonType: 'string' },
             isDisabled: { bsonType: 'bool' },
           },
@@ -67,6 +73,9 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'smith@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
+
+/**
+
         securityQuestions: [
           {
             question: 'questionOne',
@@ -81,6 +90,9 @@ async function dbInit() {
             answer: 'answerThree',
           },
         ],
+
+ */
+
         role: 'admin',
         isDisabled: false,
       },
@@ -92,6 +104,9 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'mozart@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
+
+/**
+
         securityQuestions: [
           {
             question: 'questionOne',
@@ -106,6 +121,9 @@ async function dbInit() {
             answer: 'answerThree',
           },
         ],
+
+ */
+
         role: 'admin',
         isDisabled: false,
       },
@@ -117,6 +135,9 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'bach@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
+
+/**
+
         securityQuestions: [
           {
             question: 'questionOne',
@@ -131,6 +152,9 @@ async function dbInit() {
             answer: 'answerThree',
           },
         ],
+
+ */
+
         role: 'standard',
         isDisabled: false,
       },
@@ -142,6 +166,9 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'smith1@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
+
+/**
+
         securityQuestions: [
           {
             question: 'questionOne',
@@ -156,6 +183,9 @@ async function dbInit() {
             answer: 'answerThree',
           },
         ],
+
+ */
+
         role: 'admin',
         isDisabled: false,
       },
@@ -167,6 +197,9 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'smith2@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
+
+/**
+
         securityQuestions: [
           {
             question: 'questionOne',
@@ -181,6 +214,9 @@ async function dbInit() {
             answer: 'answerThree',
           },
         ],
+
+ */
+
         role: 'standard',
         isDisabled: false,
       }
