@@ -18,6 +18,9 @@ const signinSchema = {
   additionalProperties: false
 }
 
+/**
+ * signin
+ */
 router.post('/signin', (req, res, next) => {
   try {
     const signin = req.body

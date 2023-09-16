@@ -98,11 +98,50 @@ router.get('/:empId', (req, res, next) => {
 /**
  * deleteUser
  */
+router.delete('/:empId', async (req, res, next) => {
+  try {
+    const { empId } = req.params;
+
+    if (isNaN(empId)) {
+      const err = new Error('Bad Request - Input must be a number');
+      err.status = 400;
+      console.error(err);
+      return next(err);
+    }
+
+    mongo(async (db) => {
+
+      const user = await db.collection('users').findOne({ empId: parseInt(empId) });
+
+      if (!user) {
+        res.status(404).json({ message: 'Not Found' });
+
+      } else {
+        if (user.isDisabled) {
+          res.status(204).send();
+
+        } else {
+          // Update user isDisabled to true
+          await db.collection('users').updateOne(
+            { empId: parseInt(empId) },
+            { $set: { isDisabled: true } }
+          );
+
+          res.status(204).send();
+        }
+      }
+    }, (err) => {
+      console.error(err);
+      err.status = 500;
+      next(err);
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 
-/**
- * signin
- */
 
 
 
