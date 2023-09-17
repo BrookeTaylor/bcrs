@@ -54,7 +54,7 @@ const updateUserSchema = {
     lastName: { type: 'string'},
     role: { type: 'string'},
   },
-  require: ['firstName', 'lastName', 'role'],
+  required: ['firstName', 'lastName', 'role'],
   additionalProperties: false
 }
 
@@ -173,7 +173,7 @@ router.post('/', (req, res, next) => {
 /**
  * updateUser
  */
-router.put('/:empId'), (req, res, next) => {
+router.put('/:empId', (req, res, next) => {
   try {
     let { empId } = req.params
     empId = parseInt(empId, 10)
@@ -220,7 +220,7 @@ router.put('/:empId'), (req, res, next) => {
     console.log('err', err)
     next(err)
   }
-}
+});
 
 /**
  * deleteUser
@@ -254,8 +254,7 @@ router.delete('/:empId', async (req, res, next) => {
             { $set: { isDisabled: true } }
           );
 
-          res.status(200).json({
-            message: `${user.firstName} ${user.lastName} was successfully deleted!`});
+          res.send(204).send();
             return;
         }
       }
