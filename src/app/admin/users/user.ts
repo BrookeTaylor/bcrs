@@ -14,6 +14,13 @@ export interface User {
   email: string;
   role: string;
   password: string;
-//  securityQuestions?: { question: string; answer: string }[];
+  securityQuestions?: {
+    questionOne: string;
+    answerOne: string;
+    questionTwo: string;
+    answerTwo: string;
+    questionThree: string;
+    answerThree: string;
+  }[];
   isDisabled: boolean;
 }

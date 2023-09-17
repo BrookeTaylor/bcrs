@@ -254,7 +254,7 @@ router.delete('/:empId', async (req, res, next) => {
             { $set: { isDisabled: true } }
           );
 
-          res.send(204).send();
+          res.sendStatus(204);
             return;
         }
       }

@@ -1,7 +1,7 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Brooke Taylor
- *  Date: 09/14/2023
+ *  Date: 09/16/2023
  *  Description: db init
  */
 
@@ -38,9 +38,6 @@ async function dbInit() {
             address: { bsonType: 'string' },
             email: { bsonType: 'string' },
             password: { bsonType: 'string' },
-
-/**
-
             securityQuestions: {
               bsonType: 'array',
               items: {
@@ -51,9 +48,6 @@ async function dbInit() {
                 },
               },
             },
-
- */
-
             role: { bsonType: 'string' },
             isDisabled: { bsonType: 'bool' },
           },
@@ -73,26 +67,20 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'smith@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-
-/**
-
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'A working stiffs manifesto',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            question: 'What is your favorite vacation destination?',
+            answerOne: 'Lake',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionOne: 'What is your favorite food?',
+            answerOne: 'Cheeseburger',
           },
         ],
-
- */
-
         role: 'admin',
         isDisabled: false,
       },
@@ -104,26 +92,20 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'mozart@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-
-/**
-
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'unknown',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            question: 'What is your favorite vacation destination?',
+            answerOne: 'Italy',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionOne: 'What is your favorite food?',
+            answerOne: 'sacher torte',
           },
         ],
-
- */
-
         role: 'admin',
         isDisabled: false,
       },
@@ -135,26 +117,20 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'bach@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-
-/**
-
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'The Bible',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            question: 'What is your favorite vacation destination?',
+            answerOne: 'Countryside',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionOne: 'What is your favorite food?',
+            answerOne: 'bratwurst',
           },
         ],
-
- */
-
         role: 'standard',
         isDisabled: false,
       },
@@ -166,26 +142,20 @@ async function dbInit() {
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'smith1@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-
-/**
-
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'To Kill a Mockingbird',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            question: 'What is your favorite vacation destination?',
+            answerOne: 'Grand Canyon',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionOne: 'What is your favorite food?',
+            answerOne: 'Mexican',
           },
         ],
-
- */
-
         role: 'admin',
         isDisabled: false,
       },
@@ -198,25 +168,20 @@ async function dbInit() {
         email: 'smith2@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
 
-/**
-
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'The President Is Missing',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            question: 'What is your favorite vacation destination?',
+            answerOne: 'Washington, D.C.',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionOne: 'What is your favorite food?',
+            answerOne: 'Steak',
           },
         ],
-
- */
-
         role: 'standard',
         isDisabled: false,
       }

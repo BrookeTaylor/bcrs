@@ -63,7 +63,6 @@ router.post('/signin', (req, res, next) => {
 
       if (passwordIsValid) {
         res.send(user);
-        res.status(200).json({ message: `User ${user.firstName} ${user.lastName} is logged in` });
         return;
       }
 

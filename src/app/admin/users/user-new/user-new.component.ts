@@ -43,7 +43,7 @@ export class UserNewComponent {
       email: this.userForm.controls['email'].value,
       password: this.userForm.controls['password'].value,
       role: this.userForm.controls['role'].value,
-//      securityQuestions: this.userForm.controls['securityQuestions'].value || [],
+      securityQuestions:  [],
       isDisabled: false
     }
 
