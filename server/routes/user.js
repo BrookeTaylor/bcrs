@@ -25,8 +25,9 @@ const userSchema = {
     phoneNumber: { type: 'number'},
     address: { type: 'string'},
     email: { type: 'string'},
+    password: { type: 'string' },
+    selectedSecurityQuestions: { type: 'array' },
     role: { type: 'string'},
-//    securityQuestions: { type: 'array' },
     isDisabled: { type: 'boolean' }
   },
   required: [
@@ -36,9 +37,10 @@ const userSchema = {
     'phoneNumber',
     'address',
     'email',
+    'password',
+//    'selectedSecurityQuestions',
     'role',
-//    'securityQuestions',
-    'password'
+//    'isDisabled'
   ],
 
 /**
@@ -112,7 +114,7 @@ router.get('/:empId', (req, res, next) => {
     mongo(async db => {
       const user = await db.collection('users').findOne(
         { empId },
-        { projection: { empId: 1, firstName: 1, lastName: 1, email: 1, password: 1, phoneNumber: 1, address: 1, securityQuestions: 1, role: 1, isDisabled: 1 } }
+        { projection: { empId: 1, firstName: 1, lastName: 1, email: 1, password: 1, phoneNumber: 1, address: 1, selectedSecurityQuestions: 1, role: 1, isDisabled: 1 } }
       ) // find user by empID
 
       if (!user) {
