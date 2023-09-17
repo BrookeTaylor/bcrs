@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api"
+      "url": "http://localhost:3000/api-docs"
     }
   ],
   "tags": [
@@ -63,8 +63,30 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "question": "string",
-                          "answer": "string"
+                          "questionOne": {
+                            "type": "string",
+                            "example": "Questions 1"
+                          },
+                          "answerOne": {
+                            "type": "string",
+                            "example": "Answer 1"
+                          },
+                          "questionTwo": {
+                            "type": "string",
+                            "example": "Question 2"
+                          },
+                          "answerTwo": {
+                            "type": "string",
+                            "example": "Answer 2"
+                          },
+                          "questionThree": {
+                            "type": "string",
+                            "example": "Question 3"
+                          },
+                          "answerThree": {
+                            "type": "string",
+                            "example": "Answer 3"
+                          }
                         }
                       }
                     },
@@ -150,8 +172,30 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "question": "string",
-                          "answer": "string"
+                          "questionOne": {
+                            "type": "string",
+                            "example": "Questions 1"
+                          },
+                          "answerOne": {
+                            "type": "string",
+                            "example": "Answer 1"
+                          },
+                          "questionTwo": {
+                            "type": "string",
+                            "example": "Question 2"
+                          },
+                          "answerTwo": {
+                            "type": "string",
+                            "example": "Answer 2"
+                          },
+                          "questionThree": {
+                            "type": "string",
+                            "example": "Question 3"
+                          },
+                          "answerThree": {
+                            "type": "string",
+                            "example": "Answer 3"
+                          }
                         }
                       }
                     },
