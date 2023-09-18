@@ -1,6 +1,6 @@
 Title: bcrs    
 Author: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn  
-Date: 09/10/2023  
+Date: 09/17/2023  
 Description: Bob's Computer Repair Shop the App.  
 
 ---
@@ -9,7 +9,7 @@ Description: Bob's Computer Repair Shop the App.
 
     {
       "users": [
-        {
+{
         empId: 1006,
         firstName: 'Bob',
         lastName: 'Smith',
@@ -17,18 +17,18 @@ Description: Bob's Computer Repair Shop the App.
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'smith@bcrs.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'A working stiffs manifesto',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            questionTwo: 'What is your favorite vacation destination?',
+            answerTwo: 'Lake',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionThree: 'What is your favorite food?',
+            answerThree: 'Cheeseburger',
           },
         ],
         role: 'admin',
@@ -42,18 +42,18 @@ Description: Bob's Computer Repair Shop the App.
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'mozart@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'unknown',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            questionTwo: 'What is your favorite vacation destination?',
+            answerTwo: 'Italy',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionThree: 'What is your favorite food?',
+            answerThree: 'sacher torte',
           },
         ],
         role: 'admin',
@@ -67,18 +67,18 @@ Description: Bob's Computer Repair Shop the App.
         address: '1000 Galvin Rd S, Bellevue, NE 68005',
         email: 'bach@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
-        securityQuestions: [
+        selectedSecurityQuestions: [
           {
-            question: 'questionOne',
-            answer: 'answerOne',
+            questionOne: 'What is your favorite book?',
+            answerOne: 'The Bible',
           },
           {
-            question: 'questionTwo',
-            answer: 'answerTwo',
+            questionTwo: 'What is your favorite vacation destination?',
+            answerTwo: 'Countryside',
           },
           {
-            question: 'questionThree',
-            answer: 'answerThree',
+            questionThree: 'What is your favorite food?',
+            answerThree: 'bratwurst',
           },
         ],
         role: 'standard',
@@ -95,7 +95,7 @@ Description: Bob's Computer Repair Shop the App.
       "invoices": [
         {
           "email": "bach@nodebucket.com",
-          "fullName": "Johann Sebastian Bach",
+          "fullName": "Johann Bach",
           "lineItems": [
             {
               "Password Reset": 39.99

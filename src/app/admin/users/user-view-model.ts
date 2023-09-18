@@ -1,8 +1,9 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Professor Krasso
- *  Date: 09/14/2023
- *  Description: user role view model
+ *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
+ *  Date: 09/17/2023
+ *  Description: roleGuard
  */
 
 export interface UserViewModel {
