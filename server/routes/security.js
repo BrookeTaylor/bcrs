@@ -127,11 +127,6 @@ router.post('/signin', (req, res, next) => {
 })
 
 
-
-
-
-
-
 /**
  * verifyUser
  */
@@ -162,6 +157,57 @@ router.post('/verify/users/:email', (req, res, next) => {
     console.error('err', err)
     next(err)
   }
+})
+
+//verifySecurityQuestions
+router.post('/verify/users/:email/security-questions', (req, res, next) => {
+  try {
+    const email = req.params.email
+    const { securityQuestions } = req.body
+    console.log(`Email: ${email}\nSecurityQuestions: ${securityQuestions}`)
+
+    const validate = ajv.compile(securityQuestionsSchema)
+    const valid = validate(securityQuestions)
+
+    if (!valid) {
+      const err = new Error('Bad Request')
+      err.status = 400
+      err.errors = validate.errors
+      console.log('Security questions validation errors', validate.errors)
+      next(err)
+      return
+    }
+
+    mongo (async db => {
+      const user = await db.collection('users').findOne({ email: email })
+
+      if (!user) {
+        const err = new Error('Not Found')
+        err.status = 404
+        console.log('User not found', err)
+        next(err)
+        return
+      }
+
+      console.log('Selected User', user)
+
+      if (securityQuestions[0].answer !== user.selectedSecurityQuestions[0].answer ||
+        securityQuestions[1].answer !== user.selectedSecurityQuestions[1].answer ||
+        securityQuestions[2].answer !== user.selectedSecurityQuestions[2].answer) {
+          const err = new Error ('Unauthorized')
+          err.status = 401
+          err.message = 'Unauthorized: Security  questions do not match.'
+          console.log('Unauthorized: Security questions do not match, err')
+          next(err)
+          return
+        }
+        res.send(user)
+    })
+  } catch (err) {
+    console.log('err', err)
+    next(err)
+  }
+
 })
 
 
