@@ -20,6 +20,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DirectoryComponent } from './directory/directory.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BaseLayoutComponent,
     NavComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DirectoryComponent
   ],
   imports: [
     BrowserModule,

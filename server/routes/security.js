@@ -209,7 +209,8 @@ router.post('/verify/users/:email/security-questions', (req, res, next) => {
           return
         }
         res.send(user)
-    })
+    }, next)
+
   } catch (err) {
     console.log('err', err)
     next(err)

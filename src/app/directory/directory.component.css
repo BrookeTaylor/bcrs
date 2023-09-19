@@ -1,0 +1,41 @@
+/*
+============================================
+; Title: BCRS
+; File Name: directory.component.css
+; Author: Janis Gonzalez
+; Date: 9/18/2023
+; Description: This is styling for directory
+; HTML file for the BCRS application
+;===========================================
+*/
+
+.box-100{
+  transition:all 0.3s ease;
+  box-shadow: 0px 0px 2px 6px rgba(0,0,0,0.03);
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  }
+  .box-100 i{
+  font-size:26px;
+  }
+  .rounded-circle{
+    border:0px solid #eeba35;
+    box-shadow: 0px 0px 2px 4px #eeba3521;
+    border-radius:50%;
+    width:200px;
+    height:200px;
+    }
+
+  .name-color {
+    color: #7D6B5D;
+  }
+  .job-color {
+    color: #eeba35;
+    letter-spacing: 2px;
+    text-shadow: 0px 1px #372e29a4;
+  }
+
+  .pronoun-color {
+    color: #7d6b5d6e;
+  }
