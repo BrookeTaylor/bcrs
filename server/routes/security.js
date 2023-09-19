@@ -17,7 +17,6 @@ const router = express.Router()
 const ajv = new Ajv()
 const saltRounds = 10
 
-const saltRounds = 10
 
 const signinSchema = {
   type: 'object',
@@ -54,6 +53,17 @@ const registerSchema = {
   required: ['email', 'password', 'firstName', 'lastName', 'selectedSecurityQuestions'],
   additionalProperties: false
 }
+
+const resetPasswordSchema = {
+  type: 'object',
+  properties: {
+    password: { type: 'string' }
+  },
+  required: ['password'],
+  additionalProperties: false
+}
+
+
 
 /**
  * signin
@@ -226,6 +236,66 @@ router.post('/register', (req, res, next) => {
     next(err)
   }
 })
+
+/**
+ * reset password
+ */
+router.delete('/users/:email/reset-password', (req, res, next) => {
+  try {
+
+    const email = req.params.email
+    const user = req.body
+
+    console.log('Employee email', email)
+
+    const validate = ajv.compile(resetPasswordSchema)
+    const valid = validate(user)
+
+    if (!valid) {
+      const err = new Error('Bad Request')
+      err.status = 400
+      err.errors = validate.errors
+      console.log('password validation errors', validate.errors)
+      next(err)
+      return
+    }
+
+    mongo (async db => {
+
+      const trick = await db.collection('users').findOne({ email: email })
+
+      if (!trick) {
+        const err = new Error('Not Found')
+        err.status = 404
+        console.log('User not found', err)
+        next(err)
+        return
+      }
+
+      console.log('Selected User', user)
+
+      const hashedPassword = bcrypt.hashSync(user.password, saltRounds)
+
+      const result = await db.collection('users').updateOne(
+        { email: email},
+        {
+          $set:{ password: hashedPassword }
+        }
+      )
+
+      console.log('MongoDB update result', result)
+
+      res.status(204).send()
+
+    }, next)
+
+  } catch (err) {
+    console.log('err', err)
+    next(err)
+  }
+})
+
+
 
 // added export
 module.exports = router
