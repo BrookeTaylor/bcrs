@@ -24,4 +24,5 @@ export interface User {
     answerThree: string;
   }[];
   isDisabled: boolean;
+  lastLogin?: Date;
 }

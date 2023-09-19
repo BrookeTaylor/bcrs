@@ -48,9 +48,9 @@ const registerSchema = {
     password: { type: 'string'},
     firstName: { type: 'string'},
     lastName: { type: 'string'},
-    selectedSecurityQuestions: securityQuestionsSchema
+    securityQuestions: securityQuestionsSchema
   },
-  required: ['email', 'password', 'firstName', 'lastName', 'selectedSecurityQuestions'],
+  required: ['email', 'password', 'firstName', 'lastName', 'securityQuestions'],
   additionalProperties: false
 }
 
@@ -109,6 +109,13 @@ router.post('/signin', (req, res, next) => {
       }
 
       if (passwordIsValid) {
+
+        const time = new Date();
+        await db.collection('users').updateOne(
+          { email: signin.email },
+          { $set: { lastLogin: time } })
+
+        user.lastLogin = time;
         res.send(user);
         return;
       }

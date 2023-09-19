@@ -69,16 +69,16 @@ async function dbInit() {
         password: bcrypt.hashSync('Password01', saltRounds),
         selectedSecurityQuestions: [
           {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'A working stiffs manifesto',
+            question: 'What is your favorite book?',
+            answer: 'A working stiffs manifesto',
           },
           {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Lake',
+            question: 'What is your favorite vacation destination?',
+            answer: 'Lake',
           },
           {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'Cheeseburger',
+            question: 'What is your favorite food?',
+            answer: 'Cheeseburger',
           },
         ],
         role: 'admin',
@@ -94,16 +94,16 @@ async function dbInit() {
         password: bcrypt.hashSync('Password01', saltRounds),
         selectedSecurityQuestions: [
           {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'unknown',
+            question: 'What is your favorite book?',
+            answer: 'unknown',
           },
           {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Italy',
+            question: 'What is your favorite vacation destination?',
+            answer: 'Italy',
           },
           {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'sacher torte',
+            question: 'What is your favorite food?',
+            answer: 'sacher torte',
           },
         ],
         role: 'admin',
@@ -119,16 +119,16 @@ async function dbInit() {
         password: bcrypt.hashSync('Password01', saltRounds),
         selectedSecurityQuestions: [
           {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'The Bible',
+            question: 'What is your favorite book?',
+            answer: 'The Bible',
           },
           {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Countryside',
+            question: 'What is your favorite vacation destination?',
+            answer: 'Countryside',
           },
           {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'bratwurst',
+            question: 'What is your favorite food?',
+            answer: 'bratwurst',
           },
         ],
         role: 'standard',
@@ -144,16 +144,16 @@ async function dbInit() {
         password: bcrypt.hashSync('Password01', saltRounds),
         selectedSecurityQuestions: [
           {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'To Kill a Mockingbird',
+            question: 'What is your favorite book?',
+            answer: 'To Kill a Mockingbird',
           },
           {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Grand Canyon',
+            question: 'What is your favorite vacation destination?',
+            answer: 'Grand Canyon',
           },
           {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'Mexican',
+            question: 'What is your favorite food?',
+            answer: 'Mexican',
           },
         ],
         role: 'admin',
@@ -170,16 +170,16 @@ async function dbInit() {
 
         selectedSecurityQuestions: [
           {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'The President Is Missing',
+            question: 'What is your favorite book?',
+            answer: 'The President Is Missing',
           },
           {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Washington, D.C.',
+            question: 'What is your favorite vacation destination?',
+            answer: 'Washington, D.C.',
           },
           {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'Steak',
+            question: 'What is your favorite food?',
+            answer: 'Steak',
           },
         ],
         role: 'standard',
