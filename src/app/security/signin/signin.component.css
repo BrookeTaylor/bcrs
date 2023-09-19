@@ -27,3 +27,8 @@
   .text-hp {
     color: #372e29;
   }
+
+  .forgot-password {
+    float: right;
+    margin-right: 18px;
+  }
