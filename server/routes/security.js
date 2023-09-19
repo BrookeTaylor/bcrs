@@ -114,6 +114,46 @@ router.post('/signin', (req, res, next) => {
   }
 })
 
+
+
+
+
+
+
+/**
+ * verifyUser
+ */
+router.post('/verify/users/:email', (req, res, next) => {
+  try {
+
+    const email = req.params.email
+    console.log('Employee email', email)
+
+    mongo(async db => {
+      const user = await db.collection('users').findOne({ email: email })
+
+      if (!user) {
+        const err = new Error('Not Found')
+        err.status = 400
+        console.log('Employee not found', err)
+        next(err)
+        return
+      }
+
+      console.log('selected user', user)
+
+      res.send(user)
+    }, next)
+
+
+  } catch (err) {
+    console.error('err', err)
+    next(err)
+  }
+})
+
+
+
 /**
  * register
  */
