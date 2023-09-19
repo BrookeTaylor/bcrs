@@ -15,6 +15,7 @@ const Ajv = require('ajv')
 
 const router = express.Router()
 const ajv = new Ajv()
+const saltRounds = 10
 
 const saltRounds = 10
 
@@ -28,17 +29,31 @@ const signinSchema = {
   additionalProperties: false
 }
 
-
-const resetPasswordSchema = {
-  type: 'object',
-  properties: {
-    password: { type: 'string' }
-  },
-  required: ['password'],
-  additionalProperties: false
+const securityQuestionsSchema = {
+  type: 'array',
+  items: {
+    type: 'object',
+    properties: {
+      question: { type: 'string' },
+      answer: { type: 'string' }
+    },
+    required: ['question', 'answer'],
+    additionalProperties: false
+  }
 }
 
-
+const registerSchema = {
+  type: 'object',
+  properties: {
+    email: { type: 'string'},
+    password: { type: 'string'},
+    firstName: { type: 'string'},
+    lastName: { type: 'string'},
+    selectedSecurityQuestions: securityQuestionsSchema
+  },
+  required: ['email', 'password', 'firstName', 'lastName', 'selectedSecurityQuestions'],
+  additionalProperties: false
+}
 
 /**
  * signin
@@ -141,70 +156,76 @@ router.post('/verify/users/:email', (req, res, next) => {
 
 
 
-
-
-
-
 /**
- * reset password
+ * register
  */
-router.delete('/users/:email/reset-password', (req, res, next) => {
+router.post('/register', (req, res, next) => {
   try {
+    const { user } = req.body
+    console.log('user', user)
 
-    const email = req.params.email
-    const user = req.body
-
-    console.log('User email', email)
-
-    const validate = ajv.compile(resetPasswordSchema)
+    const validate = ajv.compile(registerSchema)
     const valid = validate(user)
 
-    if (!valid) {
+    if(!valid) {
       const err = new Error('Bad Request')
       err.status = 400
       err.errors = validate.errors
-      console.log('password validation errors', validate.errors)
+      console.log('user validation errors', validate.errors)
       next(err)
       return
     }
 
-    mongo (async db => {
+    user.password = bcrypt.hashSync(user.password, saltRounds)
 
-      const user = await db.collection('users').findOne({ email: email })
+    mongo(async db => {
 
-      if (!user) {
-        const err = new Error('Not Found')
-        err.status = 404
-        console.log('Employee not found', err)
+      const users = await db.collection('users')
+      .find()
+      .sort({ empId: 1 }) //sort the records in ascending order
+      .toArray()
+
+      console.log("Employees List", users)
+
+      const userExists = users.find(emp => emp.email === users.email)
+
+      if (userExists) {
+        const err = new Error('Bad Request')
+        err.status = 400
+        err.message = 'User  already exists'
+        console.log('User already exists', err)
         next(err)
         return
       }
 
-      console.log('Selected User', user)
+      const lastUser = users[users.length - 1]
+      const newEmpId = lastUser.empId + 1
 
-      const hashedPassword = bcrypt.hashSync(user.password, saltRounds)
+      const newUser = {
+        empId: newEmpId,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+        role: 'standard',
+        selectedSecurityQuestions: user.selectedSecurityQuestions
+      }
 
-      const result = await db.collection('users').updateOne(
-        { email: email},
-        {
-          $set:{ password: hashedPassword }
-        }
-      )
+      console.log('User to be inserted into MongoDB', newUser)
 
-      console.log('MongoDB update result', result)
+      const result = await db.collection('users').insertOne(newUser)
 
-      res.status(204).send()
+      console.log('MongoDB result:', result)
+
+      res.send({ id: result.insertedId })
+
 
     }, next)
-
-  } catch (err) {
-    console.log('err', err)
+  } catch(err) {
+    console.error('err', err)
     next(err)
   }
 })
-
-
-
 
 // added export
 module.exports = router

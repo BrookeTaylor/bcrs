@@ -271,6 +271,36 @@ router.delete('/:empId', async (req, res, next) => {
   }
 });
 
+/**findSelectedSecurityQuestions */
+router.get('/:email/security-questions', (req, res, next) => {
+  try {
+    const email = req.params.email
+    console.log('Email address from req.params', email)
+
+    mongo(async db => {
+      const user = await db.collection('users').findOne(
+        { email: email },
+        {projection: { email: 1, selectedSecurityQuestions: 1} }
+      )
+
+      console.log('Selected security questions', user)
+
+      if (!user) {
+        const err = new Error('Unable to find user with email ' + email)
+        err.status = 404
+        console.log('err', err)
+        next(err)
+        return
+      }
+
+      res.send(user)
+    }, next)
+
+  } catch (err) {
+    console.log('err', err)
+    next(err)
+  }
+})
 
 
 
