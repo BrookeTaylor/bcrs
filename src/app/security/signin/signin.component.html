@@ -40,7 +40,7 @@
             <!-- end email error handling -->
 
             <!-- Password -->
-            <div class="mb-5 input">
+            <div class="mb-3 input">
               <label for="password" class="form-label">Password:</label>
               <input type="password" class="form-control" id="password" formControlName="password">
             </div>
@@ -57,16 +57,31 @@
               </div>
             </div>
 
+            <!-- Forgot Password -->
+            <div class="text-center mb-4">
+              <div><a class="text-hp" href="">Forgot Password?</a></div>
+            </div>
+
+            <!-- end forgot password -->
+
             <!-- end password error handling -->
             <div class="d-grid">
               <button type="submit" class="btn dark-yellow">
-                <span *ngIf="!isLoading">Sign In</span>
+                <span *ngIf="!isLoading" class="text-hp">Sign In</span>
 
                 <div *ngIf="isLoading">
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...
                 </div>
               </button>
             </div>
+
+            <!-- Sign Up now -->
+
+            <div class="text-center mt-3 mb-2">
+              <div>Don't have an account? <a class="text-hp" href="">Sign up now</a></div>
+            </div>
+
+            <!-- End Sign Up now -->
           </form>
         </div>
       </div>

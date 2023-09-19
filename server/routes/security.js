@@ -115,11 +115,6 @@ router.post('/signin', (req, res, next) => {
 })
 
 
-
-
-
-
-
 /**
  * verifyUser
  */
