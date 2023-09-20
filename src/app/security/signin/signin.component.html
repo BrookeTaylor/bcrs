@@ -1,7 +1,7 @@
 <!--
     Title: signin.component.html
     Author: Brett Grashorn
-    Date: 9/14/23
+    Date: 9/19/23
     Description: Sign In HTML element
  -->
  <div class="container">
@@ -40,7 +40,7 @@
             <!-- end email error handling -->
 
             <!-- Password -->
-            <div class="mb-3 input">
+            <div class="mb-2 input">
               <label for="password" class="form-label">Password:</label>
               <input type="password" class="form-control" id="password" formControlName="password">
             </div>
@@ -61,7 +61,7 @@
             <div class="text-center mb-4">
               <div><a routerLink="/security/forgot-password">Forgot Password?</a></div>
             </div>
-
+<br>
             <!-- end forgot password -->
 
             <!-- end password error handling -->
@@ -78,7 +78,7 @@
             <!-- Sign Up now -->
 
             <div class="text-center mt-3 mb-2">
-              <div>Don't have an account? <a class="text-hp" href="">Sign up now</a></div>
+              <div>Don't have an account? <a class="text-hp" routerLink="">Sign up now</a></div>
             </div>
 
             <!-- End Sign Up now -->

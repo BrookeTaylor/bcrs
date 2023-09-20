@@ -13,6 +13,8 @@ import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { authGuard } from './shared/auth.guard';
+import { DirectoryComponent } from './directory/directory.component';
+import { FaqComponent } from './faq/faq.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -31,10 +33,21 @@ const routes: Routes = [
         title: 'BCRS: Home'
       },
       {
+        path: 'directory',
+        component: DirectoryComponent,
+        title: 'BCRS: Directory'
+      },
+      {
         // 404 page
         path: 'not-found',
         component: NotFoundComponent,
         title: 'Page 404'
+      },
+      {
+        // FAQ Page
+        path: 'faq',
+        component: FaqComponent,
+        title: 'FAQ Page'
       },
       {
         path: 'admin',
