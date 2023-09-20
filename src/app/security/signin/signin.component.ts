@@ -47,6 +47,9 @@ export class SigninComponent {
     if (!email || !password) {
       this.errorMessage = 'Please provide an email address and password'
       this.isLoading = false
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
       return
     }
 
@@ -74,6 +77,9 @@ export class SigninComponent {
 
         if (err.error.status === 401) {
           this.errorMessage = err.message
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
           return
         }
       }

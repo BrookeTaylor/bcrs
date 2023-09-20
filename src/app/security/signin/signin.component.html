@@ -9,7 +9,10 @@
     <div class="col-lg-6 col-md-10 col-sm-12">
       <div class="card shadow  button-brown">
         <div class="card-title text-center">
-          <h2 class="p-3">User Sign In</h2>
+
+          <!-- Updated color to match selected dark house theme. -->
+          <h2 class="p-3 text-light">User Sign In</h2>
+
         </div>
         <!-- Error message -->
         <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
@@ -30,7 +33,9 @@
                 <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
               </div>
             </div>
-            <div *ngIf="signinForm.controls['email'].touched && signinForm.controls['email'].hasError('required')">
+
+            <!-- Touched up form validation-->
+            <div *ngIf="signinForm.controls['email'].touched && signinForm.controls['email'].hasError('email')">
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Please enter a valid email address.
                 <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
@@ -50,7 +55,9 @@
                 <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
               </div>
             </div>
-            <div *ngIf="signinForm.controls['password'].touched && signinForm.controls['password'].hasError('required')">
+
+            <!-- Touched up form validation-->
+            <div *ngIf="signinForm.controls['password'].touched && signinForm.controls['password'].hasError('pattern')">
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number
                 <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">

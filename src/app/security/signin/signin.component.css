@@ -8,11 +8,12 @@
 /* changes background colors */
 
   .container {
-    margin-top: 150px;
+    margin-top: 3em;
   }
 
+  /* updated color to match selected dark house theme. */
   .button-brown {
-    background-color: #7D6B5D;
+    background-color: #372e29;
   }
 
   .dark-yellow {
