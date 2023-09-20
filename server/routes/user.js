@@ -280,7 +280,8 @@ router.get('/:email/security-questions', (req, res, next) => {
     mongo(async db => {
       const user = await db.collection('users').findOne(
         { email: email },
-        {projection: { email: 1, selectedSecurityQuestions: 1} }
+        // updated projection to only include the questions
+        {projection: { email: 1, 'selectedSecurityQuestions.question': 1 } }
       )
 
       console.log('Selected security questions', user)
