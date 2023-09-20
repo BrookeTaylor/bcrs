@@ -21,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectoryComponent } from './directory/directory.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DirectoryComponent } from './directory/directory.component';
     NavComponent,
     FooterComponent,
     NotFoundComponent,
-    DirectoryComponent
+    DirectoryComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
