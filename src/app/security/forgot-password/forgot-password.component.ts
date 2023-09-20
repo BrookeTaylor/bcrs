@@ -17,8 +17,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.component.css'],
 })
 export class ForgotPasswordComponent implements OnInit {
+
+
   passwordResetForm: FormGroup = this.formBuilder.group({
-    password: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')]],
     confirmPassword: ['', [Validators.required]],
   });
 
@@ -63,6 +65,9 @@ export class ForgotPasswordComponent implements OnInit {
   emailSubmit() {
     if (this.emailForm.invalid) {
       this.errorMessage = 'Please enter a valid email address.';
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
       return;
     }
 
@@ -82,6 +87,9 @@ export class ForgotPasswordComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'User not found. Please check your email address.';
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 3000);
         this.isLoading = false;
       }
     );
@@ -94,6 +102,25 @@ export class ForgotPasswordComponent implements OnInit {
   submitAnswers() {
     const email = this.email;
     this.isLoading = true;
+
+    let empty = false;
+
+    for (const answer of this.securityAnswers) {
+      if (!answer.answer) {
+        empty = true;
+        break;
+      }
+    }
+
+    if (empty) {
+      this.errorMessage = "All fields must be completed.";
+      this.isLoading = false;
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
+      return;
+    }
+
     const requestData = {
       email: email,
       securityQuestions: this.securityAnswers,
@@ -112,6 +139,13 @@ export class ForgotPasswordComponent implements OnInit {
         },
         (error) => {
           console.error('Security questions did not match:');
+          this.errorMessage = 'Security questions did not match.';
+          this.isLoading = false;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
+          return;
+
         }
       );
   }
@@ -121,6 +155,9 @@ export class ForgotPasswordComponent implements OnInit {
   resetPassword() {
     if (this.passwordResetForm.invalid) {
       this.errorMessage = 'Please fill out both password fields.';
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
       return;
     }
 
@@ -130,7 +167,12 @@ export class ForgotPasswordComponent implements OnInit {
     const confirmPassword = this.passwordResetForm.get('confirmPassword')?.value;
 
     if (password !== confirmPassword) {
-      this.passwordResetForm.setErrors({ passwordsDoNotMatch: true });
+      this.isLoading = false;
+      this.errorMessage = "The Passwords do not match."
+   //   this.passwordResetForm.setErrors({ passwordsDoNotMatch: true });
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
       return;
     }
 
