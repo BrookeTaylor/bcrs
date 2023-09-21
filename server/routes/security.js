@@ -28,7 +28,7 @@ const signinSchema = {
   additionalProperties: false
 }
 
-const securityQuestionsSchema = {
+const selectedSecurityQuestionsSchema = {
   type: 'array',
   items: {
     type: 'object',
@@ -48,9 +48,12 @@ const registerSchema = {
     password: { type: 'string'},
     firstName: { type: 'string'},
     lastName: { type: 'string'},
-    securityQuestions: securityQuestionsSchema
+    phoneNumber: { type: 'integer' },
+    address: { type: 'string' },
+    selectedSecurityQuestions: selectedSecurityQuestionsSchema,
+    isDisabled: { type: 'boolean' }
   },
-  required: ['email', 'password', 'firstName', 'lastName', 'securityQuestions'],
+  required: ['email', 'password', 'firstName', 'lastName', 'selectedSecurityQuestions', 'phoneNumber', 'address'],
   additionalProperties: false
 }
 
@@ -173,7 +176,7 @@ router.post('/verify/users/:email/security-questions', (req, res, next) => {
     const { securityQuestions } = req.body
     console.log(`Email: ${email}\nSecurityQuestions: ${securityQuestions}`)
 
-    const validate = ajv.compile(securityQuestionsSchema)
+    const validate = ajv.compile(selectedSecurityQuestionsSchema)
     const valid = validate(securityQuestions)
 
     if (!valid) {
@@ -270,9 +273,12 @@ router.post('/register', (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        phoneNumber: user.phoneNumber,
+        address: user.address,
         password: user.password,
         role: 'standard',
-        selectedSecurityQuestions: user.selectedSecurityQuestions
+        selectedSecurityQuestions: user.selectedSecurityQuestions,
+        isDisabled: false
       }
 
       console.log('User to be inserted into MongoDB', newUser)

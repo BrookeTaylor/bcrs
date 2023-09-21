@@ -38,7 +38,7 @@ async function dbInit() {
             address: { bsonType: 'string' },
             email: { bsonType: 'string' },
             password: { bsonType: 'string' },
-            securityQuestions: {
+            selectedSecurityQuestions: {
               bsonType: 'array',
               items: {
                 bsonType: 'object',

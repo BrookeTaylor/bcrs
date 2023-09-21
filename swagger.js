@@ -138,7 +138,7 @@
  *                     type: string
  *                   role:
  *                     type: string
- *                   securityQuestions:
+ *                   selectedSecurityQuestions:
  *                     type: array
  *                     items:
  *                       type: object
@@ -297,6 +297,80 @@
  *         description: Bad Request
  *       401:
  *         description: Unauthorized
+ *       500:
+ *         description: Internal Server Error
+ */
+
+
+
+
+
+/**
+ * createUser
+ *
+ * @openapi
+ * /api/security/register:
+ *   post:
+ *     tags:
+ *       - Security
+ *     summary: Create a new user.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               user:
+ *                 type: object
+ *                 properties:
+ *                   firstName:
+ *                     type: string
+ *                   lastName:
+ *                     type: string
+ *                   email:
+ *                     type: string
+ *                   phoneNumber:
+ *                     type: integer
+ *                   address:
+ *                     type: string
+ *                   password:
+ *                     type: string
+ *                   selectedSecurityQuestions:
+ *                     type: array
+ *                     minItems: 3
+ *                     maxItems: 3
+ *                     items:
+ *                       type: object
+ *                       properties:
+ *                         question:
+ *                           type: string
+ *                         answer:
+ *                           type: string
+ *                   isDisabled:
+ *                     type: boolean
+ *             required:
+ *              - firstName
+ *              - lastName
+ *              - email
+ *              - phoneNumber
+ *              - address
+ *              - password
+ *              - isDisabled
+ *     responses:
+ *       200:
+ *         description: User created successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *       400:
+ *         description: Bad Request.
+ *       404:
+ *         description: Not Found.
  *       500:
  *         description: Internal Server Error
  */
