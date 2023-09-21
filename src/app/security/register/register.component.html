@@ -30,13 +30,7 @@
 
           <div class="m-5">
 
-            <div *ngIf="errorMessage" class="row">
-              <div class="col-12">
-                <div class="alert alert-danger">
-                  {{ errorMessage }}
-                </div>
-              </div>
-            </div>
+
 
 
 
@@ -77,6 +71,11 @@
                 <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
                   <div *ngIf="registerForm.controls['phoneNumber'].hasError('required')">
                     Phone Number is Required</div>
+
+                    <div *ngIf="registerForm.controls['phoneNumber'].hasError('pattern')">
+                      Phone Number must be a number.
+                    </div>
+
                 </div>
 
               </div>
@@ -101,17 +100,26 @@
 
 
 
+            <div class="d-grid mt-5">
+              <button class="btn text-light brown" (click)="next('secQ')" [disabled]="!personalRequired()">
+                <span class="text-hp">Continue</span>
+              </button>
+            </div>
 
-
-
-            <!-- start here-->
-            <br><br>
-            <button (click)="next('secQ')">click-through testing only</button>
+            <div class="d-grid mt-3">
+              <button a routerLink="/security/signin" class="btn text-light goBack">
+                <span class="text-hp">Go Back</span>
+              </button>
+            </div>
 
 
 
           </div>
 
+          <div class="card-footer p-3">
+            Have any questions or concerns? Please reach out to
+            <a href="mailto:support@bcrs.com">support@bcrs.com</a>
+          </div>
 
         </div><!-- END PERSONAL -->
 
@@ -143,7 +151,7 @@
 
               <!-- Question row 1 -->
               <div class="row">
-                <div class="col-md-6">
+                <div>
                   <label for="q1">Question:</label>
                   <select name="q1" id="q1" formControlName="question1" class="form-select">
                     <option *ngFor="let question of qArr1" [value]="question">{{ question }}</option>
@@ -160,7 +168,7 @@
 
 <div class="row">
 
-  <div class="col-md-6">
+  <div>
     <label for="a1">Answer:</label>
     <input type="text" id="a1" formControlName="answer1" name="a1" class="form-control answer" required>
 
@@ -182,7 +190,7 @@
 
           <!-- Question Row 2 -->
           <div class="row mt-5">
-            <div class="col-md-6">
+            <div>
               <label for="q2">Question</label>
               <select name="q2" id="q2" formControlName="question2" class="form-select">
                 <option *ngFor="let question of qArr2" [value]="question">{{ question }}</option>
@@ -202,7 +210,7 @@
 <div class="row">
 
 
-  <div class="col-md-6">
+  <div>
     <label for="a2">Answer:</label>
     <input type="text" id="a2" formControlName="answer2" name="a2" class="form-control answer" required>
 
@@ -224,7 +232,7 @@
 
           <!-- Question row 3 -->
       <div class="row mt-5">
-        <div class="col-md-6">
+        <div>
           <label for="q3">Question</label>
           <select name="q3" id="q3" formControlName="question3" class="form-select">
             <option *ngFor="let question of qArr3" [value]="question">{{ question }}</option>
@@ -247,7 +255,7 @@
 
 <div class="row">
 
-  <div class="col-md-6">
+  <div>
     <label for="a3">Answer:</label>
      <input type="text" id="a3" formControlName="answer3" name="a3" class="form-control answer" required>
 
@@ -265,16 +273,28 @@
 
 
 
+<div class="d-grid mt-5">
+  <button class="btn text-light brown" (click)="next('userSet')" [disabled]="!questionsRequired()">
+    <span class="text-hp">Continue</span>
+  </button>
+</div>
 
 
-            <!-- start here-->
-            <br><br>
-            <button (click)="next('userSet')">click-through testing only</button>
+
+<div class="d-grid mt-3">
+  <button (click)="next('start')" class="btn text-light goBack">
+    <span class="text-hp">Go Back</span>
+  </button>
+</div>
+
 
 
 
             </div>
-
+            <div class="card-footer p-3">
+              Have any questions or concerns? Please reach out to
+              <a href="mailto:support@bcrs.com">support@bcrs.com</a>
+            </div>
 
           </div><!-- SECURITY SECTION -->
 
@@ -309,13 +329,19 @@
             <div class="m-5">
 
 
-
+              <div *ngIf="errorMessage" class="row">
+                <div class="col-12">
+                  <div class="alert alert-danger">
+                    {{ errorMessage }}
+                  </div>
+                </div>
+              </div>
 
 
               <div class="row">
-                <div class="col-md-6">
+                <div>
                   <label class="form-label" for="email">Email:</label>
-                  <input class="form-control" formControlName="email" type="text" id="email" name="email" required>
+                  <input class="form-control userSet" formControlName="email" type="text" id="email" name="email" required>
 
                   <!-- Validation Errors -->
                   <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
@@ -332,19 +358,19 @@
 
               <div class="row mt-3">
 
-                <div class="col-md-6">
+                <div>
                   <label class="form-label" for="password">Password:</label>
                   <input class="form-control" formControlName="password" type="password" id="password" name="password" required>
 
-                  <!-- Validation Errors -->
-                  <div class="aler alert-danger mt-2" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
-                    <div *ngIf="registerForm.controls['password'].hasError('required')">
-                      Password is Required</div>
+                <!-- Validation Errors -->
+                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+                  <div *ngIf="registerForm.controls['password'].hasError('required')">
+                    Password is Required</div>
 
-                    <div *ngIf="registerForm.controls['password'].hasError('password')">
-                      Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
-                    </div>
+                  <div *ngIf="registerForm.controls['password'].hasError('pattern')">
+                    Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
                   </div>
+                </div>
                 </div>
 
               </div>
@@ -352,16 +378,31 @@
 
 
 
-              <br>
-              <input type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account" class="btn btn-lg bg-dark text-white mx-auto d-block">
+              <div class="d-grid mt-5">
+                <button class="btn text-light brown" type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account">
+
+                  <span *ngIf="!isLoading" class="text-hp">Continue</span>
+
+                  <div *ngIf="isLoading">
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...
+                  </div>
+
+                </button>
+              </div>
+
+              <div class="d-grid mt-3">
+                <button (click)="next('secQ')" class="btn text-light goBack">
+                  <span class="text-hp">Go Back</span>
+                </button>
+              </div>
 
 
 
-            <!-- start here-->
-            <br><br>
-            <button a routerLink="/security/signin">click-through testing only</button>
+            </div>
 
-
+            <div class="card-footer p-3">
+              Have any questions or concerns? Please reach out to
+              <a href="mailto:support@bcrs.com">support@bcrs.com</a>
             </div>
 
 

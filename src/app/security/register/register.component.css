@@ -15,18 +15,13 @@
   background-color: #372e29;
 }
 
+.goBack {
+  background-color: #7d685d;
+}
+
 
 .card-footer {
   background-color: #ffd25f;
   border-radius: 0 0 15px 15px;
-}
-
-
-select {
-  width: 20rem;
-}
-
-.answer {
-  width: 20rem;
 }
 

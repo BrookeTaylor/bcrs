@@ -19,6 +19,35 @@ export class RegisterComponent implements OnInit {
   }
 
 
+  personalRequired(): boolean {
+    const firstName = this.registerForm.get('firstName')?.value;
+    const lastName = this.registerForm.get('lastName')?.value;
+    const phoneNumber = this.registerForm.get('phoneNumber')?.value;
+    const address = this.registerForm.get('address')?.value;
+
+    return !!firstName && !!lastName && !!phoneNumber && !!address;
+
+  }
+
+
+  questionsRequired(): boolean {
+
+    const question1 = this.registerForm.get('question1')?.value;
+    const answer1 = this.registerForm.get('answer1')?.value;
+
+    const question2 = this.registerForm.get('question2')?.value;
+    const answer2 = this.registerForm.get('question2')?.value;
+
+    const question3 = this.registerForm.get('question3')?.value;
+    const answer3 = this.registerForm.get('answer3')?.value;
+
+
+
+    return !!question1 && !!answer1 && !!question2 && !!answer2 && !!question3 && !!answer3;
+  }
+
+  isLoading: boolean = false;
+
   // variables for the register component
   securityQuestions: string[]
   qArr1: string[]
@@ -80,6 +109,8 @@ export class RegisterComponent implements OnInit {
 
   register() {
 
+    this.isLoading = true;
+
     this.user = {
 
       firstName: this.registerForm.get('firstName')?.value,
@@ -108,6 +139,7 @@ export class RegisterComponent implements OnInit {
 
      this.securityService.register(this.user).subscribe({
        next: (result) => {
+        this.isLoading = false;
          console.log("Result from Register API call: ", result)
          this.router.navigate(['/security/signin'])
        },
@@ -115,9 +147,11 @@ export class RegisterComponent implements OnInit {
          if (err.error.message) {
            console.log('db error: ', err.error.message)
            this.errorMessage = err.error.message
+           this.isLoading = false;
          } else {
            this.errorMessage = 'Something went wrong. Please contact the system administrator'
            console.log(err)
+           this.isLoading = false;
          }
        }
      })
