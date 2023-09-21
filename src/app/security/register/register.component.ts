@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
     lastName: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
+    phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern(`^[0-9]*$`)])],
+    address: [null, Validators.compose([Validators.required, Validators.required])],
     question1: [null, Validators.compose([Validators.required])],
     answer1: [null, Validators.compose([Validators.required])],
     question2: [null, Validators.compose([Validators.required])],
@@ -64,16 +66,20 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm.get('question2')?.valueChanges.subscribe(val => {
       console.log('Value changed from Question 2', val)
-      this.qArr3 = this.qArr2.filter(q => 1 !== val)
+      this.qArr3 = this.qArr2.filter(q => q !== val)
     })
   }
 
   register() {
+
     this.user = {
+
       firstName: this.registerForm.get('firstName')?.value,
       lastName: this.registerForm.get('lastName')?.value,
       email: this.registerForm.get('email')?.value,
       password: this.registerForm.get('password')?.value,
+      phoneNumber: parseInt(this.registerForm.get('phoneNumber')?.value, 10),
+      address: this.registerForm.get('address')?.value,
       selectedSecurityQuestions: [
         {
           question: this.registerForm.get('question1')?.value,
@@ -92,20 +98,20 @@ export class RegisterComponent implements OnInit {
 
     console.log('Registering new user', this.user)
 
-    // this.securityService.register(this.user).subscribe({
-    //   next: (result) => {
-    //     console.log("Result from Register API call: ", result)
-    //     this.router.navigate(['/security/signin'])
-    //   },
-    //   error: (err) => {
-    //     if (err.error.message) {
-    //       console.log('db error: ', err.error.message)
-    //       this.errorMessage = err.error.message
-    //     } else {
-    //       this.errorMessage = 'Something went wrong. Please contact the system administrator'
-    //       console.log(err)
-    //     }
-    //   }
-    // })
+     this.securityService.register(this.user).subscribe({
+       next: (result) => {
+         console.log("Result from Register API call: ", result)
+         this.router.navigate(['/security/signin'])
+       },
+       error: (err) => {
+         if (err.error.message) {
+           console.log('db error: ', err.error.message)
+           this.errorMessage = err.error.message
+         } else {
+           this.errorMessage = 'Something went wrong. Please contact the system administrator'
+           console.log(err)
+         }
+       }
+     })
   }
 }

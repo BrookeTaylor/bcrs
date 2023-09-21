@@ -48,7 +48,7 @@ const registerSchema = {
     password: { type: 'string'},
     firstName: { type: 'string'},
     lastName: { type: 'string'},
-    phoneNumber: { type: 'integer' },
+    phoneNumber: { type: 'number' },
     address: { type: 'string' },
     selectedSecurityQuestions: selectedSecurityQuestionsSchema,
     isDisabled: { type: 'boolean' }

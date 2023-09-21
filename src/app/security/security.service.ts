@@ -33,13 +33,18 @@ export class SecurityService {
       password
     })
   }
-}
+
 
 /**
  *  Register
  */
-// register(user: RegisterViewModel) {
-//   return this.http.post('/api/security/register', { user })
-// }
+ register(user: RegisterViewModel) {
+   return this.http.post('/api/security/register', { user });
+ }
+
+
+
+}
+
 
 

@@ -22,7 +22,7 @@
 
                 <!-- Validation Errors -->
                 <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
-                  <div *ngIf="registerForm.controls('email').hasError('required')">Email is Required</div>
+                  <div *ngIf="registerForm.controls['email'].hasError('required')">Email is Required</div>
 
                   <div *ngIf="registerForm.controls['email'].hasError('email')">
                     Must be a valid email address.
@@ -36,7 +36,7 @@
 
                 <!-- Validation Errors -->
                 <div class="aler alert-danger mt-2" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
-                  <div *ngIf="registerForm.controls('password').hasError('required')">
+                  <div *ngIf="registerForm.controls['password'].hasError('required')">
                     Password is Required</div>
 
                   <div *ngIf="registerForm.controls['password'].hasError('password')">
@@ -53,7 +53,7 @@
 
                 <!-- Validation Errors -->
                 <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">
-                  <div *ngIf="registerForm.controls('firstName').hasError('required')">
+                  <div *ngIf="registerForm.controls['firstName'].hasError('required')">
                     First Name is Required</div>
                 </div>
               </div>
@@ -64,10 +64,38 @@
 
                 <!-- Validation Errors -->
                 <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
-                  <div *ngIf="registerForm.controls('lastName').hasError('required')">
+                  <div *ngIf="registerForm.controls['lastName'].hasError('required')">
                     Last Name is Required</div>
                 </div>
               </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+
+                <label class="form-label" for="phoneNumber">Phone Number:</label>
+                <input class="form-control" formControlName="phoneNumber" type="text" id="phoneNumber" name="phoneNumber" required>
+
+
+                <!-- Validation Errors -->
+                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
+                  <div *ngIf="registerForm.controls['phoneNumber'].hasError('required')">
+                    Phone Number is Required</div>
+                </div>
+
+
+                <label class="form-label" for="address">Address:</label>
+                <input class="form-control" formControlName="address" type="text" id="address" name="address" required>
+
+
+                <!-- Validation Errors -->
+                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['address'].invalid && (registerForm.controls['address'].dirty || registerForm.controls['address'].touched)">
+                  <div *ngIf="registerForm.controls['address'].hasError('required')">
+                    Address is Required</div>
+                </div>
+
+              </div>
+
             </div>
           </fieldset>
 
@@ -109,21 +137,24 @@
             </select>
 
             <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question2'].invalid && (registerForm.controls['question2'].dirty || registerForm.controls['question2'].touched)">
-              Question is required.
+              <div *ngIf="registerForm.controls['question2'].hasError('required')">
+                Question is required.
+              </div>
             </div>
           </div>
-        </div>
 
-      <div class="col-md-6">
-        <label for="a2">Answer:</label>
-        <input type="text" id="a2" formControlName="answer2" name="a2" class="form-control" required>
+          <div class="col-md-6">
+            <label for="a2">Answer:</label>
+            <input type="text" id="a2" formControlName="answer2" name="a2" class="form-control" required>
 
-        <!-- Validation errors -->
-        <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer2'].invalid && (registerForm.controls['answer2'].dirty || registerForm.controls['answer2'].touched)">
-          <div *ngIf="registerForm.controls['answer2'].hasError('required')">Answer is required.</div>
-        </div>
-      </div>
-    </div>
+            <!-- Validation errors -->
+            <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer2'].invalid && (registerForm.controls['answer2'].dirty || registerForm.controls['answer2'].touched)">
+              <div *ngIf="registerForm.controls['answer2'].hasError('required')">
+                Answer is required.
+              </div>
+            </div>
+          </div>
+        </div><!-- end row -->
 
         <!-- Question row 3 -->
     <div class="row">
@@ -134,6 +165,7 @@
         </select>
 
         <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question3'].invalid && (registerForm.controls['question3'].dirty || registerForm.controls['question3'].touched)">
+          <div *ngIf="registerForm.controls['question3'].hasError('required')">
           Question is required.
         </div>
       </div>
@@ -146,13 +178,15 @@
 
          <!-- Validation errors -->
           <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer3'].invalid && (registerForm.controls['answer3'].dirty || registerForm.controls['answer3'].touched)">
-            <div *ngIf="registerForm.controls['answer3'].hasError('required')">Answer is required.</div>
+            <div *ngIf="registerForm.controls['answer3'].hasError('required')">
+              Answer is required.
+            </div>
               </div>
             </div>
           </div>
         </fieldset>
 
-          <input type="submit" id="submit" [disable]="!registerForm.valid" value="Register Account" class="btn btn-lg bg-dark text-white mx-auto d-block">
+          <input type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account" class="btn btn-lg bg-dark text-white mx-auto d-block">
         </form>
       </div>
         <a class="text-underline-hover text-dark" routerLink="/security/signin">Return</a>
