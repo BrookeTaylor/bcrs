@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
         path: 'signin',
         component: SigninComponent,
         title: 'BCRS Sign in'
+      },
+      {
+        path: 'register',
+        component:RegisterComponent,
+        title: 'BCRS Register'
       }
     ]
   },

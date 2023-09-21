@@ -1,3 +1,4 @@
+
 /**
  * Title: security.service.ts
  * Author: Brett Grashorn
@@ -7,6 +8,8 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RegisterViewModel } from './register-view-model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -31,3 +34,12 @@ export class SecurityService {
     })
   }
 }
+
+/**
+ *  Register
+ */
+// register(user: RegisterViewModel) {
+//   return this.http.post('/api/security/register', { user })
+// }
+
+
