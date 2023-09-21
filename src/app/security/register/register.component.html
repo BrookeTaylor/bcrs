@@ -1,50 +1,44 @@
-<div class="container mt-5">
-  <div class="row justify-content-center mt-5">
-    <div class="col-lg-8 col-md-10">
-      <div class="card shadow p-4">
+<!--
+  Title: Bob's Computer Repair Shop
+  Arthur: Professor Krasso
+  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
+  Date: 09/21/2023
+  Description: register
+-->
+
+<div class="container">
+  <div class="row justify-content-center m5">
+    <div class="col-lg-6 col-md-10 col-sm-12">
+
+      <div class="card shadow">
+
         <form [formGroup]="registerForm" (ngSubmit)="register()" class="form row g-3">
 
-          <div *ngIf="errorMessage" class="row">
-            <div class="col-12">
-              <div class="alert alert-danger">
-                {{ errorMessage }}
-              </div>
-            </div>
+
+
+        <!-- *** PERSONAL SECTION  *** -->
+        <div *ngIf="step === 'start'">
+
+          <div class="card-title text-center">
+
+            <h1 class="p-3">User Information</h1>
+
+            <p class="text-start p-3">Please provide your information.</p>
+
           </div>
 
-          <fieldset class="mb-3 form-group">
-            <legend>Employee Information</legend>
 
-            <div class="row">
-              <div class="col-md-6">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-control" formControlName="email" type="text" id="email" name="email" required>
+          <div class="m-5">
 
-                <!-- Validation Errors -->
-                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
-                  <div *ngIf="registerForm.controls['email'].hasError('required')">Email is Required</div>
-
-                  <div *ngIf="registerForm.controls['email'].hasError('email')">
-                    Must be a valid email address.
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label" for="password">Password:</label>
-                <input class="form-control" formControlName="password" type="password" id="password" name="password" required>
-
-                <!-- Validation Errors -->
-                <div class="aler alert-danger mt-2" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
-                  <div *ngIf="registerForm.controls['password'].hasError('required')">
-                    Password is Required</div>
-
-                  <div *ngIf="registerForm.controls['password'].hasError('password')">
-                    Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
-                  </div>
+            <div *ngIf="errorMessage" class="row">
+              <div class="col-12">
+                <div class="alert alert-danger">
+                  {{ errorMessage }}
                 </div>
               </div>
             </div>
+
+
 
             <div class="row">
               <div class="col-md-6">
@@ -70,7 +64,9 @@
               </div>
             </div>
 
-            <div class="row">
+
+
+            <div class="row mt-3">
               <div class="col-md-6">
 
                 <label class="form-label" for="phoneNumber">Phone Number:</label>
@@ -83,7 +79,10 @@
                     Phone Number is Required</div>
                 </div>
 
+              </div>
 
+
+              <div class="col-md-6">
                 <label class="form-label" for="address">Address:</label>
                 <input class="form-control" formControlName="address" type="text" id="address" name="address" required>
 
@@ -97,99 +96,287 @@
               </div>
 
             </div>
-          </fieldset>
 
-          <fieldset class="mb-3 form-group">
-            <legend>Security Questions</legend>
 
-            <!-- Question row 1 -->
-            <div class="row">
-              <div class="col-md-6">
-                <label for="q1">Question:</label>
-                <select name="q1" id="q1" formControlName="question1" class="form-select">
-                  <option *ngFor="let question of qArr1" [value]="question">{{ question }}</option>
-                </select>
 
-                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question1'].invalid && (registerForm.controls['question1'].dirty || registerForm.controls['question1'].touched)">
+
+
+
+
+
+            <!-- start here-->
+            <br><br>
+            <button (click)="next('secQ')">click-through testing only</button>
+
+
+
+          </div>
+
+
+        </div><!-- END PERSONAL -->
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- *** SECURITY SECTION  *** -->
+          <div *ngIf="step === 'secQ'">
+
+            <div class="card-title text-center">
+
+              <h1 class="p-3">Security Questions</h1>
+
+              <p class="text-start p-3">Please answer some security questions.</p>
+
+            </div>
+
+
+            <div class="m-5">
+
+
+              <!-- Question row 1 -->
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="q1">Question:</label>
+                  <select name="q1" id="q1" formControlName="question1" class="form-select">
+                    <option *ngFor="let question of qArr1" [value]="question">{{ question }}</option>
+                  </select>
+
+                  <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question1'].invalid && (registerForm.controls['question1'].dirty || registerForm.controls['question1'].touched)">
+                    Question is required.
+                  </div>
+                </div>
+
+
+              </div><!-- end row -->
+
+
+<div class="row">
+
+  <div class="col-md-6">
+    <label for="a1">Answer:</label>
+    <input type="text" id="a1" formControlName="answer1" name="a1" class="form-control answer" required>
+
+    <!-- Validation errors -->
+    <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer1'].invalid && (registerForm.controls['answer1'].dirty || registerForm.controls['answer1'].touched)">
+      <div *ngIf="registerForm.controls['answer1'].hasError('required')">Answer is required.
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+          <!-- Question Row 2 -->
+          <div class="row mt-5">
+            <div class="col-md-6">
+              <label for="q2">Question</label>
+              <select name="q2" id="q2" formControlName="question2" class="form-select">
+                <option *ngFor="let question of qArr2" [value]="question">{{ question }}</option>
+              </select>
+
+              <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question2'].invalid && (registerForm.controls['question2'].dirty || registerForm.controls['question2'].touched)">
+                <div *ngIf="registerForm.controls['question2'].hasError('required')">
                   Question is required.
                 </div>
               </div>
             </div>
 
+          </div><!-- end row -->
 
-          <div class="col-md-6">
-            <label for="a1">Answer:</label>
-            <input type="text" id="a1" formControlName="answer1" name="a1" class="form-control" required>
 
-            <!-- Validation errors -->
-            <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer1'].invalid && (registerForm.controls['answer1'].dirty || registerForm.controls['answer1'].touched)">
-              <div *ngIf="registerForm.controls['answer1'].hasError('required')">Answer is required.
-            </div>
-          </div>
-        </div>
 
-        <!-- Question Row 2 -->
-        <div class="row">
-          <div class="col-md-6">
-            <label for="q2">Question</label>
-            <select name="q2" id="q2" formControlName="question2" class="form-select">
-              <option *ngFor="let question of qArr2" [value]="question">{{ question }}</option>
-            </select>
+<div class="row">
 
-            <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question2'].invalid && (registerForm.controls['question2'].dirty || registerForm.controls['question2'].touched)">
-              <div *ngIf="registerForm.controls['question2'].hasError('required')">
-                Question is required.
-              </div>
-            </div>
-          </div>
 
-          <div class="col-md-6">
-            <label for="a2">Answer:</label>
-            <input type="text" id="a2" formControlName="answer2" name="a2" class="form-control" required>
+  <div class="col-md-6">
+    <label for="a2">Answer:</label>
+    <input type="text" id="a2" formControlName="answer2" name="a2" class="form-control answer" required>
 
-            <!-- Validation errors -->
-            <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer2'].invalid && (registerForm.controls['answer2'].dirty || registerForm.controls['answer2'].touched)">
-              <div *ngIf="registerForm.controls['answer2'].hasError('required')">
-                Answer is required.
-              </div>
-            </div>
-          </div>
-        </div><!-- end row -->
-
-        <!-- Question row 3 -->
-    <div class="row">
-      <div class="col-md-6">
-        <label for="q3">Question</label>
-        <select name="q3" id="q3" formControlName="question3" class="form-select">
-          <option *ngFor="let question of qArr3" [value]="question">{{ question }}</option>
-        </select>
-
-        <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question3'].invalid && (registerForm.controls['question3'].dirty || registerForm.controls['question3'].touched)">
-          <div *ngIf="registerForm.controls['question3'].hasError('required')">
-          Question is required.
-        </div>
+    <!-- Validation errors -->
+    <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer2'].invalid && (registerForm.controls['answer2'].dirty || registerForm.controls['answer2'].touched)">
+      <div *ngIf="registerForm.controls['answer2'].hasError('required')">
+        Answer is required.
       </div>
-    </div>
-
-
-      <div class="col-md-6">
-         <label for="a3">Answer:</label>
-          <input type="text" id="a3" formControlName="answer3" name="a3" class="form-control" required>
-
-         <!-- Validation errors -->
-          <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer3'].invalid && (registerForm.controls['answer3'].dirty || registerForm.controls['answer3'].touched)">
-            <div *ngIf="registerForm.controls['answer3'].hasError('required')">
-              Answer is required.
-            </div>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-
-          <input type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account" class="btn btn-lg bg-dark text-white mx-auto d-block">
-        </form>
-      </div>
-        <a class="text-underline-hover text-dark" routerLink="/security/signin">Return</a>
     </div>
   </div>
+
+
 </div>
+
+
+
+
+
+
+          <!-- Question row 3 -->
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <label for="q3">Question</label>
+          <select name="q3" id="q3" formControlName="question3" class="form-select">
+            <option *ngFor="let question of qArr3" [value]="question">{{ question }}</option>
+          </select>
+
+          <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question3'].invalid && (registerForm.controls['question3'].dirty || registerForm.controls['question3'].touched)">
+            <div *ngIf="registerForm.controls['question3'].hasError('required')">
+            Question is required.
+          </div>
+        </div>
+      </div>
+
+
+
+            </div>
+
+
+
+
+
+<div class="row">
+
+  <div class="col-md-6">
+    <label for="a3">Answer:</label>
+     <input type="text" id="a3" formControlName="answer3" name="a3" class="form-control answer" required>
+
+    <!-- Validation errors -->
+     <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer3'].invalid && (registerForm.controls['answer3'].dirty || registerForm.controls['answer3'].touched)">
+       <div *ngIf="registerForm.controls['answer3'].hasError('required')">
+         Answer is required.
+       </div>
+         </div>
+       </div>
+
+
+</div>
+
+
+
+
+
+
+            <!-- start here-->
+            <br><br>
+            <button (click)="next('userSet')">click-through testing only</button>
+
+
+
+            </div>
+
+
+          </div><!-- SECURITY SECTION -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- *** USER SET SECTION  *** -->
+          <div *ngIf="step === 'userSet'">
+
+            <div class="card-title text-center">
+
+              <h1 class="p-3">User Set</h1>
+
+              <p class="text-start p-3">Please provide your email and create a password.</p>
+
+            </div>
+
+
+            <div class="m-5">
+
+
+
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label" for="email">Email:</label>
+                  <input class="form-control" formControlName="email" type="text" id="email" name="email" required>
+
+                  <!-- Validation Errors -->
+                  <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+                    <div *ngIf="registerForm.controls['email'].hasError('required')">Email is Required</div>
+
+                    <div *ngIf="registerForm.controls['email'].hasError('email')">
+                      Must be a valid email address.
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="row mt-3">
+
+                <div class="col-md-6">
+                  <label class="form-label" for="password">Password:</label>
+                  <input class="form-control" formControlName="password" type="password" id="password" name="password" required>
+
+                  <!-- Validation Errors -->
+                  <div class="aler alert-danger mt-2" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+                    <div *ngIf="registerForm.controls['password'].hasError('required')">
+                      Password is Required</div>
+
+                    <div *ngIf="registerForm.controls['password'].hasError('password')">
+                      Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+              <br>
+              <input type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account" class="btn btn-lg bg-dark text-white mx-auto d-block">
+
+
+
+            <!-- start here-->
+            <br><br>
+            <button a routerLink="/security/signin">click-through testing only</button>
+
+
+            </div>
+
+
+          </div><!-- USER SET SECTION -->
+
+
+
+          </form>
+
+
+
+      </div><!-- end card -->
+
+      <a routerLink="/" class="text-dark text-underline-hover p-3">Return</a>
+
+    </div>
+  </div>
+</div><!-- end container -->

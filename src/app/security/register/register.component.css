@@ -1,0 +1,32 @@
+
+
+.card {
+  margin-top: 3em;
+  border-radius: 15px;
+}
+
+.card-title {
+  background-color: #372e29;
+  border-radius: 15px 15px 0 0;
+  color: white;
+}
+
+.brown {
+  background-color: #372e29;
+}
+
+
+.card-footer {
+  background-color: #ffd25f;
+  border-radius: 0 0 15px 15px;
+}
+
+
+select {
+  width: 20rem;
+}
+
+.answer {
+  width: 20rem;
+}
+

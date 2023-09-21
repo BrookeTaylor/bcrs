@@ -11,6 +11,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  step: string = 'start';
+
+  next(nextStep: string) {
+    this.step = nextStep;
+  }
+
+
   // variables for the register component
   securityQuestions: string[]
   qArr1: string[]
