@@ -1,7 +1,7 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Brooke Taylor
- *  Date: 09/17/2023
+ *  Date: 09/20/2023
  *  Description: swagger ui
  */
 
@@ -140,6 +140,8 @@
  *                     type: string
  *                   selectedSecurityQuestions:
  *                     type: array
+ *                     minItems: 3
+ *                     maxItems: 3
  *                     items:
  *                       type: object
  *                       properties:
@@ -233,8 +235,6 @@
 
 
 
-
-
 /**
  *
  * deleteUser
@@ -304,9 +304,8 @@
 
 
 
-
 /**
- * createUser
+ * registerUser
  *
  * @openapi
  * /api/security/register:
@@ -375,3 +374,252 @@
  *         description: Internal Server Error
  */
 
+
+
+
+/**
+ *
+ * verifyUsers
+ *
+ * @openapi
+ * /api/security/verify/users/{email}:
+ *   post:
+ *     tags:
+ *       - Security
+ *     summary: Verify User by Email
+ *     description: Verify a user by their email address.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         description: The email address of the user to verify.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User verified successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 empId:
+ *                   type: integer
+ *                 firstName:
+ *                   type: string
+ *                 lastName:
+ *                   type: string
+ *                 phoneNumber:
+ *                   type: integer
+ *                 address:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *                 password:
+ *                   type: string
+ *                 selectedSecurityQuestions:
+ *                   type: array
+ *                   minItems: 3
+ *                   maxItems: 3
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       question:
+ *                         type: string
+ *                       answer:
+ *                         type: string
+ *                 role:
+ *                   type: string
+ *                 isDisabled:
+ *                   type: boolean
+ *       400:
+ *         description: Bad Request.
+ *       404:
+ *         description: User not found.
+ *       500:
+ *         description: Internal Server Error.
+ */
+
+
+
+/**
+ *
+ * verifySecurityQuestions
+ *
+ * @openapi
+ * /api/security/verify/users/{email}/security-questions:
+ *   post:
+ *     tags:
+ *       - Security
+ *     summary: Verify Security Questions for a User
+ *     description: Verify a user's security questions by their email address.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         description: The email address of the user to verify.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               securityQuestions:
+ *                 type: array
+ *                 minItems: 3
+ *                 maxItems: 3
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     question:
+ *                       type: string
+ *                     answer:
+ *                       type: string
+ *             required:
+ *               - securityQuestions
+ *     responses:
+ *       200:
+ *         description: User's security questions verified successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 empId:
+ *                   type: integer
+ *                 firstName:
+ *                   type: string
+ *                 lastName:
+ *                   type: string
+ *                 phoneNumber:
+ *                   type: integer
+ *                 address:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *                 password:
+ *                   type: string
+ *                 selectedSecurityQuestions:
+ *                   type: array
+ *                   minItems: 3
+ *                   maxItems: 3
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       question:
+ *                         type: string
+ *                       answer:
+ *                         type: string
+ *                 role:
+ *                   type: string
+ *                 isDisabled:
+ *                   type: boolean
+ *       400:
+ *         description: Bad Request. Invalid request format.
+ *       404:
+ *         description: User not found.
+ *       500:
+ *         description: Internal Server Error.
+ */
+
+
+
+
+/**
+ * Reset Password
+ *
+ * @openapi
+ * /api/security/users/{email}/reset-password:
+ *   delete:
+ *     tags:
+ *       - Security
+ *     summary: Reset a user's password by email.
+ *     description: Reset a user's password by their email address.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         description: The email address of the user whose password needs to be reset.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               password:
+ *                 type: string
+ *             required:
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Password reset successful.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *       400:
+ *         description: Bad Request.
+ *       404:
+ *         description: User not found.
+ *       500:
+ *         description: Internal Server Error.
+ */
+
+
+
+
+/**
+ * findSelectedSecurityQuestions
+ *
+ * @openapi
+ * /api/users/{email}/security-questions:
+ *   get:
+ *     tags:
+ *       - Users
+ *     summary: Get selected security questions for a user by email.
+ *     description: Retrieve the selected security questions for a user based on their email address.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         description: The email address of the user to retrieve security questions for.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Security questions retrieved successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *                 selectedSecurityQuestions:
+ *                   type: array
+ *                   minItems: 1
+ *                   maxItems: 3
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       question:
+ *                         type: string
+ *       400:
+ *         description: Bad Request. Invalid request format.
+ *       404:
+ *         description: User not found. The provided email does not exist in the database.
+ *       500:
+ *         description: Internal Server Error. An unexpected server error occurred.
+ */
