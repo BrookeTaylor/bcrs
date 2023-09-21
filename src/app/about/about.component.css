@@ -1,0 +1,18 @@
+/*
+============================================
+; Title: BCRS
+; File Name: about.component.css
+; Author: Janis Gonzalez
+; Date: 9/20/2023
+; Description: This is styling for about
+; HTML file for the BCRS application
+;===========================================
+*/
+.welcome {
+  color: #eeba35;
+}
+
+p.indent {
+  text-indent: 20px;
+  margin: 0%;
+}

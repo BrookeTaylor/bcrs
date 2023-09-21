@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FaqComponent } from './faq/faq.component';
     FooterComponent,
     NotFoundComponent,
     DirectoryComponent,
-    FaqComponent
+    FaqComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
