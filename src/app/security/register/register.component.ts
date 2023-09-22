@@ -62,6 +62,7 @@ export class RegisterComponent implements OnInit {
     lastName: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
+    confirmPassword: ['', [Validators.required]],
     phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern(`^[0-9]*$`)])],
     address: [null, Validators.compose([Validators.required, Validators.required])],
     question1: [null, Validators.compose([Validators.required])],
@@ -133,6 +134,20 @@ export class RegisterComponent implements OnInit {
           answer: this.registerForm.get('answer3')?.value
         }
       ]
+    }
+
+
+    const password = this.registerForm.get('password')?.value;
+    const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+
+    if (password !== confirmPassword) {
+      this.isLoading = false;
+      this.errorMessage = "The Passwords do not match."
+   //   this.passwordResetForm.setErrors({ passwordsDoNotMatch: true });
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
+      return;
     }
 
     console.log('Registering new user', this.user)
