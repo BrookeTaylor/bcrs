@@ -8,3 +8,10 @@
   width: 90%;
   margin: auto;
 }
+
+.accordion-item {
+  --bs-accordion-btn-bg:  #eeba35;
+  --bs-accordion-border-color: black;
+  --bs-accordion-active-bg: #7D6B5D;
+  --bs-accordion-active-color: white;
+}
