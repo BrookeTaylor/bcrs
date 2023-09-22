@@ -114,6 +114,13 @@
 
 
 
+            <div class="indicator">
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+
+
           </div>
 
           <div class="card-footer p-3">
@@ -288,6 +295,12 @@
 </div>
 
 
+<div class="indicator">
+  <div class="dot"></div>
+  <div class="dot active"></div>
+  <div class="dot"></div>
+</div>
+
 
 
             </div>
@@ -377,6 +390,28 @@
 
 
 
+              <div class="row">
+
+                <div>
+                  <label class="form-label" for="confirmPassword">Confirm Password:</label>
+                  <input class="form-control" formControlName="confirmPassword" type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <!-- Validation Errors -->
+                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)">
+                  <div *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+                    Confirm Password is Required</div>
+
+
+                </div>
+                </div>
+
+              </div>
+
+
+
+
+
+
 
               <div class="d-grid mt-5">
                 <button class="btn text-light brown" type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account">
@@ -394,6 +429,14 @@
                 <button (click)="next('secQ')" class="btn text-light goBack">
                   <span class="text-hp">Go Back</span>
                 </button>
+              </div>
+
+
+
+              <div class="indicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot active"></div>
               </div>
 
 
