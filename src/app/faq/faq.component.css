@@ -15,3 +15,7 @@
   --bs-accordion-active-bg: #7D6B5D;
   --bs-accordion-active-color: white;
 }
+
+.faq-img {
+  width: 90%;
+}
