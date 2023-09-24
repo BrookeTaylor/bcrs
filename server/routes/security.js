@@ -254,12 +254,12 @@ router.post('/register', (req, res, next) => {
 
       console.log("Employees List", users)
 
-      const userExists = users.find(emp => emp.email === users.email)
+      const userExists = users.find(emp => emp.email === user.email)
 
       if (userExists) {
         const err = new Error('Bad Request')
         err.status = 400
-        err.message = 'User  already exists'
+        err.message = 'User already exists'
         console.log('User already exists', err)
         next(err)
         return

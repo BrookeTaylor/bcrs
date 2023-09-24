@@ -77,13 +77,18 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.http.get(`/api/users/${email}/security-questions`, {}).subscribe(
       (user: any) => {
-        this.questions = user.selectedSecurityQuestions;
-        this.securityAnswers = this.questions.map((question) => ({
-          question: question.question,
-          answer: '',
-        }));
-        this.step = 'security';
-        this.isLoading = false;
+        if (user.selectedSecurityQuestions.length === 0) {
+          this.errorMessage = "User doesn't have security questions selected. Please contact the system administrator.";
+          this.isLoading = false;
+        } else {
+          this.questions = user.selectedSecurityQuestions;
+          this.securityAnswers = this.questions.map((question) => ({
+            question: question.question,
+            answer: '',
+          }));
+          this.step = 'security';
+          this.isLoading = false;
+        }
       },
       (error) => {
         this.errorMessage = 'User not found. Please check your email address.';
@@ -169,7 +174,6 @@ export class ForgotPasswordComponent implements OnInit {
     if (password !== confirmPassword) {
       this.isLoading = false;
       this.errorMessage = "The Passwords do not match."
-   //   this.passwordResetForm.setErrors({ passwordsDoNotMatch: true });
       setTimeout(() => {
         this.errorMessage = '';
       }, 3000);

@@ -143,7 +143,6 @@ export class RegisterComponent implements OnInit {
     if (password !== confirmPassword) {
       this.isLoading = false;
       this.errorMessage = "The Passwords do not match."
-   //   this.passwordResetForm.setErrors({ passwordsDoNotMatch: true });
       setTimeout(() => {
         this.errorMessage = '';
       }, 3000);

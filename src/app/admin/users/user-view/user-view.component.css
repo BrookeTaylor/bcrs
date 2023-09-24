@@ -6,11 +6,22 @@
     Description: user view styles
 */
 
+.brown {
+  background-color: #372e29;
+}
 
-.submit {
-  background-color: #372E29;
-  color: white;
-  padding: .75em;
+
+.card {
+  margin-top: 3em;
   border-radius: 15px;
 }
 
+.card-title {
+  background-color: #372e29;
+  border-radius: 15px 15px 0 0;
+  color: white;
+}
+
+.brown {
+  background-color: #372e29;
+}

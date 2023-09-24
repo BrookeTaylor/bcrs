@@ -43,10 +43,8 @@ const userSchema = {
 //    'isDisabled'
   ],
 
-/**
- * Setting this to false breaks the app. I haven't been able to address this yet.
- */
-  additionalProperties: true
+
+  additionalProperties: false
 }
 
 const updateUserSchema = {
@@ -157,6 +155,28 @@ router.post('/', (req, res, next) => {
     user.password = bcrypt.hashSync(user.password, saltRounds)
 
     mongo (async db => {
+
+      const emailTaken = await db.collection('users').findOne({ email: user.email });
+      const idTaken = await db.collection('users').findOne({ empId: user.empId });
+
+      if (emailTaken) {
+        const err = new Error('Conflict')
+        err.status = 409
+        err.message = 'Email address is already in use.'
+        console.log('Email address is already in use', err)
+        next(err)
+        return
+      }
+
+      if (idTaken) {
+        const err = new Error('Conflict')
+        err.status = 409
+        err.message = 'Employee ID has already been assigned.'
+        console.log('Employee ID has already been assigned.', err)
+        next(err)
+        return
+      }
+
       const result = await db.collection('users').insertOne(user)
 
       console.log('result', result)

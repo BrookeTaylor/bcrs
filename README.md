@@ -5,85 +5,41 @@ Description: Bob's Computer Repair Shop the App.
 
 ---
 
+Create your own log in, or use a pre-made one: 
+
+* admin: mozart@nodebucket.com / Password01
+
+* standard: bach@nodebucket.com / Password01 
+
 # Draft NoSQL Data Structure 
 
     {
       "users": [
-{
-        empId: 1006,
-        firstName: 'Bob',
-        lastName: 'Smith',
-        phoneNumber: 8001234567,
-        address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'smith@bcrs.com',
-        password: bcrypt.hashSync('Password01', saltRounds),
-        selectedSecurityQuestions: [
-          {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'A working stiffs manifesto',
-          },
-          {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Lake',
-          },
-          {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'Cheeseburger',
-          },
-        ],
-        role: 'admin',
-        isDisabled: false,
-      },
-      {
-        empId: 1007,
-        firstName: 'Wolfgang',
-        lastName: 'Mozart',
-        phoneNumber: 8001234567,
-        address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'mozart@nodebucket.com',
-        password: bcrypt.hashSync('Password01', saltRounds),
-        selectedSecurityQuestions: [
-          {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'unknown',
-          },
-          {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Italy',
-          },
-          {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'sacher torte',
-          },
-        ],
-        role: 'admin',
-        isDisabled: false,
-      },
-      {
-        empId: 1008,
-        firstName: 'Johann',
-        lastName: 'Bach',
-        phoneNumber: 8001234567,
-        address: '1000 Galvin Rd S, Bellevue, NE 68005',
-        email: 'bach@nodebucket.com',
-        password: bcrypt.hashSync('Password01', saltRounds),
-        selectedSecurityQuestions: [
-          {
-            questionOne: 'What is your favorite book?',
-            answerOne: 'The Bible',
-          },
-          {
-            questionTwo: 'What is your favorite vacation destination?',
-            answerTwo: 'Countryside',
-          },
-          {
-            questionThree: 'What is your favorite food?',
-            answerThree: 'bratwurst',
-          },
-        ],
-        role: 'standard',
-        isDisabled: false,
-      }
+        {
+          empId: 1006,
+          firstName: 'Bob',
+          lastName: 'Smith',
+          phoneNumber: 8001234567,
+          address: '1000 Galvin Rd S, Bellevue, NE 68005',
+          email: 'smith@bcrs.com',
+          password: bcrypt.hashSync('Password01', saltRounds),
+          selectedSecurityQuestions: [
+            {
+              question: 'What is your favorite book?',
+              answer: 'A working stiffs manifesto',
+            },
+            {
+              question: 'What is your favorite vacation destination?',
+              answer: 'Lake',
+            },
+            {
+              question: 'What is your favorite food?',
+              answer: 'Cheeseburger',
+            },
+          ],
+          role: 'admin',
+          isDisabled: false,
+        }
       ]
     }
 
