@@ -3,7 +3,7 @@
  *  Arthur: Professor Krasso
  *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
  *  Date: 09/17/2023
- *  Description: roleGuard
+ *  Description: user service
  */
 
 import { Injectable } from '@angular/core';

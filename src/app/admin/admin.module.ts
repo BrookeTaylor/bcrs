@@ -1,7 +1,8 @@
 /**
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Professor Krasso
- *  Date: 09/14/2023
+ *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
+ *  Date: 09/24/2023
  *  Description: admin module
  */
 

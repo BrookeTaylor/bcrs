@@ -1,7 +1,9 @@
 /**
- * Title: auth.guard.ts
- * Author: Brett Grashorn
- * Date: 9/14/23
+ *  Title: Bob's Computer Repair Shop
+ *  Arthur: Professor Krasso
+ *  Modified By: Brett Grashorn
+ *  Date: 09/24/2023
+ *  Description: roleGuard
  */
 
 import { CanActivateFn, Router } from '@angular/router';

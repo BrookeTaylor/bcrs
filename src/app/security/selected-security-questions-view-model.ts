@@ -1,7 +1,9 @@
 /**
- *  Title: selected-security-questions-view-model.ts
- *  Author: Brett Grashorn
- *  Date: 9/20/23
+ *  Title: Bob's Computer Repair Shop
+ *  Arthur: Professor Krasso
+ *  Modified By: Brett Grashorn
+ *  Date: 09/24/2023
+ *  Description: Interface for the SelectedSecurityQuestionsViewModel
  */
 
 /**
