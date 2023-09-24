@@ -5,3 +5,24 @@
   Date: 9/17/23
   Description: Harry Potter House colors.
 */
+
+
+.brown {
+  background-color: #372e29;
+}
+
+
+.card {
+  margin-top: 3em;
+  border-radius: 15px;
+}
+
+.card-title {
+  background-color: #372e29;
+  border-radius: 15px 15px 0 0;
+  color: white;
+}
+
+.brown {
+  background-color: #372e29;
+}

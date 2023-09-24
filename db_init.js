@@ -1,8 +1,14 @@
 /**
  *  Title: Bob's Computer Repair Shop
- *  Arthur: Brooke Taylor
- *  Date: 09/16/2023
- *  Description: db init
+ *  Author: Professor Krasso
+ *  Modified by: Brooke Taylor
+ *  Date: 09/23/2023
+ *  Description: Users for BCRS.
+ *
+ *  To run:
+ *
+ *    node db_init.js
+ *
  */
 
 'use strict'
@@ -93,18 +99,7 @@ async function dbInit() {
         email: 'mozart@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
         selectedSecurityQuestions: [
-          {
-            question: 'What is your favorite book?',
-            answer: 'unknown',
-          },
-          {
-            question: 'What is your favorite vacation destination?',
-            answer: 'Italy',
-          },
-          {
-            question: 'What is your favorite food?',
-            answer: 'sacher torte',
-          },
+// deleting security questions to prevent p/w reset
         ],
         role: 'admin',
         isDisabled: false,
@@ -118,18 +113,7 @@ async function dbInit() {
         email: 'bach@nodebucket.com',
         password: bcrypt.hashSync('Password01', saltRounds),
         selectedSecurityQuestions: [
-          {
-            question: 'What is your favorite book?',
-            answer: 'The Bible',
-          },
-          {
-            question: 'What is your favorite vacation destination?',
-            answer: 'Countryside',
-          },
-          {
-            question: 'What is your favorite food?',
-            answer: 'bratwurst',
-          },
+// deleting security questions to prevent p/w reset
         ],
         role: 'standard',
         isDisabled: false,

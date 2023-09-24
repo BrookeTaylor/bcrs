@@ -1,3 +1,11 @@
+/**
+ *  Title: Bob's Computer Repair Shop
+ *  Arthur: Professor Krasso
+ *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
+ *  Date: 09/24/2023
+ *  Description: register
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { RegisterViewModel } from '../register-view-model';
 import { SecurityService } from '../security.service';
@@ -143,7 +151,6 @@ export class RegisterComponent implements OnInit {
     if (password !== confirmPassword) {
       this.isLoading = false;
       this.errorMessage = "The Passwords do not match."
-   //   this.passwordResetForm.setErrors({ passwordsDoNotMatch: true });
       setTimeout(() => {
         this.errorMessage = '';
       }, 3000);

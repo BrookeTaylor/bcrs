@@ -15,7 +15,7 @@ export interface User {
   email: string;
   role: string;
   password: string;
-  securityQuestions?: {
+  selectedSecurityQuestions?: {
     questionOne: string;
     answerOne: string;
     questionTwo: string;

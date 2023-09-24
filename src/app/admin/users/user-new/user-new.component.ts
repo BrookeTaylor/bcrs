@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 })
 export class UserNewComponent {
 
+  isLoading: boolean = false;
 
   errorMessage: string
 
@@ -27,12 +28,12 @@ export class UserNewComponent {
     empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])],
     firstName: [null, Validators.compose([Validators.required])],
     lastName: [null, Validators.compose([Validators.required])],
-    phoneNumber: [null, Validators.compose([Validators.required])],
+    phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])],
     address: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
     role: [null, Validators.compose([Validators.required])],
-//    securityQuestions: [],
+//    selectedSecurityQuestions: [],
     isDisabled: false
   })
 
@@ -41,6 +42,8 @@ export class UserNewComponent {
   }
 
   createUser() {
+
+    this.isLoading = true;
     const user: User = {
 
       empId: parseInt(this.userForm.controls['empId'].value, 10),
@@ -51,7 +54,7 @@ export class UserNewComponent {
       email: this.userForm.controls['email'].value,
       password: this.userForm.controls['password'].value,
       role: this.userForm.controls['role'].value,
-      securityQuestions:  [],
+      selectedSecurityQuestions:  [],
       isDisabled: false
     }
 
@@ -59,12 +62,15 @@ export class UserNewComponent {
       next: (res) => {
         console.log(res)
         this.router.navigate(['/admin/users'])
+        this.isLoading = false;
       },
       error: (err) => {
         if (err.error.message) {
           this.errorMessage = err.error.message
+          this.isLoading = false;
         } else {
           this.errorMessage = 'Something went wrong, please contact system admin'
+          this.isLoading = false;
         }
       }
     })

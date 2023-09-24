@@ -1,7 +1,9 @@
 /**
- * Title: footer.component.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ *  Title: Bob's Computer Repair Shop
+ *  Arthur: Professor Krasso
+ *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
+ *  Date: 09/24/2023
+ *  Description: footer.component.ts
  */
 
 // imports statements
