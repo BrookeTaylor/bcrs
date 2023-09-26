@@ -24,6 +24,7 @@ const lineItemsSchema = {
   }
 }
 
+
 const invoiceSchema = {
   type: 'object',
   properties: {
@@ -36,6 +37,8 @@ const invoiceSchema = {
     invoiceTotal: { type: 'number' }
   }
 }
+
+
 
 /**
  * findAllInvoices
@@ -74,8 +77,6 @@ router.get('/', (req, res, next) => {
 
 
 
-// Add this route to your invoices.js file
-
 /**
  * findByEmail
  */
@@ -93,7 +94,7 @@ router.get('/:email', (req, res, next) => {
     mongo(async (db) => {
       const invoices = await db.collection('invoices').find({ email: email }).toArray();
 
-      if (!invoices || invoices.length === 0) {
+      if (!invoices) {
         const err = new Error(`No invoices found for: ${email}`);
         err.status = 404;
         console.log('err', err);
@@ -118,6 +119,36 @@ router.get('/:email', (req, res, next) => {
 
 
 
+/**
+ * createInvoice
+ */
+router.post('/', (req, res, next) => {
+  try {
+    const invoice = req.body;
+
+    const validate = ajv.compile(invoiceSchema);
+    const isValid = validate(invoice);
+
+    if (!isValid) {
+      res.status(400).json({
+        message: 'Bad Request',
+        errors: validate.errors,
+      });
+      return;
+    }
+
+    mongo(async (db) => {
+      const result = await db.collection('invoices').insertOne(invoice);
+
+      res.status(201).json({
+        message: 'Invoice created successfully',
+      });
+    }, next);
+  } catch (err) {
+    console.log('err', err);
+    next(err);
+  }
+});
 
 
 

@@ -16,6 +16,7 @@ import { authGuard } from './shared/auth.guard';
 import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
+import { ShopComponent } from './shop/shop.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -59,7 +60,13 @@ const routes: Routes = [
         path: 'admin',
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
         canActivate: [authGuard]
-      }
+      },
+      {
+        path: 'shop',
+        component: ShopComponent,
+        canActivate: [authGuard],
+        loadChildren: () => import('./shop/shop.module').then((m) => m.ShopModule),
+      },
     ]
   },
   {
