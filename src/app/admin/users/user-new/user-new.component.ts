@@ -20,6 +20,23 @@ import { Router } from '@angular/router';
 })
 export class UserNewComponent {
 
+  step: string = 'start';
+
+  next(nextStep: string) {
+    this.step = nextStep;
+  }
+
+  personalRequired(): boolean {
+    const firstName = this.userForm.get('firstName')?.value;
+    const lastName = this.userForm.get('lastName')?.value;
+    const phoneNumber = this.userForm.get('phoneNumber')?.value;
+    const address = this.userForm.get('address')?.value;
+
+    return !!firstName && !!lastName && !!phoneNumber && !!address;
+
+  }
+
+
   isLoading: boolean = false;
 
   errorMessage: string
