@@ -54,13 +54,16 @@ Create your own log in, or use a pre-made one:
           "fullName": "Johann Bach",
           "lineItems": [
             {
-              "Password Reset": 39.99
+              "title": "Password Reset",
+              "price": 39.99
             },
             {
-              "Spyware Removal": 99.99
+              "title": "Spyware Removal",
+              "price": 99.99
             },
             {
-              "RAM Upgrade": 129.99
+              "title": "RAM Upgrade",
+              "price": 129.99
             }
           ],
           "partsAmount": 100,
