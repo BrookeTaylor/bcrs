@@ -5,3 +5,32 @@
   Date: 9/26/23
   Description: Service component css
 */
+
+.card {
+  border-radius: 15px;
+  margin: .5rem;
+}
+
+.card-title {
+  background-color: #372e29;
+  border-radius: 15px 15px 0 0;
+  color: white;
+}
+
+.brown {
+  background-color: #372e29;
+}
+
+
+.card-footer {
+  background-color: #ffd25f;
+  border-radius: 0 0 15px 15px;
+}
+
+figure {
+  text-align: center;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
