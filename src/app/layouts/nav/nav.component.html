@@ -69,6 +69,9 @@
         Signed in as {{ sessionUser.fullName }}
       </li>
       <hr>
+      <li>
+        <a class="dropdown-item link">My Profile</a>
+      </li>
       <li *ngIf="sessionUser.role === 'admin'">
         <a routerLink="/admin/users" class="dropdown-item">Users</a>
       </li>
