@@ -60,7 +60,8 @@ export class SigninComponent {
         const sessionCookie = {
           fullName: `${user.firstName} ${user.lastName}`,
           role: user.role,
-          empId: user.empId
+          empId: user.empId,
+          email: user.email
         }
 
         this.cookieService.set('session_user', JSON.stringify(sessionCookie), 1)

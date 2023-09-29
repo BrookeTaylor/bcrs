@@ -10,12 +10,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceComponent } from './service/service.component';
 import { authGuard } from '../shared/auth.guard';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 const routes: Routes = [
   {
     path: 'service',
     component: ServiceComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'order-summary',
+    component: OrderSummaryComponent,
+    title: 'Order Summary page',
   }
 ];
 

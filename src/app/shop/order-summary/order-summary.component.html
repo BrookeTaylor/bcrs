@@ -1,0 +1,45 @@
+<div>
+  <div class="order-summary">
+    <div class="order-summary__header">
+      <div class="order-summary__header-title">
+        <h2>Order #{{ order.id }}</h2>
+        <div class="order-summary__header-date">{{ order.date | date }}</div>
+
+
+        <div class="order-summary__header-user">
+          <p>{{ user.email }}</p>
+          <p>{{ user.fullName }}</p>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="order-summary__body">
+      <h4 class="order-summary__body-title">Selected Menu Items</h4>
+
+      <div class="order-summary__body-item" *ngFor="let item of order.lineItems">
+        <div class="order-summary__body-item-name">{{ item.title }}:</div>
+        <div class="order-summary__body-item-price">{{ item.price | currency }}</div>
+      </div>
+
+      <div class="order-summary__body-parts">
+        <div class="order-summary__body-parts-label">Parts:</div>
+        <div class="order-summary__body-parts-value">{{ order.partsAmount |  currency }}</div>
+      </div>
+
+      <div class="order-summary__body-labor">
+        <div class="order-summary__body-labor-label">Labor:</div>
+        <div class="order-summary__body-labor-value">{{ order.laborAmount | currency }}</div>
+      </div>
+    </div>
+
+    <div class="order-summary__total">
+      <p>
+        <span class="order-summary__total-label">Order Total:</span>
+        <span class="order-summary__total-value">{{ order.invoiceTotal | currency }}</span>
+      </p>
+    </div>
+  </div>
+  <a routerLink="/shop/service">Place new order</a>
+</div>

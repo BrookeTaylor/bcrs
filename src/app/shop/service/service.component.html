@@ -6,301 +6,105 @@
   Description: Services page
 -->
 
+
 <div class="container">
 
-
-  <form>
-
+  <form #orderForm="ngForm" (submit)="generateOrder(); orderForm.reset()">
 
     <div class="row d-flex justify-content-center mt-5">
 
-
-      <!-- *** PASSWORD RESET *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
+      <!-- PRODUCT ARRAY -->
+      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let product of products">
         <div class="card shadow">
           <div class="card-title">
 
             <fieldset class="p-3">
-              <legend>Password Reset</legend>
+              <legend>{{ product.title }}</legend>
 
               <div class="d-flex justify-content-around">
-                <input type="checkbox" id="passwordReset" name="passwordReset" value="39.99">
-                <label for="passwordReset">39.99</label><br>
+                <input type="checkbox" [value]="product.price" [(ngModel)]="product.checked" [name]="product.title">
+
+                <label for="passwordReset">{{ product.price | currency:'USD' }}</label><br>
               </div>
-            </fieldset>
 
-          </div>
-
-
-          <figure>
-
-            <img class="img-fluid" src="../../../assets/service/passwordReset.png" alt="Password Reset Icon">
-
-          </figure>
-
-
-          <div class="card-footer">Locked out of your account? It happens to us all.</div>
-        </div>
-
-      </div>
-      <!-- *** PASSWORD RESET *** -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- *** SPYWARE REMOVAL *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <div class="card shadow">
-          <div class="card-title">
-
-            <fieldset class="p-3">
-              <legend>Spyware Removal</legend>
-
-              <div class="d-flex justify-content-around">
-                <input type="checkbox" id="spywareRemoval" name="spywareRemoval" value="99.99">
-                <label for="spywareRemoval">99.99</label><br>
-              </div>
             </fieldset>
 
           </div>
 
           <figure>
-
-            <img class="img-fluid" src="../../../assets/service/spywareRemoval.png" alt="Spyware Removal Icon">
-
+            <img class="img-fluid" [src]="product.imgUrl" alt="{{ product.title }} Icon">
           </figure>
 
-          <div class="card-footer">Has your computer been running slow? Afraid you've been hacked?</div>
+          <div class="card-footer">{{ product.desc }}</div>
         </div>
-
       </div>
-      <!-- *** SPYWARE REMOVAL *** -->
+      <!-- PRODUCT ARRAY -->
 
 
 
-
-      <!-- *** RAM UPGRADE *** -->
+      <!-- PARTS -->
       <div class="col-lg-4 col-md-6 col-sm-12">
-
         <div class="card shadow">
           <div class="card-title">
 
-            <fieldset class="p-3">
-              <legend>RAM Upgrade</legend>
-
-              <div class="d-flex justify-content-around">
-                <input type="checkbox" id="ramUpgrade" name="ramUpgrade" value="129.99">
-                <label for="ramUpgrade">129.99</label><br>
-              </div>
-            </fieldset>
-
-          </div>
-
-          <figure>
-
-            <img class="img-fluid" src="../../../assets/service/ramUpgrade.png" alt="RAM Upgrade Icon">
-
-          </figure>
-
-
-          <div class="card-footer">One simple price for RAM upgrade. You can't beat that.</div>
-        </div>
-
-      </div>
-      <!-- *** RAM UPGRADE *** -->
-
-
-
-
-      <!-- *** SOFTWARE INSTALLATION *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <div class="card shadow">
-          <div class="card-title">
-            <fieldset class="p-3">
-              <legend>Software Installation</legend>
-
-              <div class="d-flex justify-content-around">
-                <input type="checkbox" id="softwareInstall" name="softwareInstall" value="49.99">
-                <label for="softwareInstall">49.99</label><br>
-              </div>
-            </fieldset>
-          </div>
-
-          <figure>
-
-            <img class="img-fluid" src="../../../assets/service/softwareInstall.png" alt="Software Installation Icon">
-
-          </figure>
-
-          <div class="card-footer">Have us professionally install your software for you.</div>
-        </div>
-
-      </div>
-      <!-- *** SOFTWARE INSTALLATION *** -->
-
-
-
-
-      <!-- *** PC TUNE-UP *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <div class="card shadow">
-          <div class="card-title">
-            <fieldset class="p-3">
-              <legend>PC Tune-up</legend>
-
-              <div class="d-flex justify-content-around">
-                <input type="checkbox" id="pcTuneUp" name="pcTuneUp" value="89.99">
-                <label for="pcTuneUp">89.99</label><br>
-              </div>
-            </fieldset>
-          </div>
-
-          <figure>
-
-            <img class="img-fluid" src="../../../assets/service/pcTuneUp.png" alt="PC Tune-up Icon">
-
-          </figure>
-
-          <div class="card-footer">Expect more of your PC? Let us optimize your machines performance.</div>
-        </div>
-
-      </div>
-      <!-- *** PC TUNE-UP *** -->
-
-
-
-      <!-- *** KEYBOARD CLEANING *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <div class="card shadow">
-          <div class="card-title">
-            <fieldset class="p-3">
-              <legend>Keyboard Cleaning</legend>
-
-              <div class="d-flex justify-content-around">
-                <input type="checkbox" id="keyboardCleaning" name="keyboardCleaning" value="45">
-                <label for="keyboardCleaning">45.00</label><br>
-              </div>
-            </fieldset>
-          </div>
-
-          <figure>
-
-            <img class="img-fluid" src="../../../assets/service/keyboardCleaning.png" alt="Keyboard Cleaning Icon">
-
-          </figure>
-
-          <div class="card-footer">You've probably long forgotten what it felt like to type on your new PC. Let us revitalize that experience with a cleaning.</div>
-        </div>
-
-      </div>
-      <!-- *** KEYBOARD CLEANING *** -->
-
-
-
-      <!-- *** DISK CLEAN-UP *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <div class="card shadow">
-          <div class="card-title">
-            <fieldset class="p-3">
-              <legend>Disk Clean-up</legend>
-
-              <div class="d-flex justify-content-around">
-                <input type="checkbox" id="diskCleanUp" name="diskCleanUp" value="129.99">
-                <label for="diskCleanUp">129.99</label><br>
-              </div>
-            </fieldset>
-          </div>
-
-          <figure>
-
-            <img class="img-fluid" src="../../../assets/service/diskCleanUp.png" alt="Disk Clean-up Icon">
-
-          </figure>
-
-          <div class="card-footer">Free up space on your computer's hard drive to do more of the things you want.</div>
-        </div>
-
-      </div>
-      <!-- *** DISK CLEAN-UP *** -->
-
-
-
-      <!-- *** PARTS *** -->
-      <div class="col-lg-4 col-md-6 col-sm-12">
-
-        <div class="card shadow">
-          <div class="card-title">
             <fieldset class="p-3">
               <legend>Parts</legend>
 
               <div class="d-flex justify-content-around">
-                <input type="text" id="parts" name="parts" value="0">
+                <input type="text" id="parts" name="parts" [(ngModel)]="order.partsAmount">
                 <br>
               </div>
+
             </fieldset>
+
           </div>
 
           <figure>
-
             <img class="img-fluid" src="../../../assets/service/parts.png" alt="Parts Icon">
-
           </figure>
 
           <div class="card-footer">Please insert any additional fees associated with parts.</div>
         </div>
-
       </div>
-      <!-- *** PARTS *** -->
+      <!-- PARTS -->
 
 
 
-      <!-- *** LABOR *** -->
+      <!-- LABOR -->
       <div class="col-lg-4 col-md-6 col-sm-12">
-
         <div class="card shadow">
           <div class="card-title">
+
             <fieldset class="p-3">
               <legend>Labor</legend>
 
               <div class="d-flex justify-content-around">
-                <input type="text" id="labor" name="labor" value="0">
+                <input type="text" id="labor" name="labor" [(ngModel)]="order.laborAmount">
                 <br>
               </div>
+
             </fieldset>
+
           </div>
 
           <figure>
-
             <img class="img-fluid" src="../../../assets/service/labor.png" alt="Labor Icon">
-
           </figure>
 
           <div class="card-footer">Labor is $50 / Hour. Please insert how many hours needed.</div>
         </div>
-
       </div>
-      <!-- *** LABOR *** -->
+      <!-- LABOR -->
+
+
+
 
       <div class="d-grid mt-5 col-8">
-        <button class="btn text-light brown" type="submit" id="submit"  value="Submit">
+        <button class="btn text-light brown" type="submit" id="submit"  value="Place Order">
           Submit
         </button>
       </div>
+
 
     </div>
 

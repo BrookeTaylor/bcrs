@@ -50,7 +50,9 @@ async function dbInit() {
             },
             partsAmount: { bsonType: 'number' },
             laborAmount: { bsonType: 'number' },
-            invoiceTotal: { bsonType: 'number' }
+            invoiceTotal: { bsonType: 'number' },
+            id: { bsonType: 'number' },
+            date: { bsonType: 'string' }
           }
         }
       }
@@ -78,7 +80,9 @@ async function dbInit() {
         "partsAmount": 100,
         "laborAmount": 250,
         "lineItemTotal": 269.97,
-        "invoiceTotal": 619.97
+        "invoiceTotal": 619.97,
+        "id": 35487,
+        "date": "9/28/2023"
       },
       {
         "email": "mozart@nodebucket.com",
@@ -100,7 +104,9 @@ async function dbInit() {
         "partsAmount": 150,
         "laborAmount": 100,
         "lineItemTotal": 184.98,
-        "invoiceTotal": 434.98
+        "invoiceTotal": 434.98,
+        "id": 23609,
+        "date": "9/28/2023"
       },
       {
         "email": "smith@bcrs.com",
@@ -122,7 +128,9 @@ async function dbInit() {
         "partsAmount": 0,
         "laborAmount": 50,
         "lineItemTotal": 359.97,
-        "invoiceTotal": 409.97
+        "invoiceTotal": 409.97,
+        "id": 97523,
+        "date": "9/28/2023"
       }
     ]
 
