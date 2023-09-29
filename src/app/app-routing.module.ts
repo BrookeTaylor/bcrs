@@ -18,6 +18,7 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { ShopComponent } from './shop/shop.component';
 import { GraphComponent } from './graph/graph.component';
+import { roleGuard } from './shared/role.guard';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -52,12 +53,6 @@ const routes: Routes = [
         title: 'Page 404'
       },
       {
-        // graph page
-        path: 'graph',
-        component: GraphComponent,
-        title: 'BCRS: Purchases By Service Graph'
-      },
-      {
         // FAQ Page
         path: 'faq',
         component: FaqComponent,
@@ -74,6 +69,12 @@ const routes: Routes = [
         canActivate: [authGuard],
         loadChildren: () => import('./shop/shop.module').then((m) => m.ShopModule),
       },
+      {
+        path: 'graph',
+        component: GraphComponent,
+        title: 'BCRS: Purchases By Service Graph',
+        canActivate: [roleGuard]
+      }
     ]
   },
   {
