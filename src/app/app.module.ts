@@ -24,6 +24,7 @@ import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     DirectoryComponent,
     FaqComponent,
     AboutComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
