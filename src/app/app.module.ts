@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AboutComponent } from './about/about.component';
     NotFoundComponent,
     DirectoryComponent,
     FaqComponent,
-    AboutComponent
+    AboutComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
