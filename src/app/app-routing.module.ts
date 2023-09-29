@@ -17,6 +17,7 @@ import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { ShopComponent } from './shop/shop.component';
+import { GraphComponent } from './graph/graph.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -49,6 +50,12 @@ const routes: Routes = [
         path: 'not-found',
         component: NotFoundComponent,
         title: 'Page 404'
+      },
+      {
+        // graph page
+        path: 'graph',
+        component: GraphComponent,
+        title: 'BCRS: Purchases By Service Graph'
       },
       {
         // FAQ Page

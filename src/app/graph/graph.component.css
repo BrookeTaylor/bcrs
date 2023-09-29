@@ -1,0 +1,20 @@
+/*
+============================================
+; Title: BCRS
+; File Name: graph.component.css
+; Author: Janis Gonzalez
+; Date: 9/26/2023
+; Description: This is styling for graph
+; HTML file for the BCRS application
+;===========================================
+*/
+
+
+.chart {
+  height: 550px;
+  width: 550px;
+  margin: 0 auto;
+}
+.container {
+  text-align: center;
+}
