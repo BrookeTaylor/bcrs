@@ -14,6 +14,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserNewComponent } from './users/user-new/user-new.component';
 import { UserViewComponent } from './users/user-view/user-view.component';
 import { roleGuard } from '../shared/role.guard';
+import { MyProfileComponent } from '../my-profile/my-profile.component';
 
 const routes: Routes = [
   {

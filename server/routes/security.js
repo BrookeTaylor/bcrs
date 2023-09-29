@@ -66,17 +66,7 @@ const resetPasswordSchema = {
   additionalProperties: false
 }
 
-const updateMyProfileSchema = {
-  type: 'object',
-  properties: {
-    firstName: { type: 'string' },
-    lastName: { type: 'string'},
-    phoneNumber: {type: 'number'},
-    address: { type: 'string'}
-  },
-  required: ['firstName', 'lastName', 'phoneNumber', 'address'],
-  additionalProperties: false
-}
+
 
 
 
@@ -367,49 +357,7 @@ router.delete('/users/:email/reset-password', (req, res, next) => {
   }
 })
 
-//
-/**
- *  updateMyProfile
- */
-router.put('/users/:email', (req, res, next) => {
-  try {
-    const email = req.params.email
-    console.log("Employee email", email)
 
-    const { user } = req.body
-
-    const validator = ajv.compile(updateMyProfileSchema)
-    const valid = validator(user)
-
-    if (!valid) {
-      const err = new Error('Bad Request')
-      err.status = 400
-      err.errors = validator.errors
-      console.log('updateMyProfileSchema validation failed', err)
-      next(err)
-      return
-    }
-
-    mongo(async db => {
-      const result = await db.collection('users').updateOne(
-        { email: email },
-        { $set: {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          phoneNumber: user.phoneNumber,
-          address: user.address
-        }}
-      )
-
-      console.log('update user result', result)
-      res.status(204).send()
-    })
-
-  } catch(err) {
-    console.log('err', err)
-    next(err)
-  }
-})
 
 // added export
 module.exports = router
