@@ -70,10 +70,13 @@
       </li>
       <hr>
       <li>
-        <a routerLink="my-profile/:empId" class="dropdown-item link">My Profile</a>
+        <a routerLink="/my-profile" class="dropdown-item link">My Profile</a>
       </li>
       <li *ngIf="sessionUser.role === 'admin'">
         <a routerLink="/admin/users" class="dropdown-item">Users</a>
+      </li>
+      <li *ngIf="sessionUser.role === 'admin'">
+        <a routerLink="/graph" class="dropdown-item">Graph</a>
       </li>
       <li>
         <a (click)="signout()" class="dropdown-item link">Sign Out</a>

@@ -18,6 +18,8 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { ShopComponent } from './shop/shop.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { GraphComponent } from './graph/graph.component';
+import { roleGuard } from './shared/role.guard';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -72,6 +74,12 @@ const routes: Routes = [
         path: 'my-profile/:empId',
         component: MyProfileComponent,
         title: 'My Profile Page'
+      },
+      {
+        path: 'graph',
+        component: GraphComponent,
+        title: 'Graph Page',
+        canActivate: [roleGuard]
       }
     ]
   },

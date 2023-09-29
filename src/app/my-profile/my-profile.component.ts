@@ -33,11 +33,14 @@ export class MyProfileComponent {
     this.role = ''
     this.randomAvatarColor = this.avatarColors[Math.floor(Math.random() * this.avatarColors.length)]
 
-    const cookie = JSON.parse(this.cookieService.get('session-user'))
+    const session_user = this.cookieService.get('session_user');
 
-    console.log('cookie', cookie)
+    if (session_user) {
+      try {
+        this.user = JSON.parse(session_user)
+        console.log('User:', this.user)
 
-    this.userService.getUserByEmpId(cookie.empId).subscribe({
+    this.userService.getUserByEmpId(this.user.empId).subscribe({
 
       next: (res) => {
         this.user = res
@@ -55,6 +58,10 @@ export class MyProfileComponent {
         this.profileForm.controls['lastName'].setValue(this.user.lastName)
       }
     })
+      } catch (error) {
+        console.error('Error parsing session cookie', error)
+      }
+    }
   }
 
   saveChanges() {
