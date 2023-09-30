@@ -336,7 +336,7 @@ router.get('/:email/security-questions', (req, res, next) => {
 /**
  *  updateMyProfile
  */
-router.put('/:email/:update-profile', (req, res, next) => {
+router.put('/:email/update-profile', (req, res, next) => {
   try {
     const email = req.params.email
     console.log("Employee email", email)
