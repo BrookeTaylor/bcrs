@@ -23,7 +23,7 @@ export class UserService {
     updateProfile(email: string, firstName: string, lastName: string) {
       return this.http.put('/api/users/' + email + '/update-profile', {
         firstName: firstName,
-        lastName: lastName
+        lastName: lastName,
       })
     }
 }

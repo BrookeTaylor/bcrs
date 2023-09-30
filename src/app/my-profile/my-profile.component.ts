@@ -56,6 +56,7 @@ export class MyProfileComponent {
 
         this.profileForm.controls['firstName'].setValue(this.user.firstName)
         this.profileForm.controls['lastName'].setValue(this.user.lastName)
+
       }
     })
       } catch (error) {
@@ -67,6 +68,7 @@ export class MyProfileComponent {
   saveChanges() {
     const firstName = this.profileForm.controls['firstName'].value
     const lastName = this.profileForm.controls['lastName'].value
+    const phoneNumber = this.profileForm.controls['phoneNumber'].value
 
     console.log(`firstName: ${firstName}, lastName: ${lastName}`)
 
