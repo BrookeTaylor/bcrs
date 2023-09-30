@@ -1,1 +1,161 @@
-<p>my-profile works!</p>
+<div class="container-fluid mt-6" style="min-height: 600px;">
+  <div class="row justify-content-center">
+    <div class="col-md-4 mb-3">
+      <div class="card border-0">
+        <div class="card-body">
+          <div class="d-flex flex-column align-items-center text-center">
+             <div class="avatar-placeholder text-dark">
+              {{ userInitials}}
+            </div>
+            <div class="mt-3">
+              <h4 class="profile-name">{{ user.firstName}} {{ user.lastName}}</h4>
+              <p class="text-secondary mb-1">{{ user.email}}</p>
+
+              <div *ngIf="errorMessage">
+                <div class="alert alert-danger">
+                  {{ errorMessage}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6 mb-3">
+      <div class="card h-180">
+        <div class="card-body">
+          <h6 class="d-flex align-items-center mb-3"><i class="material-icons profile-icon mr-2">info</i> Basic Info</h6>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Employee ID</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.empId}}
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">First Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.firstName}}
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Last Name</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.lastName}}
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.email }}
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <button class="btn btn-lg dark-yellow text-black mx-auto d-block w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                Edit
+              </button>
+            </div>
+          </div>
+
+
+          <!-- canvas -->
+          <div class="offcanvas offcanvas-end" tableIndex="-1" data-bs-backdrop="static" data-bs-keyboard="false" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <h4 id="offcanvasRightLabel" style="font-size: 30px; font-weight: 400; letter-spacing: 1px;">Profile Settings</h4>
+              <button type="button" class="btn btn-close text-reset" data-bs-dismiss="offcanvas" (click)="close()" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <form [formGroup]="profileForm" (ngSubmit)="saveChanges();">
+                <fieldset class="form-group">
+                  <legend>Employee Information</legend>
+
+                  <!-- Validation errors/success messages -->
+                  <div *ngIf="profileOnSaveError">
+                    <div class="alert alert-danger">
+                      {{ profileOnSaveError }}
+                    </div>
+                  </div>
+
+                  <div *ngIf="profileOnSaveSuccess">
+                    <div class="alert alert-success">
+                      {{ profileOnSaveSuccess}}
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" required>
+                    <div class="alert alert-danger mt-2" *ngIf="profileForm.controls['phoneNumber'].invalid && (profileForm.controls['phoneNumber'].dirty || profileForm.controls['phoneNumber'].touched)">
+                      <div *ngIf="profileForm.controls['phoneNumber'].hasError('required')">
+                        Phone number is required.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" class="form-control" formControlName="address" required>
+                    <div class="alert alert-danger mt-2" *ngIf="profileForm.controls['address'].invalid && (profileForm.controls['address'].dirty || profileForm.controls['address'].touched)">
+                      <div *ngIf="profileForm.controls['address'].hasError('required')">
+                        Address is required.
+                      </div>
+                    </div>
+                  </div>
+
+                  <input type="submit" id="submit" [disabled]="!profileForm.valid" value="Save Changes" class="btn btn-lg dark-yellow text-black mx-auto d-block w-100">
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h6 class="d-flex align-items-center mb-3"><i class="material-icons profile-icon mr2-l">settings</i> System Settings</h6>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Language</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              English
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Role</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ role }}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
