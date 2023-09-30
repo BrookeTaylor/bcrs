@@ -13,6 +13,7 @@ const Ajv = require('ajv')
 const ajv = new Ajv()
 
 
+
 const lineItemsSchema = {
   type: 'array',
   items: {
@@ -153,6 +154,43 @@ router.post('/', (req, res, next) => {
 
 
 
+/**
+ * findPurchasesByService
+ */
+router.get("/purchases-graph", async (req, res, next) => {
+  try {
+
+
+    mongo(async (db) => {
+      // Aggregate query
+      const pipeline = [
+        { $unwind: "$lineItems" },
+        {
+          $group: {
+            _id: {
+              title: "$lineItems.title",
+              price: "$lineItems.price",
+            },
+            count: { $sum: 1 },
+          },
+        },
+        { $sort: { "_id.title": 1 } },
+      ];
+
+      console.log("Purchases by Service Graph");
+
+      const result = await db
+        .collection('invoices')
+        .aggregate(pipeline)
+        .toArray(); // Show as array
+
+      res.status(200).json(result);
+    }, next);
+  } catch (err) {
+    console.error("err:", err);
+    next(err);
+  }
+});
 
 
 module.exports = router

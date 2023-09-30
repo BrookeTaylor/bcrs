@@ -4,9 +4,9 @@
       <div class="card border-0">
         <div class="card-body">
           <div class="d-flex flex-column align-items-center text-center">
-            <!-- <div class="avatar-placeholder text-dark">
+             <div class="avatar-placeholder text-dark">
               {{ userInitials}}
-            </div> -->
+            </div>
             <div class="mt-3">
               <h4 class="profile-name">{{ user.firstName}} {{ user.lastName}}</h4>
               <p class="text-secondary mb-1">{{ user.email}}</p>
@@ -77,6 +77,8 @@
             </div>
           </div>
 
+
+          <!-- canvas -->
           <div class="offcanvas offcanvas-end" tableIndex="-1" data-bs-backdrop="static" data-bs-keyboard="false" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
               <h4 id="offcanvasRightLabel" style="font-size: 30px; font-weight: 400; letter-spacing: 1px;">Profile Settings</h4>
@@ -101,21 +103,21 @@
                   </div>
 
                   <div class="mb-3">
-                    <label for="fName">First Name:</label>
-                    <input type="text" id="fName" class="form-control" formControlName="firstName" required>
-                    <div class="alert alert-danger mt-2" *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)">
-                      <div *ngIf="profileForm.controls['firstName'].hasError('required')">
-                        First Name is required.
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber" required>
+                    <div class="alert alert-danger mt-2" *ngIf="profileForm.controls['phoneNumber'].invalid && (profileForm.controls['phoneNumber'].dirty || profileForm.controls['phoneNumber'].touched)">
+                      <div *ngIf="profileForm.controls['phoneNumber'].hasError('required')">
+                        Phone number is required.
                       </div>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="fName">Last Name:</label>
-                    <input type="text" id="lName" class="form-control" formControlName="lastName" required>
-                    <div class="alert alert-danger mt-2" *ngIf="profileForm.controls['lastName'].invalid && (profileForm.controls['lastName'].dirty || profileForm.controls['lastName'].touched)">
-                      <div *ngIf="profileForm.controls['lastName'].hasError('required')">
-                        Last Name is required.
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" class="form-control" formControlName="address" required>
+                    <div class="alert alert-danger mt-2" *ngIf="profileForm.controls['address'].invalid && (profileForm.controls['address'].dirty || profileForm.controls['address'].touched)">
+                      <div *ngIf="profileForm.controls['address'].hasError('required')">
+                        Address is required.
                       </div>
                     </div>
                   </div>

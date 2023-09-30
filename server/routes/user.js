@@ -58,13 +58,14 @@ const updateUserSchema = {
   additionalProperties: false
 }
 
+// Updated profile to select phoneNumber and address.
 const updateMyProfileSchema = {
   type: 'object',
   properties: {
-    firstName: { type: 'string' },
-    lastName: { type: 'string'}
+    phoneNumber: { type: 'number' },
+    address: { type: 'string'}
   },
-  required: ['firstName', 'lastName'],
+  required: ['phoneNumber', 'address'],
   additionalProperties: false
 }
 
@@ -359,8 +360,8 @@ router.put('/:email/update-profile', (req, res, next) => {
       const result = await db.collection('users').updateOne(
         { email: email },
         { $set: {
-          firstName: user.firstName,
-          lastName: user.lastName,
+          phoneNumber: user.phoneNumber,
+          address: user.address,
         }}
       )
 
