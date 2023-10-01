@@ -2,12 +2,14 @@
  *  Title: Bob's Computer Repair Shop
  *  Arthur: Professor Krasso
  *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
- *  Date: 09/17/2023
- *  Description: user view module
+ *  Date: 10/01/2023
+ *  Description: my profile module
  */
 
-export interface UserViewModel {
-  firstName: string
-  lastName: string
-  role: string
+
+export interface MyProfileModule {
+
+  phoneNumber: number
+  address: string
+
 }

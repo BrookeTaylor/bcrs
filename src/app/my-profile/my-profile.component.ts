@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserViewModel } from '../shared/user-view-model';
 import { UserService } from '../shared/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MyProfileModule } from './my-profile-module';
 
 @Component({
   selector: 'app-my-profile',
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MyProfileComponent {
   user: UserViewModel
+  myProfile: MyProfileModule
   errorMessage: string
   profileOnSaveError: string
   profileOnSaveSuccess: string
@@ -20,12 +22,13 @@ export class MyProfileComponent {
   randomAvatarColor: string
 
   profileForm: FormGroup = this.fb.group({
-    phoneNumber: [null, Validators.compose([Validators.required])],
+    phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern(`^[0-9]*$`)])],
     address: [null, Validators.compose([Validators.required])]
   })
 
   constructor (private cookieService: CookieService, private userService: UserService, private fb: FormBuilder) {
     this.user = {} as UserViewModel
+    this.myProfile = {} as MyProfileModule
     this.errorMessage = ''
     this.profileOnSaveError = ''
     this.profileOnSaveSuccess = ''
@@ -66,23 +69,22 @@ export class MyProfileComponent {
   }
 
   saveChanges() {
-  //  const firstName = this.profileForm.controls['firstName'].value
-  //  const lastName = this.profileForm.controls['lastName'].value
-    const phoneNumber = this.profileForm.controls['phoneNumber'].value
-    const address = this.profileForm.controls['address'].value
 
-    console.log(`phoneNumber: ${phoneNumber}, address: ${address}`)
 
-    this.userService.updateProfile(this.user.email, this.user.phoneNumber, this.user.address).subscribe({
+    let myProfile = {} as MyProfileModule
 
+    myProfile.phoneNumber = parseInt(this.profileForm.get('phoneNumber')?.value, 10)
+    myProfile.address = this.profileForm.controls['address'].value
+
+    console.log('My Profile Model: ', myProfile)
+
+
+
+    this.userService.updateProfile(this.user.email, myProfile.phoneNumber, myProfile.address).subscribe({
       next: (res) => {
-        console.log(`Response from API call: ${res}`)
+        console.log(res)
 
-        this.user.phoneNumber = phoneNumber
-        this.user.address = address
 
-        this.userInitials = `${this.user.firstName.charAt(0)}${this.user.lastName.charAt(0)}`
-        this.profileOnSaveSuccess = 'Profile saved successfully!'
       },
       error: (err) => {
         console.log(err)
