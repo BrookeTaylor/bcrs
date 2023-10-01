@@ -623,3 +623,178 @@
  *       500:
  *         description: Internal Server Error. An unexpected server error occurred.
  */
+
+
+
+/**
+ * updateMyProfile
+ *
+ * @openapi
+ * /api/users/{email}/update-profile:
+ *   put:
+ *     tags:
+ *       - Users
+ *     summary: Update the profile of the user.
+ *     description: Update profile by email address.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         description: User email address.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               phoneNumber:
+ *                 type: integer
+ *                 description: New phone number.
+ *               address:
+ *                 type: string
+ *                 description: New address.
+ *             required:
+ *               - phoneNumber
+ *               - address
+ *     responses:
+ *       204:
+ *         description: Profile updated successfully.
+ *       400:
+ *         description: Bad Request.
+ *       404:
+ *         description: User not found.
+ *       500:
+ *         description: Internal Server Error.
+ */
+
+
+
+
+/**
+ * findAllInvoices
+ *
+ * @openapi
+ * /api/invoices:
+ *   get:
+ *     tags:
+ *       - Invoices
+ *     summary: Find all invoices.
+ *     description: Get all invoices.
+ *     responses:
+ *       200:
+ *         description: A list of invoices.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               description: "An array of invoices."
+ *       404:
+ *         description: Not found.
+ *       500:
+ *         description: Internal Server Error.
+ */
+
+
+/**
+ * findByEmail
+ *
+ * @openapi
+ * /api/invoices/{email}:
+ *   get:
+ *     tags:
+ *       - Invoices
+ *     summary: Get invoices by email.
+ *     description: Retrieve all invoices with an email address.
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         description: User email address.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Invoices retrieved successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               description: "An array of invoices."
+ *       400:
+ *         description: Bad Request.
+ *       404:
+ *         description: Not found.
+ *       500:
+ *         description: Internal Server Error.
+ */
+
+
+
+
+
+/**
+ * createInvoice
+ *
+ * @openapi
+ * /api/invoices:
+ *   post:
+ *     tags:
+ *       - Invoices
+ *     summary: Create a new invoice.
+ *     description: Create a new invoice with the provided data.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: The email address of the customer.
+ *               fullName:
+ *                 type: string
+ *                 description: The full name of the customer.
+ *               lineItems:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     title:
+ *                       type: string
+ *                       description: The title of the line item.
+ *                     price:
+ *                       type: number
+ *                       description: The price of the line item.
+ *                 description: An array of line items for the invoice.
+ *               partsAmount:
+ *                 type: number
+ *                 description: The total amount for parts.
+ *               laborAmount:
+ *                 type: number
+ *                 description: The total amount for labor.
+ *               lineItemTotal:
+ *                 type: number
+ *                 description: The total amount for line items.
+ *               invoiceTotal:
+ *                 type: number
+ *                 description: The total amount for the invoice.
+ *             required:
+ *               - email
+ *               - fullName
+ *               - lineItems
+ *               - partsAmount
+ *               - laborAmount
+ *               - lineItemTotal
+ *               - invoiceTotal
+ *     responses:
+ *       201:
+ *         description: Invoice created successfully.
+ *       400:
+ *         description: Bad Request. Invalid request format.
+ *       500:
+ *         description: Internal Server Error.
+ */
