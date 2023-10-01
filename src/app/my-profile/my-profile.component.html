@@ -109,6 +109,10 @@
                       <div *ngIf="profileForm.controls['phoneNumber'].hasError('required')">
                         Phone number is required.
                       </div>
+
+                      <div *ngIf="profileForm.controls['phoneNumber'].hasError('pattern')">
+                        Phone Number must be a number.
+                      </div>
                     </div>
                   </div>
 
@@ -122,7 +126,19 @@
                     </div>
                   </div>
 
-                  <input type="submit" id="submit" [disabled]="!profileForm.valid" value="Save Changes" class="btn btn-lg dark-yellow text-black mx-auto d-block w-100">
+
+                  <div class="d-grid mt-5">
+                    <button class="btn btn-lg dark-yellow text-black" type="submit" id="submit" [disabled]="!profileForm.valid" value="Save Changes">
+
+                      <span *ngIf="!isLoading" class="text-hp">Save Changes</span>
+
+                      <div *ngIf="isLoading">
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...
+                      </div>
+
+                    </button>
+                  </div>
+
                 </fieldset>
               </form>
             </div>

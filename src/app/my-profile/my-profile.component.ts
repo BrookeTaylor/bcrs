@@ -26,6 +26,8 @@ export class MyProfileComponent {
     address: [null, Validators.compose([Validators.required])]
   })
 
+  isLoading: boolean = false;
+
   constructor (private cookieService: CookieService, private userService: UserService, private fb: FormBuilder) {
     this.user = {} as UserViewModel
     this.myProfile = {} as MyProfileModule
@@ -70,6 +72,7 @@ export class MyProfileComponent {
 
   saveChanges() {
 
+    this.isLoading = true;
 
     let myProfile = {} as MyProfileModule
 
@@ -87,13 +90,23 @@ export class MyProfileComponent {
 
       },
       error: (err) => {
+        this.isLoading = false;
         console.log(err)
         this.profileOnSaveError = err.message
       },
       complete: () => {
+        this.isLoading = false;
+        /*
         this.profileForm.reset()
         this.profileForm.controls['phoneNumber'].setValue(this.user.phoneNumber)
         this.profileForm.controls['address'].setValue(this.user.address)
+        */
+
+        // Unable to refresh results in page.
+
+        // Bandaid fix!
+        window.location.reload();
+
       }
     })
   }
