@@ -71,7 +71,7 @@ const routes: Routes = [
         loadChildren: () => import('./shop/shop.module').then((m) => m.ShopModule),
       },
       {
-        path: 'my-profile',
+        path: 'my-profile/:empId',
         component: MyProfileComponent,
         title: 'My Profile Page'
       },
