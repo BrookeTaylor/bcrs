@@ -70,7 +70,6 @@ const routes: Routes = [
         canActivate: [authGuard],
         loadChildren: () => import('./shop/shop.module').then((m) => m.ShopModule),
       },
-      // working profile
       {
         path: 'my-profile',
         component: MyProfileComponent,
