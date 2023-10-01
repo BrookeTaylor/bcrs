@@ -1,9 +1,9 @@
 /**
- *  Title: Bob's Computer Repair Shop
- *  Arthur: Professor Krasso
- *  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
- *  Date: 10/01/2023
- *  Description: my-profile
+ * Title: my-profile.components.ts
+ * Author: Professor Krasso
+ * Co-Author: Brett Grashorn, Janis Gonzalez, and Brooke Taylor
+ * Date: 10/01/23
+ * Description: not-found component for nodebucket application
  */
 
 import { Component } from '@angular/core';
