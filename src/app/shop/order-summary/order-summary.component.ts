@@ -7,12 +7,16 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-order-summary',
   templateUrl: './order-summary.component.html',
-  styleUrls: ['./order-summary.component.css']
+  styleUrls: [
+    './order-summary.component.css',
+    'print.css'
+  ]
 })
 export class OrderSummaryComponent {
 
   user: any;
   order: Order
+  printing = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private cookieService: CookieService) {
 
@@ -40,6 +44,12 @@ export class OrderSummaryComponent {
     console.log('Order Summary:', this.order)
     console.log('Order Total:', this.order.invoiceTotal)
 
+  }
+
+  printPage() {
+    this.printing = true;
+    window.print();
+    this.printing = false;
   }
 
 }

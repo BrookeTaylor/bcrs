@@ -1,0 +1,12 @@
+
+
+@media print {
+  .hide-on-print {
+    display: none;
+  }
+  .card {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+  }
+}

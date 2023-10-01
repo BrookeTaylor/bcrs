@@ -1,45 +1,47 @@
-<div>
-  <div class="order-summary">
-    <div class="order-summary__header">
-      <div class="order-summary__header-title">
-        <h2>Order #{{ order.id }}</h2>
-        <div class="order-summary__header-date">{{ order.date | date }}</div>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="card">
 
-
-        <div class="order-summary__header-user">
-          <p>{{ user.email }}</p>
-          <p>{{ user.fullName }}</p>
+        <div class="card-title">
+          <h2>Order #{{ order.id }}</h2>
+          <div class="order-summary__header-date">{{ order.date | date }}</div>
+          <div class="order-summary__header-user">
+            <p class="mt-3">
+              <span style="font-weight: 600;">{{ user.fullName }}</span><br>{{ user.email }}
+            </p>
+          </div>
         </div>
 
+        <div class="card-body">
+
+          <div class="card-item" *ngFor="let item of order.lineItems">
+            <div class="card-item-name">{{ item.title }}:</div>
+            <div class="card-item-price">{{ item.price | currency }}</div>
+          </div>
+
+          <div class="card-parts">
+            <div class="card-parts-label">Parts:</div>
+            <div class="card-parts-value">{{ order.partsAmount | currency }}</div>
+          </div>
+
+          <div class="card-labor">
+            <div class="card-labor-label">Labor:</div>
+            <div class="card-labor-value">{{ order.laborAmount | currency }}</div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <p>
+            <span class="card-footer-label">Order Total:</span>
+            <span class="card-footer-value">{{ order.invoiceTotal | currency }}</span>
+          </p>
+        </div>
 
       </div>
+
+      <button (click)="printPage()" class="hide-on-print">Print</button>
     </div>
-
-    <div class="order-summary__body">
-      <h4 class="order-summary__body-title">Selected Menu Items</h4>
-
-      <div class="order-summary__body-item" *ngFor="let item of order.lineItems">
-        <div class="order-summary__body-item-name">{{ item.title }}:</div>
-        <div class="order-summary__body-item-price">{{ item.price | currency }}</div>
-      </div>
-
-      <div class="order-summary__body-parts">
-        <div class="order-summary__body-parts-label">Parts:</div>
-        <div class="order-summary__body-parts-value">{{ order.partsAmount |  currency }}</div>
-      </div>
-
-      <div class="order-summary__body-labor">
-        <div class="order-summary__body-labor-label">Labor:</div>
-        <div class="order-summary__body-labor-value">{{ order.laborAmount | currency }}</div>
-      </div>
-    </div>
-
-    <div class="order-summary__total">
-      <p>
-        <span class="order-summary__total-label">Order Total:</span>
-        <span class="order-summary__total-value">{{ order.invoiceTotal | currency }}</span>
-      </p>
-    </div>
+    <a routerLink="/shop/service" class="hide-on-print">Place new order</a>
   </div>
-  <a routerLink="/shop/service">Place new order</a>
 </div>
