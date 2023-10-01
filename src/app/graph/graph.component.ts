@@ -6,6 +6,7 @@
  *  Description: graph.component.ts
  */
 
+/* Graph with data from api
 
 import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from '../shared/invoice.service';
@@ -75,5 +76,55 @@ export class GraphComponent implements OnInit {
         });
       },
     });
+  }
+}
+*/
+
+
+
+import { Component, OnInit } from '@angular/core';
+import { Chart, registerables  } from 'chart.js';
+Chart.register(...registerables);
+
+@Component({
+  selector: 'app-graph',
+  templateUrl: './graph.component.html',
+  styleUrls: ['./graph.component.css']
+})
+export class GraphComponent implements OnInit {
+
+  constructor () {}
+
+  ngOnInit(): void {
+    // Create a new pie chart instance via the myPie variable and the Chart constructor.
+    // Pass in the id of the canvas element and the type of chart (pie).
+    // Pass in the data and options objects to the chart constructor.
+    const myPie = new Chart("myPieChart", {
+      type: 'pie',
+      data: {
+          labels: ['Password Reset', 'Spyware Removal', 'RAM Upgrade', 'Software Installation', 'PC Tune-up', 'Keyboard Cleaning', 'Disk Clean-up'], // Labels for the data
+          datasets: [{
+              data: [12, 19, 3, 5, 2, 3, 30], // Data for the dataset
+              backgroundColor: [
+                '#372e29',
+                  '#4d3f38',
+                  '#524734',
+                  '#7D6B5D',
+                  '#ee9e35',
+                  '#eeba35',
+                  '#f3ca61',
+              ],
+              hoverBackgroundColor: [
+                '#372e29',
+                  '#4d3f38',
+                  '#524734',
+                  '#7D6B5D',
+                  '#ee9e35',
+                  '#eeba35',
+                  '#f3ca61',
+              ],
+          }]
+      }
+    })
   }
 }
