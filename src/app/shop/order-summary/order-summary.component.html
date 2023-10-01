@@ -1,15 +1,25 @@
+<!--
+  Title: Bob's Computer Repair Shop
+  Author: Professor Krasso
+  Modified By: Group 2 - Brooke Taylor, Janis Gonzalez, & Brett Grashorn
+  Date: 10/01/2023
+  Description: Order summary
+-->
+
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-4">
+    <div class="col-lg-6 col-md-10 col-sm-12">
       <div class="card">
 
         <div class="card-title">
+          <div class="m-3">
           <h2>Order #{{ order.id }}</h2>
           <div class="order-summary__header-date">{{ order.date | date }}</div>
           <div class="order-summary__header-user">
             <p class="mt-3">
               <span style="font-weight: 600;">{{ user.fullName }}</span><br>{{ user.email }}
             </p>
+          </div>
           </div>
         </div>
 
@@ -32,16 +42,30 @@
         </div>
 
         <div class="card-footer">
+          <div class="row">
+
+            <div class="col">
           <p>
             <span class="card-footer-label">Order Total:</span>
             <span class="card-footer-value">{{ order.invoiceTotal | currency }}</span>
           </p>
+            </div>
+
+
+            <div class="col">
+                <button (click)="printPage()" class="btn brown text-white hide-on-print">
+                  <span class="text-hp">Print Page</span>
+                </button>
+            </div>
+          </div>
+
         </div>
 
       </div>
 
-      <button (click)="printPage()" class="hide-on-print">Print</button>
+      <a routerLink="/shop/service" class="hide-on-print">Place new order</a>
+
     </div>
-    <a routerLink="/shop/service" class="hide-on-print">Place new order</a>
+
   </div>
 </div>
