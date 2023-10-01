@@ -62,10 +62,12 @@ const updateUserSchema = {
 const updateMyProfileSchema = {
   type: 'object',
   properties: {
+    firstName: {type: 'string' },
+    lastName: { type: 'string' },
     phoneNumber: { type: 'number' },
     address: { type: 'string'}
   },
-  required: ['phoneNumber', 'address'],
+  required: ['firstName', 'lastName', 'phoneNumber', 'address'],
   additionalProperties: false
 }
 
@@ -360,6 +362,8 @@ router.put('/:email/update-profile', (req, res, next) => {
       const result = await db.collection('users').updateOne(
         { email: email },
         { $set: {
+          firstName: user.firstName,
+          lastName: user.lastName,
           phoneNumber: user.phoneNumber,
           address: user.address,
         }}

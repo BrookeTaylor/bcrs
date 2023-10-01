@@ -22,6 +22,8 @@ export class MyProfileComponent {
   randomAvatarColor: string
 
   profileForm: FormGroup = this.fb.group({
+    firstName: [null, Validators.compose([Validators.required])],
+    lastName: [null, Validators.compose([Validators.required])],
     phoneNumber: [null, Validators.compose([Validators.required, Validators.pattern(`^[0-9]*$`)])],
     address: [null, Validators.compose([Validators.required])]
   })
@@ -59,6 +61,8 @@ export class MyProfileComponent {
         this.userInitials = `${this.user.firstName.charAt(0)}${this.user.lastName.charAt(0)}`
         this.role = this.user.role.charAt(0).toUpperCase() + this.user.role.slice(1)
 
+        this.profileForm.controls['firstName'].setValue(this.user.firstName)
+        this.profileForm.controls['lastName'].setValue(this.user.lastName)
         this.profileForm.controls['phoneNumber'].setValue(this.user.phoneNumber)
         this.profileForm.controls['address'].setValue(this.user.address)
 
@@ -76,6 +80,8 @@ export class MyProfileComponent {
 
     let myProfile = {} as MyProfileModule
 
+    myProfile.firstName = this.profileForm.controls['firstName'].value
+    myProfile.lastName = this.profileForm.controls['lastName'].value
     myProfile.phoneNumber = parseInt(this.profileForm.get('phoneNumber')?.value, 10)
     myProfile.address = this.profileForm.controls['address'].value
 
@@ -83,7 +89,7 @@ export class MyProfileComponent {
 
 
 
-    this.userService.updateProfile(this.user.email, myProfile.phoneNumber, myProfile.address).subscribe({
+    this.userService.updateProfile(this.user.email, myProfile.firstName, myProfile.lastName, myProfile.phoneNumber, myProfile.address).subscribe({
       next: (res) => {
         console.log(res)
 

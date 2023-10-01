@@ -20,8 +20,10 @@ export class UserService {
       return this.http.get<UserViewModel>('api/users/' + empId)
     }
 
-    updateProfile(email: string, phoneNumber: number, address: string) {
+    updateProfile(email: string, firstName: string, lastName: string, phoneNumber: number, address: string) {
       return this.http.put('/api/users/' + email + '/update-profile', {
+        firstName: firstName,
+        lastName: lastName,
         phoneNumber: phoneNumber,
         address: address,
       })
