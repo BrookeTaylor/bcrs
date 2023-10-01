@@ -1,3 +1,11 @@
+/**
+ * Title: user.service.ts
+ * Author: Professor Krasso
+ * Co-Author: Brett Grashorn, Janis Gonzalez, and Brooke Taylor
+ * Date: 10/01/23
+ * Description: User Service file
+ */
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

@@ -1,3 +1,11 @@
+/**
+ * Title: my-profile.components.ts
+ * Author: Professor Krasso
+ * Co-Author: Brett Grashorn, Janis Gonzalez, and Brooke Taylor
+ * Date: 10/01/23
+ * Description: not-found component for nodebucket application
+ */
+
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserViewModel } from '../shared/user-view-model';
