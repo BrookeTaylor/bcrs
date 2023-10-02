@@ -1,7 +1,9 @@
 /**
- * Title: signin.component.ts
- * Author:  Brett Grashorn
- * Date: 89/14/23
+ *  Title: Bob's Computer Repair Shop
+ *  Arthur: Professor Krasso
+ *  Modified By: Brett Grashorn
+ *  Date: 10/01/2023
+ *  Description: sign in component
  */
 
 import { CookieService } from 'ngx-cookie-service';
