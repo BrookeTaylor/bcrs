@@ -6,7 +6,8 @@
     "start": "ng build && node ./bin/www",
     "build": "ng build",
     "server": "nodemon ./bin/www",
-    "client": "ng serve --open"
+    "client": "ng serve --open",
+    "render-deploy": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -47,5 +48,9 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "nodemon": "^3.0.1",
     "typescript": "~5.1.3"
+  },
+  "engines": {
+    "node": "^18.16.1",
+    "npm": "^9.8.1"
   }
 }
