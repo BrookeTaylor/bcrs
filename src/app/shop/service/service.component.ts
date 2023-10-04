@@ -34,6 +34,11 @@ export class ServiceComponent {
   laborAmount: number
   invoiceTotal: number
 
+  isLoading: boolean = false;
+  errorMessage: string // error message variable
+
+  formSubmitted: boolean = false;
+
 
   constructor(
     private menuService: MenuService,
@@ -61,6 +66,8 @@ export class ServiceComponent {
       this.user = JSON.parse(session_user)
       console.log('User:', this.user)
     }
+
+    this.errorMessage = ''
 
   }
 
@@ -91,8 +98,15 @@ export class ServiceComponent {
 
 
   generateOrder() {
+
+    this.formSubmitted = true;
+
+
     console.log('Order', this.order)
     console.log('Products', this.products)
+
+    this.isLoading = true;
+
 
 
 
@@ -127,24 +141,34 @@ export class ServiceComponent {
 
 
 
-  // pass route here
-    this.httpClient.post('/api/invoices', this.order).subscribe(
-      (response) => {
-        console.log('Response:', response)
+  this.httpClient.post('/api/invoices', this.order).subscribe({
 
-        this.router.navigate(['shop/order-summary'], {
-          queryParams: { order: JSON.stringify(this.order)}
-        })
-      }, (error) => {
-        console.error('Error:', error)
+
+    next: (response) => {
+      this.isLoading = false;
+      console.log('result', response)
+      this.router.navigate(['shop/order-summary'], {
+        queryParams: { order: JSON.stringify(this.order)}
+      })
+
+    },
+    error: (err) => {
+      if (err.error.message) {
+        console.log('db error: ', err.error.message)
+        this.errorMessage = err.error.message
+        this.isLoading = false;
+      } else {
+        this.errorMessage = 'Something went wrong'
+        console.log(err)
+        this.isLoading = false;
       }
-    )
+    }
+  })
 
-
-
-
-  this.router.navigate(['shop/order-summary'], {queryParams: { order: JSON.stringify(this.order) }})
 
   }
 
 }
+
+
+
