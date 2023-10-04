@@ -157,7 +157,7 @@ router.post('/', (req, res, next) => {
 /**
  * findPurchasesByService
  */
-router.get("/purchases-graph", async (req, res, next) => {
+router.get("/purchases-graph/view", async (req, res, next) => {
   try {
 
 

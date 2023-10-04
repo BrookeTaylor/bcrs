@@ -23,7 +23,7 @@ export class InvoiceService {
   }
 
   findPurchasesByServiceGraph() {
-    return this.http.get('/api/invoices/purchases-graph');
+    return this.http.get('/api/invoices/purchases-graph/view');
   }
 
 
