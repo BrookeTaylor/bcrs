@@ -8,6 +8,12 @@
 
 // imports statements
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+
+export interface SessionUser {
+  fullName: string
+  role: string
+}
 
 @Component({
   selector: 'app-home',
@@ -15,5 +21,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  sessionUser: SessionUser
+  isSignedIn: boolean
 
+
+constructor(private cookieService: CookieService) {
+  this.sessionUser = {} as SessionUser
+  this.isSignedIn = this.cookieService.get('session_user') ? true : false
+
+  if (this.isSignedIn) {
+    this.sessionUser = JSON.parse(this.cookieService.get('session_user'))
+    console.log('Session User:', this.sessionUser)
+  }
+}
 }
