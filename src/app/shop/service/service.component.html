@@ -100,8 +100,19 @@
 
 
       <div class="d-grid mt-5 col-8">
+
+        <div class="alert alert-danger"  *ngIf="formSubmitted && errorMessage">
+          {{ errorMessage }}
+        </div>
+
         <button class="btn text-light brown" type="submit" id="submit"  value="Place Order">
-          Submit
+          <span *ngIf="!isLoading" class="text-hp">Submit</span>
+
+
+          <div *ngIf="isLoading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...
+          </div>
+
         </button>
       </div>
 

@@ -24,8 +24,11 @@
         <a routerLink="/security/register">
           <img class="quick img-fluid" src="./assets/img/home-register.png" alt="register image" />
         </a>
+        <a *ngIf="!isSignedIn" routerLink="/security/signin">
+          <img class="quick img-fluid" src="./assets/img/home-profile.png" alt="profile image" />
+        </a>
         <!-- my profile img-->
-        <a routerLink="/my-profile">
+        <a *ngIf="isSignedIn" routerLink="/my-profile">
           <img class="quick img-fluid" src="./assets/img/home-profile.png" alt="profile image" />
         </a>
       </div>
