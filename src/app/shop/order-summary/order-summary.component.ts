@@ -32,6 +32,7 @@ export class OrderSummaryComponent {
     this.order = {} as Order
 
     const orderQueryParam = this.route.snapshot.queryParamMap.get('order');
+    console.log('query: ', orderQueryParam)
 
     if (orderQueryParam !== null) {
       this.order = JSON.parse(orderQueryParam);

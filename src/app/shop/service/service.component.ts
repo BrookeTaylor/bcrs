@@ -165,7 +165,7 @@ export class ServiceComponent {
     }
   })
 
-  this.router.navigate(['shop/order-summary'], {queryParams: { order: JSON.stringify(this.order) }})
+//  this.router.navigate(['shop/order-summary'], {queryParams: { order: JSON.stringify(this.order) }})
   }
 
 }

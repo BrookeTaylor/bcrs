@@ -93,7 +93,7 @@ async function dbInit() {
             "price": 49.99
           },
           {
-            "title": "PC Tune Up",
+            "title": "PC Tune-up",
             "price": 89.99
           },
           {
@@ -113,7 +113,7 @@ async function dbInit() {
         "fullName": "Bob Smith",
         "lineItems": [
           {
-            "title": "Disk Cleanup",
+            "title": "Disk Clean-up",
             "price": 129.99
           },
           {
