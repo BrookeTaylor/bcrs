@@ -97,25 +97,94 @@
       <!-- LABOR -->
 
 
+      <!-- add customer full name -->
 
-
-      <div class="d-grid mt-5 col-8">
-
-        <div class="alert alert-danger"  *ngIf="formSubmitted && errorMessage">
-          {{ errorMessage }}
-        </div>
-
-        <button class="btn text-light brown" type="submit" id="submit"  value="Place Order">
-          <span *ngIf="!isLoading" class="text-hp">Submit</span>
-
-
-          <div *ngIf="isLoading">
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...
+          <!-- center this alert-->
+          <div class="d-grid mt-5 col-8">
+            <div class="alert alert-danger"  *ngIf="formSubmitted && errorMessage">
+              {{ errorMessage }}
+            </div>
           </div>
 
-        </button>
+      <div class="d-grid col-8">
+
+        <div class="card shadow">
+          <div class="card-title">
+
+            <fieldset class="p-3">
+              <legend>Customer Information</legend>
+              <p>Enter the customer's full name and email address.</p>
+            </fieldset>
+
+          </div>
+
+
+
+
+          <div class="m-5">
+          <div class="row">
+            <div class="col-md-6">
+
+              <label class="form-label" for="fullName">Full Name:</label>
+              <input class="form-control" type="text" id="fullName" name="fullName" [(ngModel)]="order.fullName" required>
+
+              <div *ngIf="orderForm.controls['fullName'].touched && orderForm.controls['fullName'].hasError('required')">
+                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                  A name is required.
+                  <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+
+              <label class="form-label" for="email">Email:</label>
+              <input class="form-control" type="text" id="email" name="email" [(ngModel)]="order.email" required email>
+
+              <div *ngIf="orderForm.controls['email'].touched && orderForm.controls['email'].hasError('required')">
+                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                  Email is required.
+                  <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </div>
+              </div>
+
+              <div *ngIf="orderForm.controls['email'].touched && orderForm.controls['email'].hasError('email')">
+                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                  Please enter a valid email address.
+                  <input type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </div>
+              </div>
+
+            </div>
+          </div>
+          </div>
+
+
+          <div class="card-footer">
+
+
+              <div class="text-center">
+                <button class="btn text-light brown" type="submit" id="submit"  value="Place Order">
+                  <span *ngIf="!isLoading" class="text-hp">Submit</span>
+
+
+                  <div *ngIf="isLoading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...
+                  </div>
+
+                </button>
+              </div>
+
+
+          </div>
+        </div>
+
+
       </div>
 
+      <!-- add customer email -->
 
     </div>
 
