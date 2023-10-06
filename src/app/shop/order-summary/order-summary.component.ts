@@ -11,6 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../service/order';
 
 import { CookieService } from 'ngx-cookie-service';
+import { HttpClient } from '@angular/common/http';
+import { OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-order-summary',
@@ -20,39 +23,44 @@ import { CookieService } from 'ngx-cookie-service';
     'print.css'
   ]
 })
-export class OrderSummaryComponent {
+export class OrderSummaryComponent implements OnInit {
 
-  user: any;
+ // user: any;
   order: Order
   printing = false;
+  isLoading: boolean
 
-  constructor(private route: ActivatedRoute, private router: Router, private cookieService: CookieService) {
+  constructor(private route: ActivatedRoute, private router: Router, private cookieService: CookieService, private http: HttpClient) {
 
-
+    this.isLoading = true
     this.order = {} as Order
 
-    const orderQueryParam = this.route.snapshot.queryParamMap.get('order');
-
-    if (orderQueryParam !== null) {
-      this.order = JSON.parse(orderQueryParam);
-    } else {
-      this.order = {} as Order;
-    }
-
-    if (!this.order.lineItems || this.order.lineItems.length ===0) {
-      this.router.navigate(['/'])
-    }
-
-    const session_user = this.cookieService.get('session_user')
-    if (session_user) {
-      this.user = JSON.parse(session_user)
-      console.log('User:', this.user)
-    }
-
-    console.log('Order Summary:', this.order)
-    console.log('Order Total:', this.order.invoiceTotal)
 
   }
+
+
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      const id = params['id'];
+
+      if (id) {
+        this.http.get(`/api/invoices/${id}/invoice`).subscribe((invoice: any) => {
+          this.order = invoice;
+          this.isLoading = false;
+
+        }, (error) => {
+          console.error('Error fetching invoice:', error);
+          this.isLoading = false;
+
+        });
+      } else {
+        console.error('No "id" parameter provided');
+        this.isLoading = false;
+
+      }
+    });
+  }
+
 
   printPage() {
     this.printing = true;

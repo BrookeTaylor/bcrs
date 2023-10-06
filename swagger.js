@@ -798,3 +798,61 @@
  *       500:
  *         description: Internal Server Error.
  */
+
+
+
+/**
+ * getInvoiceById
+ *
+ * @openapi
+ * /api/invoices/{id}/invoice:
+ *   get:
+ *     tags:
+ *       - Invoices
+ *     summary: Get an invoice by ID.
+ *     description: Get invoice by ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of Invoice
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: The invoice object.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *                 fullName:
+ *                   type: string
+ *                 lineItems:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       title:
+ *                         type: string
+ *                       price:
+ *                         type: number
+ *                 partsAmount:
+ *                   type: number
+ *                 laborAmount:
+ *                   type: number
+ *                 lineItemTotal:
+ *                   type: number
+ *                 invoiceTotal:
+ *                   type: number
+ *       400:
+ *         description: Bad Request.
+ *       404:
+ *         description: Not Found.
+ *       500:
+ *         description: Internal Server Error.
+ */

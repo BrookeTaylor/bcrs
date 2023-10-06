@@ -12,8 +12,9 @@ import { MenuService } from './menu.service';
 import { Order } from './order';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-service',
@@ -34,17 +35,27 @@ export class ServiceComponent {
   laborAmount: number
   invoiceTotal: number
 
+  fullName: string = ''
+  email: string = ''
+
   isLoading: boolean = false;
   errorMessage: string // error message variable
 
   formSubmitted: boolean = false;
+
+  orderForm: FormGroup = this.formBuilder.group({
+    email: [null, Validators.compose([Validators.required, Validators.email])],
+    fullName: [null, Validators.compose([Validators.required])]
+  })
 
 
   constructor(
     private menuService: MenuService,
     private router: Router,
     private httpClient: HttpClient,
-    private cookieService: CookieService) {
+    private cookieService: CookieService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder) {
 
       this.lineItems = []
       this.lineItemTotal = 0
@@ -68,6 +79,9 @@ export class ServiceComponent {
     }
 
     this.errorMessage = ''
+    this.orderForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
 
   }
 
@@ -101,14 +115,16 @@ export class ServiceComponent {
 
     this.formSubmitted = true;
 
-
+    console.log('Customer Name:', this.order.fullName);
+    console.log('Customer Email:', this.order.email);
     console.log('Order', this.order)
     console.log('Products', this.products)
 
     this.isLoading = true;
 
-
-
+    console.log('id', this.order.id)
+    const orderID = this.order.id
+    console.log('id variable', orderID)
 
     for (let product of this.products) {
       if (product.checked) {
@@ -133,10 +149,16 @@ export class ServiceComponent {
     console.log('Order', this.order)
 
 
+    /*
     const session_user = this.cookieService.get('session_user')
     const user = JSON.parse(session_user)
     this.order.email = user.email
     this.order.fullName = user.fullName;
+    */
+    console.log('Customer Name:', this.fullName);
+    console.log('Customer Email:', this.email);
+    console.log('Order', this.order);
+    console.log('Products', this.products);
 
 
 
@@ -148,7 +170,7 @@ export class ServiceComponent {
       this.isLoading = false;
       console.log('result', response)
       this.router.navigate(['shop/order-summary'], {
-        queryParams: { order: JSON.stringify(this.order)}
+        queryParams: { id: orderID }
       })
 
     },
@@ -165,7 +187,7 @@ export class ServiceComponent {
     }
   })
 
-  this.router.navigate(['shop/order-summary'], {queryParams: { order: JSON.stringify(this.order) }})
+//  this.router.navigate(['shop/order-summary'], {queryParams: { order: JSON.stringify(this.order) }})
   }
 
 }

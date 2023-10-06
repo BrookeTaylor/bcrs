@@ -157,7 +157,7 @@ router.post('/', (req, res, next) => {
 /**
  * findPurchasesByService
  */
-router.get("/purchases-graph", async (req, res, next) => {
+router.get("/purchases-graph/view", async (req, res, next) => {
   try {
 
 
@@ -191,6 +191,53 @@ router.get("/purchases-graph", async (req, res, next) => {
     next(err);
   }
 });
+
+
+
+/**
+ * getInvoiceById
+ */
+router.get('/:id/invoice', (req, res, next) => {
+  try {
+
+    const id = req.params.id;
+
+    if (!id) {
+      res.status(400).json({
+        message: 'Bad Request',
+      });
+      return;
+    }
+
+    mongo(async (db) => {
+      const invoice = await db.collection('invoices').findOne({ id: parseInt(id) });
+
+      if (!invoice) {
+        const err = new Error(`No invoice found for ID: ${id}`);
+        err.status = 404;
+        console.log('err', err);
+        next(err);
+        return;
+      }
+
+      res.json(invoice);
+    }, next);
+  } catch (err) {
+    console.log('err', err);
+
+    if (err.name === 'ValidationError') {
+      res.status(400).json({
+        message: 'Bad Request',
+      });
+    } else {
+      next(err);
+    }
+  }
+});
+
+
+
+
 
 
 module.exports = router
